@@ -11,15 +11,25 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        inflateHeaderView();
+        inflateHeaderFragment();
+        inflateButtonsFragment();
     }
 
-    private void inflateHeaderView() {
+    private void inflateHeaderFragment() {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
         HeaderFragment headerFragment = new HeaderFragment();
         fragmentTransaction.add(R.id.mainActivityHeader, headerFragment);
+        fragmentTransaction.commit();
+    }
+
+    private void inflateButtonsFragment() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        ButtonsFragment buttonsFragment = new ButtonsFragment();
+        fragmentTransaction.add(R.id.mainActivityButtons, buttonsFragment);
         fragmentTransaction.commit();
     }
 }

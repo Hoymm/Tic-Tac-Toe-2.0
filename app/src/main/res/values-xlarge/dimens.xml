@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="header_font_size">76sp</dimen>
+    <dimen name="buttonTextSize">50sp</dimen>
+    <dimen name="buttonsVerticalSpacing">28dp</dimen>
+    <dimen name="buttonsPadding">16dp</dimen>
+</resources>
