@@ -8,7 +8,7 @@
     android:background="@color/appBackground">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/button1"
         style="@style/Button"
         android:text="@string/_1_player"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -24,8 +24,8 @@
         android:id="@+id/button2"
         style="@style/Button"
         android:text="button 2"
-        app:layout_constraintLeft_toLeftOf="@+id/button"
-        app:layout_constraintRight_toRightOf="@+id/button"
+        app:layout_constraintLeft_toLeftOf="@+id/button1"
+        app:layout_constraintRight_toRightOf="@+id/button1"
         android:layout_marginBottom="@dimen/buttonsVerticalSpacing"
         app:layout_constraintBottom_toTopOf="@+id/button3"
         app:layout_constraintHorizontal_bias="0.0"
@@ -36,8 +36,8 @@
         android:id="@+id/button3"
         style="@style/Button"
         android:text="button 3"
-        app:layout_constraintLeft_toLeftOf="@+id/button"
-        app:layout_constraintRight_toRightOf="@+id/button"
+        app:layout_constraintLeft_toLeftOf="@+id/button1"
+        app:layout_constraintRight_toRightOf="@+id/button1"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintVertical_bias="0.501"
@@ -46,12 +46,12 @@
         tools:layout_constraintLeft_creator="1" />
 
     <Button
-        android:id="@+id/button_nr1"
+        android:id="@+id/button4"
         style="@style/Button"
         android:layout_marginTop="@dimen/buttonsVerticalSpacing"
         android:text="button 4"
-        app:layout_constraintLeft_toLeftOf="@+id/button"
-        app:layout_constraintRight_toRightOf="@+id/button"
+        app:layout_constraintLeft_toLeftOf="@+id/button1"
+        app:layout_constraintRight_toRightOf="@+id/button1"
         app:layout_constraintTop_toBottomOf="@+id/button3"
         app:layout_constraintHorizontal_bias="0.0"
         tools:layout_constraintRight_creator="1"
