@@ -16,7 +16,7 @@ import com.hoymm.root.tictactoe2.TwoPlayers.TwoPlayersButtonsFragment;
  * Created by Damian Muca - Kaizen (12.09.17)
  */
 
-public class MainActivityButtons extends ButtonsFragment {
+public class MainActivityButtonsFragment extends ButtonsFragment {
 
     @Nullable
     @Override
@@ -61,7 +61,8 @@ public class MainActivityButtons extends ButtonsFragment {
 
     private void getTwoPlayersButtonClickListener() {
         final FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.mainActivityButtons, new TwoPlayersButtonsFragment(), TwoPlayersButtonsFragment.getUniqueTag());
+        TwoPlayersButtonsFragment twoPlayersButtonsFragment = new TwoPlayersButtonsFragment();
+        fragmentTransaction.replace(R.id.mainActivityButtons, twoPlayersButtonsFragment, twoPlayersButtonsFragment.getUniqueTag());
         fragmentTransaction.commit();
     }
 

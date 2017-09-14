@@ -5,8 +5,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
-import com.hoymm.root.tictactoe2.TwoPlayers.TwoPlayersButtonsFragment;
-
 /**
  * Created by Damian Muca - Kaizen (12.09.17)
  */
@@ -34,7 +32,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void inflateMainActivityFragment() {
         FragmentTransaction fragmentTransaction = getFragmentTransition();
-        fragmentTransaction.replace(R.id.mainActivityButtons, new MainActivityButtons(), MainActivityButtons.getUniqueTag());
+        MainActivityButtonsFragment mainActivityButtonsFragment = new MainActivityButtonsFragment();
+        fragmentTransaction.replace(R.id.mainActivityButtons
+                , mainActivityButtonsFragment, mainActivityButtonsFragment.getUniqueTag());
         fragmentTransaction.commit();
     }
 
@@ -48,7 +48,8 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean isCurrentlyMainActivityFragment() {
         FragmentManager fragmentManager = getSupportFragmentManager();
-        String mainActivityButtonsFragmentTag = TwoPlayersButtonsFragment.getUniqueTag();
+        MainActivityButtonsFragment mainActivityButtonsFragment = new MainActivityButtonsFragment();
+        String mainActivityButtonsFragmentTag = mainActivityButtonsFragment.getUniqueTag();
         return fragmentManager.findFragmentByTag(mainActivityButtonsFragmentTag) != null;
     }
 }

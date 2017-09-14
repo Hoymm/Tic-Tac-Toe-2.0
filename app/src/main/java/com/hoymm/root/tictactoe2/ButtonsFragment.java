@@ -46,7 +46,7 @@ public abstract class ButtonsFragment extends Fragment {
     protected abstract void insertButtonsTextNames();
     protected abstract void setButtonsOnClickAction();
 
-    public static String getUniqueTag(){
-        return ButtonsFragment.class.getPackage() + ButtonsFragment.class.getName();
+    public String getUniqueTag(){
+        return getClass().getPackage() + getClass().getName();
     }
 }
