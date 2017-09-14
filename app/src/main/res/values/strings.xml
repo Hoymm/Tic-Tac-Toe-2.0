@@ -9,4 +9,11 @@
         <item>Settings</item>
         <item>Leaderboard</item>
     </string-array>
+
+    <string-array name="twoPlayersActivityButtonNames">
+        <item>On the device</item>
+        <item>Via Internet</item>
+        <item>Via Bluetooth</item>
+        <item>Via Wi-FI directly</item>
+    </string-array>
 </resources>

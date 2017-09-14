@@ -1,9 +1,12 @@
 package com.hoymm.root.tictactoe2;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+
+import com.hoymm.root.tictactoe2.TwoPlayers.TwoPlayersButtonsFragment;
 
 /**
  * Created by Damian Muca - Kaizen (12.09.17)
@@ -16,24 +19,37 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         inflateHeaderFragment();
-        inflateButtonsFragment();
+        inflateMainActivityFragment();
     }
 
     private void inflateHeaderFragment() {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-        MenuHeaderFragment menuHeaderFragment = new MenuHeaderFragment();
-        fragmentTransaction.add(R.id.mainActivityHeader, menuHeaderFragment);
+        FragmentTransaction fragmentTransaction = getFragmentTransition();
+        fragmentTransaction.replace(R.id.mainActivityHeader, new MenuHeaderFragment());
         fragmentTransaction.commit();
     }
 
-    private void inflateButtonsFragment() {
+    private FragmentTransaction getFragmentTransition() {
         FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        return fragmentManager.beginTransaction();
+    }
 
-        ButtonsFragment buttonsFragment = new MainActivityButtons();
-        fragmentTransaction.add(R.id.mainActivityButtons, buttonsFragment);
+    private void inflateMainActivityFragment() {
+        FragmentTransaction fragmentTransaction = getFragmentTransition();
+        fragmentTransaction.replace(R.id.mainActivityButtons, new MainActivityButtons(), MainActivityButtons.getUniqueTag());
         fragmentTransaction.commit();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (isCurrentlyMainActivityFragment())
+            super.onBackPressed();
+        else
+            inflateMainActivityFragment();
+    }
+
+    private boolean isCurrentlyMainActivityFragment() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        String mainActivityButtonsFragmentTag = TwoPlayersButtonsFragment.getUniqueTag();
+        return fragmentManager.findFragmentByTag(mainActivityButtonsFragmentTag) != null;
     }
 }

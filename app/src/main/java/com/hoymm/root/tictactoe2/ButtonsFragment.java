@@ -12,7 +12,7 @@ import android.widget.Button;
  * Created by Damian Muca - Kaizen (12.09.17)
  */
 
-public class ButtonsFragment extends Fragment {
+public abstract class ButtonsFragment extends Fragment {
     protected Button [] buttons;
 
     @Nullable
@@ -21,10 +21,18 @@ public class ButtonsFragment extends Fragment {
         return inflater.inflate(R.layout.buttons_fragment, container, false);
     }
 
+    protected void insertButtonNamesFromAnArrayID(int arrayResourcesID){
+        String [] buttonTextNames = getContext().getResources().getStringArray(arrayResourcesID);
+        for (int i = 0; i < buttons.length; ++i)
+            buttons[i].setText(buttonTextNames[i]);
+    }
+
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         linkButtonsWithXML(view);
+        insertButtonsTextNames();
+        setButtonsOnClickAction();
     }
 
     private void linkButtonsWithXML(View view) {
@@ -33,5 +41,12 @@ public class ButtonsFragment extends Fragment {
         buttons [1] = view.findViewById(R.id.button2);
         buttons [2] = view.findViewById(R.id.button3);
         buttons [3] = view.findViewById(R.id.button4);
+    }
+
+    protected abstract void insertButtonsTextNames();
+    protected abstract void setButtonsOnClickAction();
+
+    public static String getUniqueTag(){
+        return ButtonsFragment.class.getPackage() + ButtonsFragment.class.getName();
     }
 }

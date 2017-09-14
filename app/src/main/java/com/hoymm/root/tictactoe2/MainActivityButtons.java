@@ -4,11 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.hoymm.root.tictactoe2.SinglePlayer.SinglePlayer;
+import com.hoymm.root.tictactoe2.TwoPlayers.TwoPlayersButtonsFragment;
 
 /**
  * Created by Damian Muca - Kaizen (12.09.17)
@@ -25,18 +27,17 @@ public class MainActivityButtons extends ButtonsFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        setButtonsTextNames();
-        setButtonsOnClickAction();
     }
 
-    private void setButtonsTextNames() {
-        String [] buttonTextNames = getContext().getResources().getStringArray(R.array.mainActivityButtonNames);
-        for (int i = 0; i < buttons.length; ++i)
-            buttons[i].setText(buttonTextNames[i]);
+    @Override
+    protected void insertButtonsTextNames() {
+        insertButtonNamesFromAnArrayID(R.array.mainActivityButtonNames);
     }
 
-    private void setButtonsOnClickAction() {
+    @Override
+    protected void setButtonsOnClickAction() {
         buttons[0].setOnClickListener(getSinglePlayerButtonAction());
+        buttons[1].setOnClickListener(getTwoPlayersButtonAction());
     }
 
     @NonNull
@@ -47,6 +48,21 @@ public class MainActivityButtons extends ButtonsFragment {
                 startNewClassActivityAndFinishCurrent(SinglePlayer.class);
             }
         };
+    }
+
+    private View.OnClickListener getTwoPlayersButtonAction() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getTwoPlayersButtonClickListener();
+            }
+        };
+    }
+
+    private void getTwoPlayersButtonClickListener() {
+        final FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.mainActivityButtons, new TwoPlayersButtonsFragment(), TwoPlayersButtonsFragment.getUniqueTag());
+        fragmentTransaction.commit();
     }
 
     private void startNewClassActivityAndFinishCurrent(Class classToStart){
