@@ -32,9 +32,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void inflateMainActivityFragment() {
         FragmentTransaction fragmentTransaction = getFragmentTransition();
-        MainActivityButtonsFragment mainActivityButtonsFragment = new MainActivityButtonsFragment();
-        fragmentTransaction.replace(R.id.mainActivityButtons
-                , mainActivityButtonsFragment, mainActivityButtonsFragment.getUniqueTag());
+        ButtonsFragment buttonsFragment = new MainActivityButtonsFragment();
+        fragmentTransaction.replace(R.id.mainActivityButtons, buttonsFragment, buttonsFragment.getUniqueTag());
         fragmentTransaction.commit();
     }
 

@@ -61,8 +61,8 @@ public class MainActivityButtonsFragment extends ButtonsFragment {
 
     private void getTwoPlayersButtonClickListener() {
         final FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-        TwoPlayersButtonsFragment twoPlayersButtonsFragment = new TwoPlayersButtonsFragment();
-        fragmentTransaction.replace(R.id.mainActivityButtons, twoPlayersButtonsFragment, twoPlayersButtonsFragment.getUniqueTag());
+        ButtonsFragment buttonsFragment = new TwoPlayersButtonsFragment();
+        fragmentTransaction.replace(R.id.mainActivityButtons, buttonsFragment, buttonsFragment.getUniqueTag());
         fragmentTransaction.commit();
     }
 
