@@ -1,9 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle" >
-    <corners
-        android:radius="90dp"
-        />
-    <solid
-        android:color="#56667b"
-        />
-</shape>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true">
+        <shape
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:shape="rectangle"
+            >
+            <corners
+                android:radius="90dp"
+                />
+            <solid
+                android:color="@color/buttonsBackgroundPressed"
+                />
+        </shape>
+    </item>
+
+    <item>
+        <shape
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:shape="rectangle"
+            >
+            <corners
+                android:radius="90dp"
+                />
+            <solid
+                android:color="@color/buttonsBackground"
+                />
+        </shape>
+    </item>
+
+</selector>

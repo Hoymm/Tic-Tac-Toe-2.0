@@ -10,5 +10,6 @@
     <color name="appBackground">#2E3844</color>
 
 
-    <color name="buttonsBackground">#7197BE</color>
+    <color name="buttonsBackground">#56667b</color>
+    <color name="buttonsBackgroundPressed">#273340</color>
 </resources>
