@@ -52,6 +52,5 @@ public class MainActivityButtons extends ButtonsFragment {
     private void startNewClassActivityAndFinishCurrent(Class classToStart){
         Intent intent = new Intent(getActivity(), classToStart);
         getActivity().startActivity(intent);
-        getActivity().finish();
     }
 }
