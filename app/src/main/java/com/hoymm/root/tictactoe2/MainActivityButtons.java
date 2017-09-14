@@ -1,6 +1,5 @@
 package com.hoymm.root.tictactoe2;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -45,13 +44,13 @@ public class MainActivityButtons extends ButtonsFragment {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startNewActivityAndFinishCurrent(new SinglePlayer());
+                startNewClassActivityAndFinishCurrent(SinglePlayer.class);
             }
         };
     }
 
-    private void startNewActivityAndFinishCurrent(Activity newActivity){
-        Intent intent = new Intent(getActivity(), newActivity.getClass());
+    private void startNewClassActivityAndFinishCurrent(Class classToStart){
+        Intent intent = new Intent(getActivity(), classToStart);
         getActivity().startActivity(intent);
         getActivity().finish();
     }
