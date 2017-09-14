@@ -11,11 +11,11 @@ import android.view.ViewGroup;
  * File created by Damian Muca - Kaizen on 07.09.17.
  */
 
-public class HeaderFragment extends Fragment {
+public class MenuHeaderFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.header_fragment, container, false);
+        return inflater.inflate(R.layout.menu_header_fragment, container, false);
     }
 
     @Override

@@ -1,13 +1,10 @@
-package com.hoymm.root.tictactoe2.MainActivity;
+package com.hoymm.root.tictactoe2;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.hoymm.root.tictactoe2.ButtonsFragment;
-import com.hoymm.root.tictactoe2.R;
 
 /**
  * Created by Damian Muca - Kaizen (12.09.17)

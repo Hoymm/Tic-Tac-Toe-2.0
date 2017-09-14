@@ -1,13 +1,9 @@
-package com.hoymm.root.tictactoe2.MainActivity;
+package com.hoymm.root.tictactoe2;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-
-import com.hoymm.root.tictactoe2.ButtonsFragment;
-import com.hoymm.root.tictactoe2.HeaderFragment;
-import com.hoymm.root.tictactoe2.R;
 
 /**
  * Created by Damian Muca - Kaizen (12.09.17)
@@ -27,8 +23,8 @@ public class MainActivity extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        HeaderFragment headerFragment = new HeaderFragment();
-        fragmentTransaction.add(R.id.mainActivityHeader, headerFragment);
+        MenuHeaderFragment menuHeaderFragment = new MenuHeaderFragment();
+        fragmentTransaction.add(R.id.mainActivityHeader, menuHeaderFragment);
         fragmentTransaction.commit();
     }
 
