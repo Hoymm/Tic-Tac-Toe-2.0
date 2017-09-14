@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 /**
- * Created by hoymm on 12.09.17.
+ * Created by Damian Muca - Kaizen (12.09.17)
  */
 
 public class ButtonsFragment extends Fragment {

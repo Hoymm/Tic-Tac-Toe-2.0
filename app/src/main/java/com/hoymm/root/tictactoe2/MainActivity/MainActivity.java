@@ -9,6 +9,10 @@ import com.hoymm.root.tictactoe2.ButtonsFragment;
 import com.hoymm.root.tictactoe2.HeaderFragment;
 import com.hoymm.root.tictactoe2.R;
 
+/**
+ * Created by Damian Muca - Kaizen (12.09.17)
+ */
+
 public class MainActivity extends AppCompatActivity {
 
     @Override

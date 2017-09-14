@@ -1,6 +1,5 @@
 package com.hoymm.root.tictactoe2.MainActivity;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -11,7 +10,7 @@ import com.hoymm.root.tictactoe2.ButtonsFragment;
 import com.hoymm.root.tictactoe2.R;
 
 /**
- * Created by hoymm on 12.09.17.
+ * Created by Damian Muca - Kaizen (12.09.17)
  */
 
 public class MainActivityButtons extends ButtonsFragment {
