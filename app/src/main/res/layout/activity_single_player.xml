@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.hoymm.root.tictactoe2.SinglePlayerMenu.SinglePlayer"
+    tools:context=".DisplayMenuFragments.SinglePlayerMenu.SinglePlayer"
     android:background="@color/appBackground"
     >
     <TextView

@@ -1,4 +1,4 @@
-package com.hoymm.root.tictactoe2.MainMenu;
+package com.hoymm.root.tictactoe2.DisplayMenuFragments.MainMenu;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,8 +12,8 @@ import android.view.ViewGroup;
 import com.hoymm.root.tictactoe2.DisplayMenuFragments.Fragments.ButtonsFragment;
 import com.hoymm.root.tictactoe2.DisplayMenuFragments.DisplayMenuFragments;
 import com.hoymm.root.tictactoe2.R;
-import com.hoymm.root.tictactoe2.SinglePlayerMenu.SinglePlayer;
-import com.hoymm.root.tictactoe2.TwoPlayersMenu.TwoPlayersButtonsFragment;
+import com.hoymm.root.tictactoe2.DisplayMenuFragments.SinglePlayerMenu.SinglePlayer;
+import com.hoymm.root.tictactoe2.DisplayMenuFragments.TwoPlayersMenu.TwoPlayersButtonsFragment;
 
 /**
  * Created by Damian Muca - Kaizen (12.09.17)

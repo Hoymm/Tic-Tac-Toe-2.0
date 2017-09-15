@@ -6,7 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.hoymm.root.tictactoe2.DisplayMenuFragments.Fragments.ButtonsFragment;
 import com.hoymm.root.tictactoe2.DisplayMenuFragments.Fragments.HeaderFragment;
-import com.hoymm.root.tictactoe2.MainMenu.MainMenuDisplay;
+import com.hoymm.root.tictactoe2.DisplayMenuFragments.MainMenu.MainMenuDisplay;
+import com.hoymm.root.tictactoe2.R;
 
 /**
  * Created by Damian Muca - Kaizen (15.09.17)
@@ -20,7 +21,11 @@ public abstract class DisplayMenuFragments {
     public DisplayMenuFragments(AppCompatActivity activity) {
         FragmentManager fragmentManager = activity.getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
+        initFragmentObjects();
+        display();
     }
+
+    abstract protected void initFragmentObjects();
 
     public boolean isCurrentlyMainActivityFragment() {
         String curClassTag = getUniqueTag(this.getClass());
@@ -33,5 +38,18 @@ public abstract class DisplayMenuFragments {
         return aClass.getPackage() + aClass.getName();
     }
 
-    public abstract void displayMainMenu();
+    public void display() {
+        inflateHeaderFragment(headerFrg);
+        inflateButtonsFragment(buttonsFrg);
+        fragmentTransaction.commit();
+    }
+
+
+    private void inflateHeaderFragment(HeaderFragment headerFragment) {
+        fragmentTransaction.replace(R.id.mainActivityHeader, headerFragment, getUniqueTag(this.getClass()));
+    }
+
+    private void inflateButtonsFragment(ButtonsFragment buttonsFragment) {
+        fragmentTransaction.replace(R.id.mainActivityButtons, buttonsFragment, getUniqueTag(this.getClass()));
+    }
 }

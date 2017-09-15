@@ -3,7 +3,7 @@ package com.hoymm.root.tictactoe2;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.hoymm.root.tictactoe2.MainMenu.MainMenuDisplay;
+import com.hoymm.root.tictactoe2.DisplayMenuFragments.MainMenu.MainMenuDisplay;
 import com.hoymm.root.tictactoe2.DisplayMenuFragments.DisplayMenuFragments;
 
 /**
@@ -11,21 +11,21 @@ import com.hoymm.root.tictactoe2.DisplayMenuFragments.DisplayMenuFragments;
  */
 
 public class MainActivity extends AppCompatActivity {
-    private DisplayMenuFragments displayMenuFragments;
+    private DisplayMenuFragments menuFragments;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        displayMenuFragments = new MainMenuDisplay(this);
+        menuFragments = new MainMenuDisplay(this);
     }
 
     @Override
     public void onBackPressed() {
-        if (displayMenuFragments.isCurrentlyMainActivityFragment())
+        if (menuFragments.isCurrentlyMainActivityFragment())
             quitApplication();
         else
-            displayMenuFragments.displayMainMenu();
+            menuFragments = new MainMenuDisplay(this);
     }
 
     private void quitApplication() {

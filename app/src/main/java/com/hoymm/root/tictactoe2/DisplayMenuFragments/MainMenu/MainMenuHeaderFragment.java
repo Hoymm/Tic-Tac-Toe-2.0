@@ -1,4 +1,4 @@
-package com.hoymm.root.tictactoe2.TwoPlayersMenu;
+package com.hoymm.root.tictactoe2.DisplayMenuFragments.MainMenu;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -6,14 +6,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.hoymm.root.tictactoe2.DisplayMenuFragments.Fragments.ButtonsFragment;
+import com.hoymm.root.tictactoe2.DisplayMenuFragments.Fragments.HeaderFragment;
 import com.hoymm.root.tictactoe2.R;
 
 /**
- * Created by Damian Muca - Kaizen (14.09.17)
+ * File created by Damian Muca - Kaizen on 07.09.17.
  */
 
-public class TwoPlayersButtonsFragment extends ButtonsFragment {
+public class MainMenuHeaderFragment extends HeaderFragment {
 
     @Nullable
     @Override
@@ -24,16 +24,6 @@ public class TwoPlayersButtonsFragment extends ButtonsFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-    }
-
-
-    @Override
-    protected void insertButtonsTextNames() {
-        insertButtonNamesFromAnArrayID(R.array.twoPlayersActivityButtonNames);
-    }
-
-    @Override
-    protected void setButtonsOnClickAction() {
-
+        setHeaderText(getString(R.string.tic_tac_toe));
     }
 }
