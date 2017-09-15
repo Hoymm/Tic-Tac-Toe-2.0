@@ -22,9 +22,10 @@
         android:layout_width="wrap_content" />
 
     <FrameLayout
-        android:id="@+id/grid3x3"
+        android:background="#FF0000"
+        android:id="@+id/grid3X3ID"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:layout_constraintBottom_toTopOf="@+id/grid5x5"
+        app:layout_constraintBottom_toTopOf="@+id/grid5X5ID"
         app:layout_constraintVertical_weight="1"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -36,9 +37,10 @@
     </FrameLayout>
 
     <FrameLayout
-        android:id="@+id/grid5x5"
-        app:layout_constraintTop_toBottomOf="@+id/grid3x3"
-        app:layout_constraintBottom_toTopOf="@+id/grid7x7"
+        android:background="#00FF00"
+        android:id="@+id/grid5X5ID"
+        app:layout_constraintTop_toBottomOf="@+id/grid3X3ID"
+        app:layout_constraintBottom_toTopOf="@+id/grid7X7ID"
         app:layout_constraintVertical_weight="1"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -49,8 +51,9 @@
     </FrameLayout>
 
     <FrameLayout
-        android:id="@+id/grid7x7"
-        app:layout_constraintTop_toBottomOf="@+id/grid5x5"
+        android:background="#0000FF"
+        android:id="@+id/grid7X7ID"
+        app:layout_constraintTop_toBottomOf="@+id/grid5X5ID"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintVertical_weight="1"
         android:layout_width="0dp"

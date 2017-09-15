@@ -32,7 +32,7 @@
         android:textSize="@dimen/header_font_size"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/_3x3"
+        android:text="HxW"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginRight="16dp"
