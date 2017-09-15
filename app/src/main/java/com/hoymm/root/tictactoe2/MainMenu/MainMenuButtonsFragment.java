@@ -1,4 +1,4 @@
-package com.hoymm.root.tictactoe2;
+package com.hoymm.root.tictactoe2.MainMenu;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,14 +9,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.hoymm.root.tictactoe2.SinglePlayer.SinglePlayer;
-import com.hoymm.root.tictactoe2.TwoPlayers.TwoPlayersButtonsFragment;
+import com.hoymm.root.tictactoe2.DisplayMenuFragments.Fragments.ButtonsFragment;
+import com.hoymm.root.tictactoe2.DisplayMenuFragments.DisplayMenuFragments;
+import com.hoymm.root.tictactoe2.R;
+import com.hoymm.root.tictactoe2.SinglePlayerMenu.SinglePlayer;
+import com.hoymm.root.tictactoe2.TwoPlayersMenu.TwoPlayersButtonsFragment;
 
 /**
  * Created by Damian Muca - Kaizen (12.09.17)
  */
 
-public class MainActivityButtonsFragment extends ButtonsFragment {
+public class MainMenuButtonsFragment extends ButtonsFragment {
 
     @Nullable
     @Override
@@ -62,7 +65,8 @@ public class MainActivityButtonsFragment extends ButtonsFragment {
     private void getTwoPlayersButtonClickListener() {
         final FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
         ButtonsFragment buttonsFragment = new TwoPlayersButtonsFragment();
-        fragmentTransaction.replace(R.id.mainActivityButtons, buttonsFragment, buttonsFragment.getUniqueTag());
+        fragmentTransaction.replace(R.id.mainActivityButtons, buttonsFragment
+                , DisplayMenuFragments.getUniqueTag(TwoPlayersButtonsFragment.class));
         fragmentTransaction.commit();
     }
 

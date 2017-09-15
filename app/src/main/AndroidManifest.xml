@@ -16,7 +16,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SinglePlayer.SinglePlayer"></activity>
+        <activity android:name=".SinglePlayerMenu.SinglePlayer"></activity>
     </application>
 
 </manifest>

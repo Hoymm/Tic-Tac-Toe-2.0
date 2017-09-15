@@ -1,4 +1,4 @@
-package com.hoymm.root.tictactoe2;
+package com.hoymm.root.tictactoe2.DisplayMenuFragments.Fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import com.hoymm.root.tictactoe2.R;
 
 /**
  * Created by Damian Muca - Kaizen (12.09.17)
@@ -45,8 +47,4 @@ public abstract class ButtonsFragment extends Fragment {
 
     protected abstract void insertButtonsTextNames();
     protected abstract void setButtonsOnClickAction();
-
-    public String getUniqueTag(){
-        return getClass().getPackage() + getClass().getName();
-    }
 }

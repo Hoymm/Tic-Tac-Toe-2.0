@@ -1,4 +1,4 @@
-package com.hoymm.root.tictactoe2.TwoPlayers;
+package com.hoymm.root.tictactoe2.TwoPlayersMenu;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.hoymm.root.tictactoe2.ButtonsFragment;
+import com.hoymm.root.tictactoe2.DisplayMenuFragments.Fragments.ButtonsFragment;
 import com.hoymm.root.tictactoe2.R;
 
 /**

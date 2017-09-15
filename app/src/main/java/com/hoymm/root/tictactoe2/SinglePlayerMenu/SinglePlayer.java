@@ -1,4 +1,4 @@
-package com.hoymm.root.tictactoe2.SinglePlayer;
+package com.hoymm.root.tictactoe2.SinglePlayerMenu;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
