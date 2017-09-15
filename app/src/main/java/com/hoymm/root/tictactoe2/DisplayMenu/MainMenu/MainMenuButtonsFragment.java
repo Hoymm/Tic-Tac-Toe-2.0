@@ -1,4 +1,4 @@
-package com.hoymm.root.tictactoe2.DisplayMenuFragments.MainMenu;
+package com.hoymm.root.tictactoe2.DisplayMenu.MainMenu;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,13 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.hoymm.root.tictactoe2.DisplayMenuFragments.Fragments.ButtonsFragment;
-import com.hoymm.root.tictactoe2.DisplayMenuFragments.SinglePlayerMenu.SinglePlayer;
-import com.hoymm.root.tictactoe2.DisplayMenuFragments.TwoPlayersMenu.TwoPlayersMenuDisplay;
+import com.hoymm.root.tictactoe2.DisplayMenu.Fragments.ButtonsFragment;
+import com.hoymm.root.tictactoe2.DisplayMenu.MainMenu.SinglePlayerMenu.SinglePlayer;
+import com.hoymm.root.tictactoe2.DisplayMenu.MainMenu.TwoPlayersMenu.TwoPlayersMenuDisplay;
 import com.hoymm.root.tictactoe2.MainActivity;
 import com.hoymm.root.tictactoe2.R;
-
-import java.util.EmptyStackException;
 
 /**
  * Created by Damian Muca - Kaizen (12.09.17)
@@ -73,7 +71,7 @@ class MainMenuButtonsFragment extends ButtonsFragment {
 
 
     private void getTwoPlayersButtonClickListener(AppCompatActivity activity) {
-        MainActivity.displayMenuFragments = new TwoPlayersMenuDisplay(activity);
+        MainActivity.displayMenu = new TwoPlayersMenuDisplay(activity);
     }
 
 

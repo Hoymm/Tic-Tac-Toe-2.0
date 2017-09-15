@@ -1,4 +1,4 @@
-package com.hoymm.root.tictactoe2.DisplayMenuFragments.Fragments;
+package com.hoymm.root.tictactoe2.DisplayMenu.Fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

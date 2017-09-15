@@ -1,8 +1,8 @@
-package com.hoymm.root.tictactoe2.DisplayMenuFragments.TwoPlayersMenu;
+package com.hoymm.root.tictactoe2.DisplayMenu.MainMenu.TwoPlayersMenu;
 
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import com.hoymm.root.tictactoe2.DisplayMenuFragments.Fragments.ButtonsFragment;
+import com.hoymm.root.tictactoe2.DisplayMenu.Fragments.ButtonsFragment;
 import com.hoymm.root.tictactoe2.R;
 
 /**

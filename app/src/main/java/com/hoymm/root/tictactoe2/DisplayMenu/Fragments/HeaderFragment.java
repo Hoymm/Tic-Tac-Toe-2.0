@@ -1,4 +1,4 @@
-package com.hoymm.root.tictactoe2.DisplayMenuFragments.Fragments;
+package com.hoymm.root.tictactoe2.DisplayMenu.Fragments;
 
 import android.support.v4.app.Fragment;
 import android.os.Bundle;

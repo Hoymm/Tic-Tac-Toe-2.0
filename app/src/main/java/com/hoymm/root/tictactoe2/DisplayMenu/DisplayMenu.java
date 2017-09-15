@@ -1,24 +1,26 @@
-package com.hoymm.root.tictactoe2.DisplayMenuFragments;
+package com.hoymm.root.tictactoe2.DisplayMenu;
 
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
-import com.hoymm.root.tictactoe2.DisplayMenuFragments.Fragments.ButtonsFragment;
-import com.hoymm.root.tictactoe2.DisplayMenuFragments.Fragments.HeaderFragment;
-import com.hoymm.root.tictactoe2.DisplayMenuFragments.MainMenu.MainMenuDisplay;
+import com.hoymm.root.tictactoe2.DisplayMenu.Fragments.ButtonsFragment;
+import com.hoymm.root.tictactoe2.DisplayMenu.Fragments.HeaderFragment;
+import com.hoymm.root.tictactoe2.DisplayMenu.MainMenu.MainMenuDisplay;
 import com.hoymm.root.tictactoe2.R;
+
+import static com.hoymm.root.tictactoe2.MainActivity.getUniqueTag;
 
 /**
  * Created by Damian Muca - Kaizen (15.09.17)
  */
 
-public abstract class DisplayMenuFragments {
+public abstract class DisplayMenu {
     private FragmentTransaction fragmentTransaction;
     protected HeaderFragment headerFrg;
     protected ButtonsFragment buttonsFrg;
 
-    public DisplayMenuFragments(AppCompatActivity activity) {
+    public DisplayMenu(AppCompatActivity activity) {
         FragmentManager fragmentManager = activity.getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
         initFragmentObjects(activity);
@@ -32,10 +34,6 @@ public abstract class DisplayMenuFragments {
         String mainMenuTag = getUniqueTag(MainMenuDisplay.class);
 
         return curClassTag.equals(mainMenuTag);
-    }
-
-    private static String getUniqueTag(Class aClass){
-        return aClass.getPackage() + aClass.getName();
     }
 
     private void display() {

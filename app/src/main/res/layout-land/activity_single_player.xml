@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DisplayMenuFragments.SinglePlayerMenu.SinglePlayer"
+    tools:context=".DisplayMenu.MainMenu.SinglePlayerMenu.SinglePlayer"
     android:background="@color/appBackground"
     tools:layout_editor_absoluteY="0dp"
     tools:layout_editor_absoluteX="0dp">

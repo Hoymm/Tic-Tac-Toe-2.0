@@ -1,10 +1,10 @@
-package com.hoymm.root.tictactoe2.DisplayMenuFragments.TwoPlayersMenu;
+package com.hoymm.root.tictactoe2.DisplayMenu.MainMenu.TwoPlayersMenu;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 
-import com.hoymm.root.tictactoe2.DisplayMenuFragments.Fragments.HeaderFragment;
+import com.hoymm.root.tictactoe2.DisplayMenu.Fragments.HeaderFragment;
 import com.hoymm.root.tictactoe2.R;
 
 /**
