@@ -11,21 +11,21 @@ import com.hoymm.root.tictactoe2.DisplayMenuFragments.DisplayMenuFragments;
  */
 
 public class MainActivity extends AppCompatActivity {
-    private DisplayMenuFragments menuFragments;
+    public static DisplayMenuFragments displayMenuFragments;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        menuFragments = new MainMenuDisplay(this);
+        MainActivity.displayMenuFragments = new MainMenuDisplay(this);
     }
 
     @Override
     public void onBackPressed() {
-        if (menuFragments.isCurrentlyMainActivityFragment())
+        if (MainActivity.displayMenuFragments.isCurrentlyMainActivityFragment())
             quitApplication();
         else
-            menuFragments = new MainMenuDisplay(this);
+            MainActivity.displayMenuFragments = new MainMenuDisplay(this);
     }
 
     private void quitApplication() {

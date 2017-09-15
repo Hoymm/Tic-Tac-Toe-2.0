@@ -2,6 +2,7 @@
     <string name="app_name">TicTacToe2</string>
     <string name="tic_tac_toe">TIC TAC TOE</string>
     <string name="_1_player">1 Player</string>
+    <string name="two_players">Two Players</string>
 
     <string-array name="mainActivityButtonNames">
         <item>Single Player</item>

@@ -14,8 +14,8 @@ public class MainMenuDisplay extends DisplayMenuFragments {
     }
 
     @Override
-    protected void initFragmentObjects() {
-        super.buttonsFrg = new MainMenuButtonsFragment();
+    protected void initFragmentObjects(AppCompatActivity activity) {
         super.headerFrg = new MainMenuHeaderFragment();
+        super.buttonsFrg = new MainMenuButtonsFragment(activity);
     }
 }

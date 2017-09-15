@@ -15,7 +15,7 @@ import com.hoymm.root.tictactoe2.R;
  */
 
 public abstract class HeaderFragment extends Fragment {
-    private TextView headerText;
+    protected TextView headerText;
 
     @Nullable
     @Override
@@ -27,9 +27,12 @@ public abstract class HeaderFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         headerText = view.findViewById(R.id.headerTextView);
+        refreshHeaderText();
     }
 
-    public void setHeaderText(String text){
-        headerText.setText(text);
+    protected void setHeaderTextUppercase(String text){
+        this.headerText.setText(text.toUpperCase());
     }
+
+    abstract protected void refreshHeaderText();
 }

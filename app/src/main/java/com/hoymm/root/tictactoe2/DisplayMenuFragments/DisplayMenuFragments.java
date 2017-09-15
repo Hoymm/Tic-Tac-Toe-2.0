@@ -14,18 +14,18 @@ import com.hoymm.root.tictactoe2.R;
  */
 
 public abstract class DisplayMenuFragments {
-    protected FragmentTransaction fragmentTransaction;
+    private FragmentTransaction fragmentTransaction;
     protected HeaderFragment headerFrg;
     protected ButtonsFragment buttonsFrg;
 
     public DisplayMenuFragments(AppCompatActivity activity) {
         FragmentManager fragmentManager = activity.getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
-        initFragmentObjects();
+        initFragmentObjects(activity);
         display();
     }
 
-    abstract protected void initFragmentObjects();
+    abstract protected void initFragmentObjects(AppCompatActivity activity);
 
     public boolean isCurrentlyMainActivityFragment() {
         String curClassTag = getUniqueTag(this.getClass());
@@ -34,11 +34,11 @@ public abstract class DisplayMenuFragments {
         return curClassTag.equals(mainMenuTag);
     }
 
-    public static String getUniqueTag(Class aClass){
+    private static String getUniqueTag(Class aClass){
         return aClass.getPackage() + aClass.getName();
     }
 
-    public void display() {
+    private void display() {
         inflateHeaderFragment(headerFrg);
         inflateButtonsFragment(buttonsFrg);
         fragmentTransaction.commit();

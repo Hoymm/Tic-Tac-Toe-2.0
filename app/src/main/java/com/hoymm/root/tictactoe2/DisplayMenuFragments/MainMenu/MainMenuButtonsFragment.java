@@ -2,24 +2,27 @@ package com.hoymm.root.tictactoe2.DisplayMenuFragments.MainMenu;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.hoymm.root.tictactoe2.DisplayMenuFragments.Fragments.ButtonsFragment;
-import com.hoymm.root.tictactoe2.DisplayMenuFragments.DisplayMenuFragments;
-import com.hoymm.root.tictactoe2.R;
 import com.hoymm.root.tictactoe2.DisplayMenuFragments.SinglePlayerMenu.SinglePlayer;
-import com.hoymm.root.tictactoe2.DisplayMenuFragments.TwoPlayersMenu.TwoPlayersButtonsFragment;
+import com.hoymm.root.tictactoe2.DisplayMenuFragments.TwoPlayersMenu.TwoPlayersMenuDisplay;
+import com.hoymm.root.tictactoe2.MainActivity;
+import com.hoymm.root.tictactoe2.R;
 
 /**
  * Created by Damian Muca - Kaizen (12.09.17)
  */
 
-public class MainMenuButtonsFragment extends ButtonsFragment {
+class MainMenuButtonsFragment extends ButtonsFragment {
+
+    public MainMenuButtonsFragment(AppCompatActivity activity) {
+        super(activity);
+    }
 
     @Nullable
     @Override
@@ -38,40 +41,48 @@ public class MainMenuButtonsFragment extends ButtonsFragment {
     }
 
     @Override
-    protected void setButtonsOnClickAction() {
-        buttons[0].setOnClickListener(getSinglePlayerButtonAction());
-        buttons[1].setOnClickListener(getTwoPlayersButtonAction());
+    protected View.OnClickListener getListenerOfButton1() {
+        return getSinglePlayerButtonAction();
     }
 
-    @NonNull
     private View.OnClickListener getSinglePlayerButtonAction() {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startNewClassActivityAndFinishCurrent(SinglePlayer.class);
+                startNewClassActivity(SinglePlayer.class);
             }
         };
     }
 
-    private View.OnClickListener getTwoPlayersButtonAction() {
+    private void startNewClassActivity(Class classToStart){
+        Intent intent = new Intent(getActivity(), classToStart);
+        getActivity().startActivity(intent);
+    }
+
+    @Override
+    protected View.OnClickListener getListenerOfButton2(final AppCompatActivity activity) {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getTwoPlayersButtonClickListener();
+                getTwoPlayersButtonClickListener(activity);
             }
         };
     }
 
-    private void getTwoPlayersButtonClickListener() {
-        final FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-        ButtonsFragment buttonsFragment = new TwoPlayersButtonsFragment();
-        fragmentTransaction.replace(R.id.mainActivityButtons, buttonsFragment
-                , DisplayMenuFragments.getUniqueTag(TwoPlayersButtonsFragment.class));
-        fragmentTransaction.commit();
+
+    private void getTwoPlayersButtonClickListener(AppCompatActivity activity) {
+        MainActivity.displayMenuFragments = new TwoPlayersMenuDisplay(activity);
     }
 
-    private void startNewClassActivityAndFinishCurrent(Class classToStart){
-        Intent intent = new Intent(getActivity(), classToStart);
-        getActivity().startActivity(intent);
+
+    @Override
+    protected View.OnClickListener getListenerOfButton3() {
+        return null;
+    }
+
+
+    @Override
+    protected View.OnClickListener getListenerOfButton4() {
+        return null;
     }
 }

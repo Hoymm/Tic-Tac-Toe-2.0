@@ -3,6 +3,7 @@ package com.hoymm.root.tictactoe2.DisplayMenuFragments.Fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,11 @@ import com.hoymm.root.tictactoe2.R;
 
 public abstract class ButtonsFragment extends Fragment {
     protected Button [] buttons;
+    private AppCompatActivity activity;
+
+    public ButtonsFragment(AppCompatActivity activity) {
+        this.activity = activity;
+    }
 
     @Nullable
     @Override
@@ -45,6 +51,16 @@ public abstract class ButtonsFragment extends Fragment {
         buttons [3] = view.findViewById(R.id.button4);
     }
 
+    protected void setButtonsOnClickAction() {
+        buttons[0].setOnClickListener(getListenerOfButton1());
+        buttons[1].setOnClickListener(getListenerOfButton2(activity));
+        buttons[2].setOnClickListener(getListenerOfButton3());
+        buttons[3].setOnClickListener(getListenerOfButton4());
+    }
+
     protected abstract void insertButtonsTextNames();
-    protected abstract void setButtonsOnClickAction();
+    protected abstract View.OnClickListener getListenerOfButton1();
+    protected abstract View.OnClickListener getListenerOfButton2(AppCompatActivity activity);
+    protected abstract View.OnClickListener getListenerOfButton3();
+    protected abstract View.OnClickListener getListenerOfButton4();
 }

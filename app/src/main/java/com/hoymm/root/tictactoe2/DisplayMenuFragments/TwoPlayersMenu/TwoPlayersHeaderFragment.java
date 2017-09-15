@@ -1,4 +1,4 @@
-package com.hoymm.root.tictactoe2.DisplayMenuFragments.MainMenu;
+package com.hoymm.root.tictactoe2.DisplayMenuFragments.TwoPlayersMenu;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,7 +11,8 @@ import com.hoymm.root.tictactoe2.R;
  * File created by Damian Muca - Kaizen on 07.09.17.
  */
 
-class MainMenuHeaderFragment extends HeaderFragment {
+class TwoPlayersHeaderFragment extends HeaderFragment {
+
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
