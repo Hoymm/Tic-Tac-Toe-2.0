@@ -6,6 +6,7 @@
     <string name="_3x3">3x3</string>
     <string name="_5x5">5x5</string>
     <string name="_7x7">7x7</string>
+    <string name="choose_grid">CHOOSE GRID</string>
 
     <string-array name="mainActivityButtonNames">
         <item>Single Player</item>
