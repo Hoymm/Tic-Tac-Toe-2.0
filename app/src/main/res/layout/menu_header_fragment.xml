@@ -10,7 +10,7 @@
     >
     <TextView
         android:id="@+id/headerTextView"
-        style="@style/HeaderFontStyle"
+        style="@style/Header"
         android:text="HEADER TEXT"
         android:textSize="@dimen/header_font_size"
         android:paddingLeft="16dp"

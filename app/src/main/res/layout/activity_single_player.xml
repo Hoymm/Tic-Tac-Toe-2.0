@@ -8,8 +8,8 @@
     android:background="@color/appBackground"
     >
     <TextView
-        android:id="@+id/textView2"
-        style="@style/HeaderFontStyle"
+        android:id="@+id/settingsHeader"
+        style="@style/Header"
         android:text="@string/choose_grid"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -19,7 +19,7 @@
 
     <FrameLayout
         android:id="@+id/grid3X3ID"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/settingsHeader"
         app:layout_constraintBottom_toTopOf="@+id/grid5X5ID"
         app:layout_constraintVertical_weight="1"
         android:layout_width="0dp"

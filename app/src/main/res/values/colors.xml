@@ -12,4 +12,6 @@
 
     <color name="buttonsBackground">#56667b</color>
     <color name="buttonsBackgroundPressed">#192129</color>
+
+    <color name="settingsSecondHeaderColor">#cf4257</color>
 </resources>
