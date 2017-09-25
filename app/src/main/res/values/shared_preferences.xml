@@ -1,0 +1,8 @@
+<resources>
+    <string name="SettingsSharedPreferences" translatable="false">com.hoymm.root.tictactoe2.DisplayMenu.MainMenu.Settings.SettingsSharedPreferencesSP</string>
+    <string name="SettingsDifficulySP" translatable="false">com.hoymm.root.tictactoe2.DisplayMenu.MainMenu.Settings.SettingsDifficulySP</string>
+    <string name="SettingsSoundSP" translatable="false">com.hoymm.root.tictactoe2.DisplayMenu.MainMenu.Settings.SettingsSoundSP</string>
+    <string name="SettingsVibrationSP" translatable="false">com.hoymm.root.tictactoe2.DisplayMenu.MainMenu.Settings.SettingsVibrationSP</string>
+    <string name="SettingsSpeakerSP" translatable="false">com.hoymm.root.tictactoe2.DisplayMenu.MainMenu.Settings.SettingsSpeakerSP</string>
+
+</resources>

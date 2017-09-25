@@ -15,7 +15,7 @@
     <string name="effects">Effects:</string>
     <string name="sound">Sound</string>
     <string name="vibration">Vibration</string>
-    <string name="voice">Voice</string>
+    <string name="speaker">Speaker</string>
 
     <string-array name="mainActivityButtonNames">
         <item>Single Player</item>

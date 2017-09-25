@@ -45,7 +45,7 @@
         app:layout_constraintTop_toBottomOf="@+id/effectsVibrationID"
         android:layout_marginLeft="0dp"
         app:layout_constraintLeft_toLeftOf="@+id/effectsSoundID"
-        android:text="@string/voice" />
+        android:text="@string/speaker" />
 
 
 </android.support.constraint.ConstraintLayout>
