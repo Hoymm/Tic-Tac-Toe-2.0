@@ -12,6 +12,10 @@
     <string name="medium">Medium</string>
     <string name="hard">Hard</string>
     <string name="settings">SETTINGS</string>
+    <string name="effects">Effects:</string>
+    <string name="sound">Sound</string>
+    <string name="vibration">Vibration</string>
+    <string name="voice">Voice</string>
 
     <string-array name="mainActivityButtonNames">
         <item>Single Player</item>
