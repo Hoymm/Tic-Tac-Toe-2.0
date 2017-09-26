@@ -10,13 +10,9 @@ import com.hoymm.root.tictactoe2.DisplayMenu.DisplayMenu;
 
 public class TwoPlayersMenuDisplay extends DisplayMenu {
 
-    public TwoPlayersMenuDisplay(AppCompatActivity activity) {
-        super(activity);
-    }
-
     @Override
     protected void initFragmentObjects(AppCompatActivity activity) {
-        super.headerFrg = new TwoPlayersHeaderFragment();
-        super.buttonsFrg = new TwoPlayersButtonsFragment(activity);
+        headerFrg = new TwoPlayersHeaderFragment();
+        buttonsFrg = new TwoPlayersButtonsFragment();
     }
 }

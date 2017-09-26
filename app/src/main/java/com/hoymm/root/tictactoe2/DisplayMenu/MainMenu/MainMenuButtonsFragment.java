@@ -3,7 +3,9 @@ package com.hoymm.root.tictactoe2.DisplayMenu.MainMenu;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,10 +23,6 @@ import com.hoymm.root.tictactoe2.R;
 
 class MainMenuButtonsFragment extends ButtonsFragment {
 
-    public MainMenuButtonsFragment(AppCompatActivity activity) {
-        super(activity);
-    }
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -37,6 +35,12 @@ class MainMenuButtonsFragment extends ButtonsFragment {
     }
 
     @Override
+    public void temporaryDisableSomeButtons(){
+        buttons[3].setEnabled(false);
+        buttons[3].setTextColor(ContextCompat.getColor(getContext(), R.color.buttonTextDisabled));
+    }
+
+    @Override
     protected void insertButtonsTextNames() {
         insertButtonNamesFromAnArrayID(R.array.mainActivityButtonNames);
     }
@@ -46,11 +50,11 @@ class MainMenuButtonsFragment extends ButtonsFragment {
         return setOnClickListenerToStart(SinglePlayer.class);
     }
 
-    private View.OnClickListener setOnClickListenerToStart(final Class settingsClass) {
+    private View.OnClickListener setOnClickListenerToStart(final Class classToStart) {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startNewClassActivity(settingsClass);
+                startNewClassActivity(classToStart);
             }
         };
     }
@@ -61,17 +65,17 @@ class MainMenuButtonsFragment extends ButtonsFragment {
     }
 
     @Override
-    protected View.OnClickListener getListenerOfButton2(final AppCompatActivity activity) {
+    protected View.OnClickListener getListenerOfButton2() {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getTwoPlayersButtonClickListener(activity);
+                getTwoPlayersButtonClickListener();
             }
         };
     }
 
-    private void getTwoPlayersButtonClickListener(AppCompatActivity activity) {
-        MainActivity.displayMenu = new TwoPlayersMenuDisplay(activity);
+    private void getTwoPlayersButtonClickListener() {
+        startActivity(new Intent(getContext(), TwoPlayersMenuDisplay.class));
     }
 
     @Override

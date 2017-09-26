@@ -17,22 +17,11 @@ import com.hoymm.root.tictactoe2.R;
 
 public abstract class ButtonsFragment extends Fragment {
     protected Button [] buttons;
-    private AppCompatActivity activity;
-
-    public ButtonsFragment(AppCompatActivity activity) {
-        this.activity = activity;
-    }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.buttons_fragment, container, false);
-    }
-
-    protected void insertButtonNamesFromAnArrayID(int arrayResourcesID){
-        String [] buttonTextNames = getContext().getResources().getStringArray(arrayResourcesID);
-        for (int i = 0; i < buttons.length; ++i)
-            buttons[i].setText(buttonTextNames[i]);
     }
 
     @Override
@@ -41,6 +30,13 @@ public abstract class ButtonsFragment extends Fragment {
         linkButtonsWithXML(view);
         insertButtonsTextNames();
         setButtonsOnClickAction();
+        temporaryDisableSomeButtons();
+    }
+
+    protected void insertButtonNamesFromAnArrayID(int arrayResourcesID){
+        String [] buttonTextNames = getContext().getResources().getStringArray(arrayResourcesID);
+        for (int i = 0; i < buttons.length; ++i)
+            buttons[i].setText(buttonTextNames[i]);
     }
 
     private void linkButtonsWithXML(View view) {
@@ -53,14 +49,22 @@ public abstract class ButtonsFragment extends Fragment {
 
     protected void setButtonsOnClickAction() {
         buttons[0].setOnClickListener(getListenerOfButton1());
-        buttons[1].setOnClickListener(getListenerOfButton2(activity));
+        buttons[1].setOnClickListener(getListenerOfButton2());
         buttons[2].setOnClickListener(getListenerOfButton3());
         buttons[3].setOnClickListener(getListenerOfButton4());
     }
 
+
+    public abstract void temporaryDisableSomeButtons();
     protected abstract void insertButtonsTextNames();
     protected abstract View.OnClickListener getListenerOfButton1();
-    protected abstract View.OnClickListener getListenerOfButton2(AppCompatActivity activity);
+    protected abstract View.OnClickListener getListenerOfButton2();
     protected abstract View.OnClickListener getListenerOfButton3();
     protected abstract View.OnClickListener getListenerOfButton4();
+
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+    }
 }

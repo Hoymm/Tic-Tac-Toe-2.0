@@ -6,9 +6,8 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.hoymm.root.tictactoe2.MainActivity;
 import com.hoymm.root.tictactoe2.R;
-
-import static com.hoymm.root.tictactoe2.MainActivity.getUniqueTag;
 
 public class SinglePlayer extends AppCompatActivity {
     private GridFragment grid3x3, grid5x5, grid7x7;
@@ -37,20 +36,16 @@ public class SinglePlayer extends AppCompatActivity {
     private void addGrids() {
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.grid7X7ID, grid7x7, getUniqueTag(grid7x7.getClass()));
-        fragmentTransaction.replace(R.id.grid5X5ID, grid5x5, getUniqueTag(grid5x5.getClass()));
-        fragmentTransaction.replace(R.id.grid3X3ID, grid3x3, getUniqueTag(grid3x3.getClass()));
+        fragmentTransaction.replace(R.id.grid7X7ID, grid7x7);
+        fragmentTransaction.replace(R.id.grid5X5ID, grid5x5);
+        fragmentTransaction.replace(R.id.grid3X3ID, grid3x3);
         fragmentTransaction.commit();
     }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-    }
-
-    private void startNewClassActivityAndFinishCurrent(Class classToStart){
-        Intent intent = new Intent(this, classToStart);
-        startActivity(intent);
+        startActivity(new Intent(this, MainActivity.class));
         finish();
     }
 }

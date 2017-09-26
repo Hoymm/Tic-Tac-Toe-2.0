@@ -14,6 +14,8 @@
 
     <color name="buttonsBackground">#56667b</color>
     <color name="buttonsBackgroundPressed">#192129</color>
+    <color name="buttonsBackgroundDisabled">#2d192129</color>
+    <color name="buttonTextDisabled">#2dffffff</color>
 
     <color name="settingsSecondHeaderColor">#ca495c</color>
 
