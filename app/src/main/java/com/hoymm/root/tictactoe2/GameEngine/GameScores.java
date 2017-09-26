@@ -14,6 +14,24 @@ public class GameScores {
     private int circleScores = 0, crossScores = 0, drawsScores = 0;
     private AppCompatActivity activity;
 
+    public GameScores(AppCompatActivity activity) {
+        this.activity = activity;
+        initTextViews();
+        setZeroValuesForComponents();
+    }
+
+    private void initTextViews() {
+        circleTV = (TextView) activity.findViewById(R.id.circleScoreAmountID);
+        crossTV = (TextView) activity.findViewById(R.id.crossScoresAmountID);
+        drawsTV = (TextView) activity.findViewById(R.id.drawsScoresAmountID);
+    }
+
+    private void setZeroValuesForComponents() {
+        circleTV.setText("0");
+        crossTV.setText("0");
+        drawsTV.setText("0");
+    }
+
     void increaseCircleScores(){
         circleTV.setText(++circleScores);
     }
@@ -24,16 +42,5 @@ public class GameScores {
 
     void increaseDrawsScores(){
         drawsTV.setText(++drawsScores);
-    }
-
-    public GameScores(AppCompatActivity activity) {
-        this.activity = activity;
-        initTextViews();
-    }
-
-    private void initTextViews() {
-        circleTV = (TextView) activity.findViewById(R.id.circleScoreAmountID);
-        crossTV = (TextView) activity.findViewById(R.id.crossScoresAmountID);
-        drawsTV = (TextView) activity.findViewById(R.id.drawsScoresAmountID);
     }
 }
