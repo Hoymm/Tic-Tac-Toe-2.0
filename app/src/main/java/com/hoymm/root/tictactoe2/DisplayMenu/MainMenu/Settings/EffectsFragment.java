@@ -39,9 +39,9 @@ public class EffectsFragment extends Fragment {
     }
 
     private void restoreLastConfiguration() {
-        sound.setEnabled(SettingsSharedPreferences.isSoundEnabled(getContext()));
-        vibration.setEnabled(SettingsSharedPreferences.isVibratorEnabled(getContext()));
-        voice.setEnabled(SettingsSharedPreferences.isSpeakerEnabled(getContext()));
+        sound.setChecked(SettingsSharedPreferences.isSoundEnabled(getContext()));
+        vibration.setChecked(SettingsSharedPreferences.isVibratorEnabled(getContext()));
+        voice.setChecked(SettingsSharedPreferences.isSpeakerEnabled(getContext()));
     }
 
     private void setCheckBoxesListeners() {

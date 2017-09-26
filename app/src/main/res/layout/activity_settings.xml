@@ -31,6 +31,7 @@
         style="@style/Header.SettingsFontStyle"
         android:textColor="@drawable/settings_text_selector"
         android:clickable="true"
+        android:textIsSelectable="false"
         android:gravity="left"
         android:text="@string/easy"
         android:onClick="difficulyChanged"
