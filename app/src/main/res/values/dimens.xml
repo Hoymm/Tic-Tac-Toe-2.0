@@ -5,4 +5,5 @@
     <dimen name="buttonTextSize">22sp</dimen>
     <dimen name="buttonsVerticalSpacing">14dp</dimen>
     <dimen name="buttonsPadding">0dp</dimen>
+    <dimen name="inGameFontSize">18sp</dimen>
 </resources>

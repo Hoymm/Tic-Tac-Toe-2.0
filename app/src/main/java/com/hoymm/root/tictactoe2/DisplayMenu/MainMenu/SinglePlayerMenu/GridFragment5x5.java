@@ -9,7 +9,12 @@ import com.hoymm.root.tictactoe2.R;
 public class GridFragment5x5 extends GridFragment {
     @Override
     void initXMLObjects() {
-        super.gridImage.setImageResource(R.drawable.grid_5x5);
-        super.gridModeTextView.setText(R.string._5x5);
+        gridImage.setImageResource(R.drawable.grid_5x5);
+        gridModeTextView.setText(R.string._5x5);
+    }
+
+    @Override
+    void setOnClickBehavior() {
+
     }
 }

@@ -40,4 +40,5 @@ abstract class GridFragment extends Fragment {
     }
 
     abstract void initXMLObjects();
+    abstract void setOnClickBehavior();
 }

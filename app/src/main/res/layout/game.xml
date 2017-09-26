@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.hoymm.root.tictactoe2.DisplayMenu.MainMenu.SinglePlayerMenu.Game.SinglePlayerGame"
+    android:background="@color/appBackground"
+    >
+
+
+    <TextView
+        android:id="@+id/scoresTextViewID"
+        style="@style/InGameFont"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/scores"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/circleScoreAmountID"
+        style="@style/InGameFont"
+        android:textColor="@color/circleBlue"
+        android:layout_marginBottom="0dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="0dp"
+        android:text="XX"
+        app:layout_constraintBottom_toBottomOf="@+id/scoresTextViewID"
+        app:layout_constraintLeft_toRightOf="@+id/scoresTextViewID"
+        app:layout_constraintTop_toTopOf="@+id/scoresTextViewID" />
+
+    <TextView
+        android:id="@+id/scoresSeparatorID"
+        style="@style/InGameFont"
+        android:layout_marginBottom="0dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginTop="0dp"
+        android:text=":"
+        app:layout_constraintBottom_toBottomOf="@+id/circleScoreAmountID"
+        app:layout_constraintLeft_toRightOf="@+id/circleScoreAmountID"
+        app:layout_constraintTop_toTopOf="@+id/circleScoreAmountID" />
+
+    <TextView
+        android:id="@+id/crossScoresAmountID"
+        style="@style/InGameFont"
+        android:textColor="@color/crossRed"
+        android:layout_marginBottom="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="0dp"
+        android:text="XX"
+        app:layout_constraintBottom_toBottomOf="@+id/scoresSeparatorID"
+        app:layout_constraintLeft_toRightOf="@+id/scoresSeparatorID"
+        app:layout_constraintTop_toTopOf="@+id/scoresSeparatorID"
+        app:layout_constraintVertical_bias="0.0" />
+</android.support.constraint.ConstraintLayout>

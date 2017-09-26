@@ -20,6 +20,6 @@ class TwoPlayersHeaderFragment extends HeaderFragment {
 
     @Override
     protected void refreshHeaderText() {
-        setHeaderTextUppercase(getString(R.string.tic_tac_toe));
+        setHeaderTextUppercase(getString(R.string.two_players));
     }
 }

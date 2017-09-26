@@ -45,5 +45,12 @@
         <item name="android:background">@drawable/button_shape</item>
     </style>
 
+    <style name="InGameFont">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/inGameFontSize</item>
+        <item name="android:textColor">@color/text</item>
+    </style>
+
 
 </resources>

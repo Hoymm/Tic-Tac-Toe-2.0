@@ -9,7 +9,12 @@ import com.hoymm.root.tictactoe2.R;
 public class GridFragment7x7 extends GridFragment {
     @Override
     void initXMLObjects() {
-        super.gridImage.setImageResource(R.drawable.grid_7x7);
-        super.gridModeTextView.setText(R.string._7x7);
+        gridImage.setImageResource(R.drawable.grid_7x7);
+        gridModeTextView.setText(R.string._7x7);
+    }
+
+    @Override
+    void setOnClickBehavior() {
+
     }
 }

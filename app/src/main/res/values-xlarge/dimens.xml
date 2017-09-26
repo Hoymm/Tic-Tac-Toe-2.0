@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="header_font_size">76sp</dimen>
-    <dimen name="settings_font_size">62sp</dimen>
+    <dimen name="settings_font_size">46sp</dimen>
     <dimen name="buttonTextSize">50sp</dimen>
     <dimen name="buttonsVerticalSpacing">28dp</dimen>
     <dimen name="buttonsPadding">16dp</dimen>
+    <dimen name="inGameFontSize">28sp</dimen>
 </resources>

@@ -1,6 +1,12 @@
 package com.hoymm.root.tictactoe2.DisplayMenu.MainMenu.SinglePlayerMenu;
 
+import android.content.Intent;
+
+import com.hoymm.root.tictactoe2.DisplayMenu.MainMenu.SinglePlayerMenu.Game.SinglePlayerGame;
+import com.hoymm.root.tictactoe2.GameEngine.BoardSize;
 import com.hoymm.root.tictactoe2.R;
+
+import static com.hoymm.root.tictactoe2.GameEngine.GameEngine.GAME_BOARD_MODE_KEY;
 
 /**
  * Created by Damian Muca - Kaizen (15.09.17)
@@ -9,7 +15,15 @@ import com.hoymm.root.tictactoe2.R;
 public class GridFragment3x3 extends GridFragment {
     @Override
     void initXMLObjects() {
-        super.gridImage.setImageResource(R.drawable.grid_3x3);
-        super.gridModeTextView.setText(R.string._3x3);
+        gridImage.setImageResource(R.drawable.grid_3x3);
+        gridModeTextView.setText(R.string._3x3);
+    }
+
+    @Override
+    void setOnClickBehavior() {
+        Intent game3X3 = new Intent(getContext(), SinglePlayerGame.class);
+        game3X3.putExtra(GAME_BOARD_MODE_KEY, BoardSize.board3x3);
+        startActivity(game3X3);
+        getActivity().finish();
     }
 }
