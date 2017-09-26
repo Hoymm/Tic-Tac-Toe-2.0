@@ -17,6 +17,7 @@
     <string name="vibration">Vibration</string>
     <string name="speaker">Speaker</string>
     <string name="scores">Scores:</string>
+    <string name="draws">Draws:</string>
 
     <string-array name="mainActivityButtonNames">
         <item>Single Player</item>

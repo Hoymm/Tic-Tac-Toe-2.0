@@ -1,6 +1,9 @@
 package com.hoymm.root.tictactoe2.DisplayMenu.MainMenu.SinglePlayerMenu;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.util.Log;
+import android.view.View;
 
 import com.hoymm.root.tictactoe2.DisplayMenu.MainMenu.SinglePlayerMenu.Game.SinglePlayerGame;
 import com.hoymm.root.tictactoe2.GameEngine.BoardSize;
@@ -20,7 +23,7 @@ public class GridFragment3x3 extends GridFragment {
     }
 
     @Override
-    void setOnClickBehavior() {
+    void onFragmentClickBehavior() {
         Intent game3X3 = new Intent(getContext(), SinglePlayerGame.class);
         game3X3.putExtra(GAME_BOARD_MODE_KEY, BoardSize.board3x3);
         startActivity(game3X3);

@@ -8,6 +8,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/grid_selector"
     android:clickable="true"
+    android:id="@+id/gridFragmentChooseConstraintLayoutID"
     >
 
     <ImageView

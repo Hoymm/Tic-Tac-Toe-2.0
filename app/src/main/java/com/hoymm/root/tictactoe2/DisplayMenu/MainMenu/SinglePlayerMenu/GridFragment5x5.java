@@ -14,7 +14,7 @@ public class GridFragment5x5 extends GridFragment {
     }
 
     @Override
-    void setOnClickBehavior() {
+    void onFragmentClickBehavior() {
 
     }
 }

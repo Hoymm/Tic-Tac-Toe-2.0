@@ -11,8 +11,20 @@ import com.hoymm.root.tictactoe2.R;
 
 public class GameScores {
     private TextView circleTV, crossTV, drawsTV;
-    private int circleScores = 0, crossScores = 0, draws = 0;
+    private int circleScores = 0, crossScores = 0, drawsScores = 0;
     private AppCompatActivity activity;
+
+    void increaseCircleScores(){
+        circleTV.setText(++circleScores);
+    }
+
+    void increaseCrossScores(){
+        crossTV.setText(++crossScores);
+    }
+
+    void increaseDrawsScores(){
+        drawsTV.setText(++drawsScores);
+    }
 
     public GameScores(AppCompatActivity activity) {
         this.activity = activity;
@@ -23,17 +35,5 @@ public class GameScores {
         circleTV = (TextView) activity.findViewById(R.id.circleScoreAmountID);
         crossTV = (TextView) activity.findViewById(R.id.crossScoresAmountID);
         drawsTV = (TextView) activity.findViewById(R.id.drawsScoresAmountID);
-    }
-
-    void increaseCircleScores(){
-        circleScores++;
-    }
-
-    void increaseCrossScores(){
-        crossScores++;
-    }
-
-    void increaseDrawsScores(){
-        draws++;
     }
 }
