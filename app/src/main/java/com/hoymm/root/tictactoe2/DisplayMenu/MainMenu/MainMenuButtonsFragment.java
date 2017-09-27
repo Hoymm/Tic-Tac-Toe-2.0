@@ -4,17 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.hoymm.root.tictactoe2.DisplayMenu.Fragments.ButtonsFragment;
 import com.hoymm.root.tictactoe2.DisplayMenu.MainMenu.Settings.Settings;
-import com.hoymm.root.tictactoe2.DisplayMenu.MainMenu.SinglePlayerMenu.SinglePlayer;
+import com.hoymm.root.tictactoe2.DisplayMenu.MainMenu.SinglePlayerMenu.SinglePlayerMenu;
 import com.hoymm.root.tictactoe2.DisplayMenu.MainMenu.TwoPlayersMenu.TwoPlayersMenuDisplay;
-import com.hoymm.root.tictactoe2.MainActivity;
 import com.hoymm.root.tictactoe2.R;
 
 /**
@@ -47,7 +44,7 @@ class MainMenuButtonsFragment extends ButtonsFragment {
 
     @Override
     protected View.OnClickListener getListenerOfButton1() {
-        return setOnClickListenerToStart(SinglePlayer.class);
+        return setOnClickListenerToStart(SinglePlayerMenu.class);
     }
 
     private View.OnClickListener setOnClickListenerToStart(final Class classToStart) {

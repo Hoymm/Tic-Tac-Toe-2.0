@@ -9,7 +9,7 @@ import android.os.Bundle;
 import com.hoymm.root.tictactoe2.MainActivity;
 import com.hoymm.root.tictactoe2.R;
 
-public class SinglePlayer extends AppCompatActivity {
+public class SinglePlayerMenu extends AppCompatActivity {
     private GridFragment grid3x3, grid5x5, grid7x7;
     private FragmentManager fragmentManager;
     private FragmentTransaction fragmentTransaction;

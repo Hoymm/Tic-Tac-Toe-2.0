@@ -82,7 +82,7 @@
     <TextView
         android:id="@+id/turnValueID"
         style="@style/InGameText"
-        android:text="@string/circle"
+        android:text="XXXXXX"
         app:layout_constraintTop_toTopOf="@+id/turnText"
         android:layout_marginTop="0dp"
         app:layout_constraintBottom_toBottomOf="@+id/turnText"

@@ -1,6 +1,7 @@
 package com.hoymm.root.tictactoe2.DisplayMenu.MainMenu.Settings;
 
 import android.content.Intent;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -17,24 +18,22 @@ public class Settings extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        handleDifficulyButtons();
-        handleEffectsButtons();
+        addDifficulyButtonsFragment();
+        addEffectsButtonsFragment();
     }
 
-    private void handleDifficulyButtons() {
-        DifficulyButtons difficulyButtons = new DifficulyButtons(this);
-        difficulyButtons.restoreLastConfigurationAndSetOnclickBehavior();
+    private void addDifficulyButtonsFragment() {
+        addNewFragment(R.id.settingsDifficulyID, new DifficulyFragment());
     }
 
-    private void handleEffectsButtons() {
-        initEffectsSettingsFragment();
+    private void addEffectsButtonsFragment() {
+        addNewFragment(R.id.settingsEffectsID, new EffectsFragment());
     }
 
-    private void initEffectsSettingsFragment() {
-        EffectsFragment effectsFragment = new EffectsFragment();
+    private void addNewFragment(int ID, Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.settingsEffectsID, effectsFragment);
+        fragmentTransaction.add(ID, fragment);
         fragmentTransaction.commit();
     }
 

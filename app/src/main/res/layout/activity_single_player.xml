@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DisplayMenu.MainMenu.SinglePlayerMenu.SinglePlayer"
+    tools:context=".DisplayMenu.MainMenu.SinglePlayerMenu.SinglePlayerMenu"
     android:background="@color/appBackground"
     >
     <TextView

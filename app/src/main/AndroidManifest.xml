@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".DisplayMenu.MainMenu.MainMenuDisplay" />
-        <activity android:name=".DisplayMenu.MainMenu.SinglePlayerMenu.SinglePlayer" />
+        <activity android:name=".DisplayMenu.MainMenu.SinglePlayerMenu.SinglePlayerMenu" />
         <activity android:name=".DisplayMenu.MainMenu.TwoPlayersMenu.TwoPlayersMenuDisplay" />
         <activity android:name=".DisplayMenu.MainMenu.Settings.Settings" />
         <activity android:name=".DisplayMenu.MainMenu.SinglePlayerMenu.Game.SinglePlayerGame"></activity>
