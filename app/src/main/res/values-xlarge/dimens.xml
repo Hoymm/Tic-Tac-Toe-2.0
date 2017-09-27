@@ -9,4 +9,5 @@
     <dimen name="inGameFontSize">38sp</dimen>
     <dimen name="inGamePadding">64dp</dimen>
     <dimen name="inGameTextSeparationSpace">16dp</dimen>
+    <dimen name="textButtonPadding">12dp</dimen>
 </resources>

@@ -5,7 +5,8 @@
     <color name="colorAccent">#7197BE</color>
 
     <color name="text">#f9f9f9</color>
-    <color name="settingsTextActive">#7197BE</color>
+    <color name="settingsTextInactive">#28ffffff</color>
+    <color name="settingsTextActive">#ffffff</color>
     <color name="crossRed">#E94D63</color>
     <color name="circleBlue">#7197BE</color>
     <color name="checkboxTint">#7197BE</color>

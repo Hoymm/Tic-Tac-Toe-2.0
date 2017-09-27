@@ -4,5 +4,5 @@
     <item android:state_activated="true"
         android:color="@color/settingsTextActive" />
     <item
-        android:color="@color/text" />
+        android:color="@color/settingsTextInactive" />
 </selector>

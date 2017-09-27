@@ -10,4 +10,5 @@
     <dimen name="inGamePadding">16dp</dimen>
     <dimen name="inGameTextSeparationSpace">6dp</dimen>
     <dimen name="chooseGridBoardImagePadding">12dp</dimen>
+    <dimen name="textButtonPadding">5dp</dimen>
 </resources>

@@ -6,7 +6,6 @@
     <string name="_3x3">3x3</string>
     <string name="_5x5">5x5</string>
     <string name="_7x7">7x7</string>
-    <string name="choose_grid">CHOOSE GRID</string>
     <string name="difficuly">Difficuly:</string>
     <string name="easy">Easy</string>
     <string name="medium">Medium</string>
@@ -20,6 +19,7 @@
     <string name="draws">Draws:</string>
     <string name="circle">Circle</string>
     <string name="turn">Turn:</string>
+    <string name="single_player">Single Player</string>
 
     <string-array name="mainActivityButtonNames">
         <item>Single Player</item>
