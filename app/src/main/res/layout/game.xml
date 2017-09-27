@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.hoymm.root.tictactoe2.DisplayMenu.MainMenu.SinglePlayerMenu.Game.SinglePlayerGame"
+    tools:context="com.hoymm.root.tictactoe2.DisplayMenu.MainMenu.SinglePlayerMenu.SinglePlayerGame.SinglePlayerGame"
     android:background="@color/appBackground"
     >
     <include layout="@layout/game_header" />

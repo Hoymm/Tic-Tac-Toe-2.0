@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
+import com.hoymm.root.tictactoe2.MainActivity;
 import com.hoymm.root.tictactoe2.R;
 
 /**
@@ -42,6 +43,13 @@ abstract public class GameEngine extends AppCompatActivity {
 
     private void createBoard() {
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(this, MainActivity.class));
+        finish();
     }
 
 }

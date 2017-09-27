@@ -18,8 +18,18 @@
         tools:layout_constraintLeft_creator="1" />
 
     <FrameLayout
+        android:id="@+id/singlePlayerGridDifficulyChooseID"
+        app:layout_constraintTop_toBottomOf="@id/settingsHeader"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+    </FrameLayout>
+
+    <FrameLayout
         android:id="@+id/grid3X3ID"
-        app:layout_constraintTop_toBottomOf="@+id/settingsHeader"
+        app:layout_constraintTop_toBottomOf="@+id/singlePlayerGridDifficulyChooseID"
         app:layout_constraintBottom_toTopOf="@+id/grid5X5ID"
         app:layout_constraintVertical_weight="1"
         android:layout_width="0dp"

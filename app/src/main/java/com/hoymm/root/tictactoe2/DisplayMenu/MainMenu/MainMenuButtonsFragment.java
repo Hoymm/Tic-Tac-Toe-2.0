@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import com.hoymm.root.tictactoe2.DisplayMenu.Fragments.ButtonsFragment;
 import com.hoymm.root.tictactoe2.DisplayMenu.MainMenu.Settings.Settings;
 import com.hoymm.root.tictactoe2.DisplayMenu.MainMenu.SinglePlayerMenu.SinglePlayerMenu;
-import com.hoymm.root.tictactoe2.DisplayMenu.MainMenu.TwoPlayersMenu.TwoPlayersMenuDisplay;
+import com.hoymm.root.tictactoe2.DisplayMenu.MainMenu.TwoPlayersMenu.TwoPlayersMenuMenu;
 import com.hoymm.root.tictactoe2.R;
 
 /**
@@ -51,14 +51,15 @@ class MainMenuButtonsFragment extends ButtonsFragment {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startNewClassActivity(classToStart);
+                startNewActivityAndFinishCurrent(classToStart);
             }
         };
     }
 
-    private void startNewClassActivity(Class classToStart){
+    private void startNewActivityAndFinishCurrent(Class classToStart){
         Intent intent = new Intent(getActivity(), classToStart);
         getActivity().startActivity(intent);
+        getActivity().finish();
     }
 
     @Override
@@ -72,7 +73,7 @@ class MainMenuButtonsFragment extends ButtonsFragment {
     }
 
     private void getTwoPlayersButtonClickListener() {
-        startActivity(new Intent(getContext(), TwoPlayersMenuDisplay.class));
+        startActivity(new Intent(getContext(), TwoPlayersMenuMenu.class));
     }
 
     @Override

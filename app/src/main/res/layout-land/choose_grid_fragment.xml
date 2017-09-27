@@ -20,8 +20,6 @@
         android:layout_marginRight="0dp"
         android:adjustViewBounds="true"
         android:background="#00000000"
-        android:paddingBottom="35dp"
-        android:paddingTop="35dp"
         android:scaleType="fitCenter"
         android:src="@drawable/grid_3x3"
         app:layout_constraintHorizontal_bias="0.0"

@@ -19,9 +19,9 @@
         style="@style/Header.SettingsFontStyle"
         android:buttonTint="@color/checkboxTint"
         android:id="@+id/effectsSoundID"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/inGameTextSeparationSpace"
         app:layout_constraintTop_toBottomOf="@+id/effectsHeaderID"
-        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
         app:layout_constraintLeft_toLeftOf="@+id/effectsHeaderID"
         android:text="@string/sound"
         />
@@ -30,9 +30,9 @@
         style="@style/Header.SettingsFontStyle"
         android:buttonTint="@color/checkboxTint"
         android:id="@+id/effectsVibrationID"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/inGameTextSeparationSpace"
         app:layout_constraintTop_toBottomOf="@+id/effectsSoundID"
-        android:layout_marginLeft="0dp"
+        android:layout_marginStart="0dp"
         app:layout_constraintLeft_toLeftOf="@+id/effectsSoundID"
         android:text="@string/vibration" />
 
@@ -40,9 +40,9 @@
         style="@style/Header.SettingsFontStyle"
         android:buttonTint="@color/checkboxTint"
         android:id="@+id/effectsVoiceID"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/inGameTextSeparationSpace"
         app:layout_constraintTop_toBottomOf="@+id/effectsVibrationID"
-        android:layout_marginLeft="0dp"
+        android:layout_marginStart="0dp"
         app:layout_constraintLeft_toLeftOf="@+id/effectsSoundID"
         android:text="@string/speaker" />
 

@@ -1,23 +1,17 @@
 package com.hoymm.root.tictactoe2.DisplayMenu.MainMenu.SinglePlayerMenu;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.hoymm.root.tictactoe2.DisplayMenu.MainMenu.SinglePlayerMenu.Game.SinglePlayerGame;
-import com.hoymm.root.tictactoe2.GameEngine.BoardSize;
 import com.hoymm.root.tictactoe2.R;
-
-import static com.hoymm.root.tictactoe2.GameEngine.GameEngine.GAME_BOARD_MODE_KEY;
 
 /**
  * Created by Damian Muca - Kaizen (15.09.17)

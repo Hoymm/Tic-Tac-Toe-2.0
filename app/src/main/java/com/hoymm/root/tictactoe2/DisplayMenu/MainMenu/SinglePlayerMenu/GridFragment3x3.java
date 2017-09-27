@@ -1,11 +1,8 @@
 package com.hoymm.root.tictactoe2.DisplayMenu.MainMenu.SinglePlayerMenu;
 
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.util.Log;
-import android.view.View;
 
-import com.hoymm.root.tictactoe2.DisplayMenu.MainMenu.SinglePlayerMenu.Game.SinglePlayerGame;
+import com.hoymm.root.tictactoe2.DisplayMenu.MainMenu.SinglePlayerMenu.SinglePlayerGame.SinglePlayerGame;
 import com.hoymm.root.tictactoe2.GameEngine.BoardSize;
 import com.hoymm.root.tictactoe2.R;
 
