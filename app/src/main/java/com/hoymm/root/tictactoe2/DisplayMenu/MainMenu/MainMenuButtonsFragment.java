@@ -47,6 +47,21 @@ class MainMenuButtonsFragment extends ButtonsFragment {
         return setOnClickListenerToStart(SinglePlayerMenu.class);
     }
 
+    @Override
+    protected View.OnClickListener getListenerOfButton2() {
+        return setOnClickListenerToStart(TwoPlayersMenuMenu.class);
+    }
+
+    @Override
+    protected View.OnClickListener getListenerOfButton3() {
+        return setOnClickListenerToStart(Settings.class);
+    }
+
+    @Override
+    protected View.OnClickListener getListenerOfButton4() {
+        return null;
+    }
+
     private View.OnClickListener setOnClickListenerToStart(final Class classToStart) {
         return new View.OnClickListener() {
             @Override
@@ -60,29 +75,5 @@ class MainMenuButtonsFragment extends ButtonsFragment {
         Intent intent = new Intent(getActivity(), classToStart);
         getActivity().startActivity(intent);
         getActivity().finish();
-    }
-
-    @Override
-    protected View.OnClickListener getListenerOfButton2() {
-        return new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getTwoPlayersButtonClickListener();
-            }
-        };
-    }
-
-    private void getTwoPlayersButtonClickListener() {
-        startActivity(new Intent(getContext(), TwoPlayersMenuMenu.class));
-    }
-
-    @Override
-    protected View.OnClickListener getListenerOfButton3() {
-        return setOnClickListenerToStart(Settings.class);
-    }
-
-    @Override
-    protected View.OnClickListener getListenerOfButton4() {
-        return null;
     }
 }

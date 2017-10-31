@@ -11,7 +11,7 @@ import com.hoymm.root.tictactoe2.R;
  * File created by Damian Muca - Kaizen on 07.09.17.
  */
 
-class MainMenuHeaderFragment extends HeaderFragment {
+class MainMenuTextAndGraphHeaderFragment extends HeaderFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
