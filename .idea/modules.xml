@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Hoymm-tictactoe-2.0-5f2a2d3d7857.iml" filepath="$PROJECT_DIR$/Hoymm-tictactoe-2.0-5f2a2d3d7857.iml" />
       <module fileurl="file://$PROJECT_DIR$/Tic-Tac-Toe-2.0.iml" filepath="$PROJECT_DIR$/Tic-Tac-Toe-2.0.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>

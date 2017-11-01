@@ -57,7 +57,6 @@ public class DifficulyFragment extends Fragment {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.i("Difficuly", view.getId() + ".");
                 SettingsSharedPreferences.saveDifficultyId(getActivity(), view.getId());
                 disableAllOfTextViews();
                 view.setActivated(true);

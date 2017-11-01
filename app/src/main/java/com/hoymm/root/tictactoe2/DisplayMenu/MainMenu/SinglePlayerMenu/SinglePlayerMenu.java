@@ -12,14 +12,19 @@ import com.hoymm.root.tictactoe2.MainActivity;
 import com.hoymm.root.tictactoe2.R;
 
 public class SinglePlayerMenu extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_player);
-        addFragments();
+        initAndAddFragmentsIfSaveInstanceStateIsNull(savedInstanceState);
     }
 
-    private void addFragments() {
+    private void initAndAddFragmentsIfSaveInstanceStateIsNull(Bundle savedInstanceState) {
+        if (savedInstanceState == null)
+            initAndAddFragments();
+    }
+    private void initAndAddFragments() {
         addDifficulyFragment();
         addGridsFragments();
     }
