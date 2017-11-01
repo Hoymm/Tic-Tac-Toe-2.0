@@ -13,4 +13,5 @@
     <dimen name="chooseGridBoardTextBottomPaddingLandscape">8dp</dimen>
     <dimen name="chooseGridBoardImagePaddingPortrait">18dp</dimen>
     <dimen name="textButtonPadding">5dp</dimen>
+    <dimen name="menu_header_margin">8dp</dimen>
 </resources>

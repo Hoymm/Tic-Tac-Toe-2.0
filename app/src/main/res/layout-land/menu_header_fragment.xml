@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="@dimen/menu_header_margin"
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintLeft_creator="1" />
 
@@ -39,24 +39,26 @@
         tools:layout_constraintBottom_creator="1"
         tools:layout_constraintLeft_creator="1"
         android:id="@+id/linearLayout"
-        android:layout_marginRight="0dp"
         app:layout_constraintRight_toRightOf="@+id/headerTextView"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="@dimen/menu_header_margin"
         android:layout_marginTop="@dimen/menu_header_margin"
         app:layout_constraintTop_toBottomOf="@+id/headerTextView">
 
         <ImageView
             android:id="@+id/imageView1"
+            android:contentDescription="@string/circle"
             style="@style/HeaderFragmentXOImage"
             android:src="@drawable/ic_circle" />
 
         <ImageView
             android:id="@+id/imageView22"
+            android:contentDescription="@string/circle"
             style="@style/HeaderFragmentXOImage"
             android:src="@drawable/ic_cross" />
 
         <ImageView
             android:id="@+id/imageView33"
+            android:contentDescription="@string/circle"
             style="@style/HeaderFragmentXOImage"
             android:src="@drawable/ic_circle" />
     </LinearLayout>
