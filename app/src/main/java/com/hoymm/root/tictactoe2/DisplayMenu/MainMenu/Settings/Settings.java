@@ -17,9 +17,14 @@ public class Settings extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+        initAndAddComponentsIfActivityFreshlyStarted(savedInstanceState);
+    }
 
-        addDifficulyButtonsFragment();
-        addEffectsButtonsFragment();
+    private void initAndAddComponentsIfActivityFreshlyStarted(Bundle savedInstanceState) {
+        if (savedInstanceState == null) {
+            addDifficulyButtonsFragment();
+            addEffectsButtonsFragment();
+        }
     }
 
     private void addDifficulyButtonsFragment() {

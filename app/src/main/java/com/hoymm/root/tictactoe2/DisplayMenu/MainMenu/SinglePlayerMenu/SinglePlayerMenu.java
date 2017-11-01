@@ -17,10 +17,10 @@ public class SinglePlayerMenu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_player);
-        initAndAddFragmentsIfSaveInstanceStateIsNull(savedInstanceState);
+        initAndAddFragmentsIfActivityIsFreshlyStarted(savedInstanceState);
     }
 
-    private void initAndAddFragmentsIfSaveInstanceStateIsNull(Bundle savedInstanceState) {
+    private void initAndAddFragmentsIfActivityIsFreshlyStarted(Bundle savedInstanceState) {
         if (savedInstanceState == null)
             initAndAddFragments();
     }
