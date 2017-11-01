@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/appBackground"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -38,16 +42,15 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/difficulyTextID" />
 
-    <FrameLayout
-        android:id="@+id/settingsEffectsID"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/inGameTextSeparationSpace"
-        app:layout_constraintLeft_toLeftOf="@+id/settingsDifficulyID"
-        app:layout_constraintStart_toStartOf="@+id/settingsDifficulyID"
-        app:layout_constraintTop_toBottomOf="@+id/settingsDifficulyID"
-
-        />
-
+        <FrameLayout
+            android:id="@+id/settingsEffectsID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/inGameTextSeparationSpace"
+            app:layout_constraintLeft_toLeftOf="@+id/settingsDifficulyID"
+            app:layout_constraintStart_toStartOf="@+id/settingsDifficulyID"
+            app:layout_constraintTop_toBottomOf="@+id/settingsDifficulyID"
+            />
 
 </android.support.constraint.ConstraintLayout>
+    </ScrollView>
