@@ -8,6 +8,8 @@
 
     <dimen name="inGameFontSize">38sp</dimen>
     <dimen name="inGamePadding">64dp</dimen>
-    <dimen name="inGameTextSeparationSpace">16dp</dimen>
+    <dimen name="chooseGridBoardImagePaddingLandscape">40dp</dimen>
+    <dimen name="chooseGridBoardTextBottomPaddingLandscape">16dp</dimen>
+    <dimen name="chooseGridBoardImagePaddingPortrait">36dp</dimen>
     <dimen name="textButtonPadding">12dp</dimen>
 </resources>
