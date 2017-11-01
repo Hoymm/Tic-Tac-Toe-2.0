@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/appBackground"
+    >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/hardnessDisplayTextId"
+        android:text="Poziom"
+        android:paddingRight="16dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="8dp"
+        android:layout_gravity="right"
+        style="@style/InGameText"
+        />
+
+    <Button
+        style="@style/Button"
+        android:id="@+id/exitGameButtonId"
+        android:text="Wyjście"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="100dp"
+        android:paddingStart="100dp"
+        android:paddingRight="100dp"
+        android:paddingEnd="100dp"
+        android:layout_marginBottom="16dp"
+        />
+</LinearLayout>

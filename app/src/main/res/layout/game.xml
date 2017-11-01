@@ -1,12 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.hoymm.root.tictactoe2.DisplayMenu.MainMenu.SinglePlayerMenu.SinglePlayerGame.SinglePlayerGame"
     android:background="@color/appBackground"
     >
-    <include layout="@layout/game_header" />
 
-</android.support.constraint.ConstraintLayout>
+    <FrameLayout
+        android:id="@+id/gameHeader"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        />
+
+    <FrameLayout
+        android:id="@+id/gameBoardFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        />
+
+    <FrameLayout
+        android:id="@+id/gameFooter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+    />
+
+
+
+</LinearLayout>
