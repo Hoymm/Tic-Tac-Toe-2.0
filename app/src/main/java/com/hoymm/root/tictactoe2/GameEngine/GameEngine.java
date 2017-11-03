@@ -20,19 +20,15 @@ import com.hoymm.root.tictactoe2.R;
 abstract public class GameEngine extends AppCompatActivity {
     public static final String GAME_BOARD_MODE_KEY = "com.hoymm.root.tictactoe2.GameEngine.com.hoymm.root.tictactoe2.GameEngine";
 
-    private GameHeaderFragment headerFragment;
-    private GameBoardFragment boardFragment;
-    private GameFooterFragment footerFragment;
+    protected GameHeaderFragment headerFragment;
+    protected GameBoardFragment boardFragment;
+    protected GameFooterFragment footerFragment;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game);
         initAndAddFragments();
-    }
-
-    private boolean isActivityFreshlyStarted(@Nullable Bundle savedInstanceState) {
-        return savedInstanceState == null;
     }
 
     private void initAndAddFragments() {
@@ -60,15 +56,15 @@ abstract public class GameEngine extends AppCompatActivity {
         }
     }
 
-    private void initAndAddFooterFragment() {
-        footerFragment = new GameFooterFragment();
-        addNewFragment(R.id.gameFooter, footerFragment);
-    }
-
     private BoardSize getBoardSize() {
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         return (BoardSize) bundle.get(GAME_BOARD_MODE_KEY);
+    }
+
+    private void initAndAddFooterFragment() {
+        footerFragment = new GameFooterFragment();
+        addNewFragment(R.id.gameFooter, footerFragment);
     }
 
     private void addNewFragment(int ID, Fragment fragment) {

@@ -18,6 +18,7 @@
     <string name="scores">Scores:</string>
     <string name="draws">Draws:</string>
     <string name="circle">Circle</string>
+    <string name="cross">Cross</string>
     <string name="turn">Turn:</string>
     <string name="single_player">Single Player</string>
     <string name="choose_grid">CHOOSE GRID</string>
