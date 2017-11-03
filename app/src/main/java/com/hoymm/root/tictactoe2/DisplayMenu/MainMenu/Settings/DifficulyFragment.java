@@ -75,15 +75,15 @@ public class DifficulyFragment extends Fragment {
 
     private void readSharedPreferencesAndEnableLast() {
         int idOfDifficulyEnabled = SettingsSharedPreferences.getDifficultyId(getActivity());
-        switch (idOfDifficulyEnabled){
-            case R.id.easyTextID:
+        switch (DifficultyEnum.getDifficultyFromID(idOfDifficulyEnabled)){
+            case easy:
                 easy.setActivated(true);
                 break;
             default:
-            case R.id.mediumTextID:
+            case medium:
                 medium.setActivated(true);
                 break;
-            case R.id.hardTextID:
+            case hard:
                 hard.setActivated(true);
                 break;
         }

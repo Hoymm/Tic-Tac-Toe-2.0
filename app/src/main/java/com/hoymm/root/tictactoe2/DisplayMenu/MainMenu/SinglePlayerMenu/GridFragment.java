@@ -1,5 +1,6 @@
 package com.hoymm.root.tictactoe2.DisplayMenu.MainMenu.SinglePlayerMenu;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -59,4 +60,5 @@ abstract class GridFragment extends Fragment {
 
     abstract void onFragmentClickBehavior();
     abstract void initXMLObjects();
+    abstract Intent sendDataToIntent(Intent intent);
 }

@@ -8,6 +8,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
+import com.hoymm.root.tictactoe2.DisplayMenu.MainMenu.Settings.DifficultyEnum;
+import com.hoymm.root.tictactoe2.DisplayMenu.MainMenu.Settings.SettingsSharedPreferences;
 import com.hoymm.root.tictactoe2.GameEngine.GameBoardFragments.Board3x3Fragment;
 import com.hoymm.root.tictactoe2.GameEngine.GameBoardFragments.GameBoardFragment;
 import com.hoymm.root.tictactoe2.MainActivity;
@@ -18,7 +20,8 @@ import com.hoymm.root.tictactoe2.R;
  */
 
 abstract public class GameEngine extends AppCompatActivity {
-    public static final String GAME_BOARD_MODE_KEY = "com.hoymm.root.tictactoe2.GameEngine.com.hoymm.root.tictactoe2.GameEngine";
+    public static final String GAME_BOARD_MODE_KEY = "com.hoymm.root.tictactoe2.GameEngine.GAME_BOARD_MODE_KEY";
+    public static final String GAME_HARDNESS_KEY = "com.hoymm.root.tictactoe2.GameEngine.GAME_HARDNESS_KEY";
 
     protected GameHeaderFragment headerFragment;
     protected GameBoardFragment boardFragment;
@@ -64,7 +67,16 @@ abstract public class GameEngine extends AppCompatActivity {
 
     private void initAndAddFooterFragment() {
         footerFragment = new GameFooterFragment();
+        footerFragment.setArguments(dataToBeSendToFooterFragment());
         addNewFragment(R.id.gameFooter, footerFragment);
+    }
+
+    private Bundle dataToBeSendToFooterFragment() {
+        Bundle bundleData = new Bundle();
+        int idOfDifficulyEnabled = SettingsSharedPreferences.getDifficultyId(getApplicationContext());
+        DifficultyEnum difficultyEnum = DifficultyEnum.getDifficultyFromID(idOfDifficulyEnabled);
+        bundleData.putSerializable(GameFooterFragment.HARDNESS_KEY, difficultyEnum);
+        return bundleData;
     }
 
     private void addNewFragment(int ID, Fragment fragment) {

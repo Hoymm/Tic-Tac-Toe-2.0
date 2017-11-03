@@ -23,14 +23,9 @@ class GameHeaderFragment extends Fragment {
     private int circleScores = 0, crossScores = 0, drawsScores = 0;
     protected boolean nowIsCircleTurn, youAreACircle;
 
-    public GameHeaderFragment() {
-        Log.i("TurnNow", "emptyConstructor()");
-    }
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        Log.i("TurnNow", "onCreateView()");
         return inflater.inflate(R.layout.game_header, container, false);
     }
 
@@ -39,7 +34,6 @@ class GameHeaderFragment extends Fragment {
         initTextViews();
         drawRandomMovementOrder();
         setValuesForComponents();
-        Log.i("TurnNow", "onViewCreated()");
         super.onViewCreated(view, savedInstanceState);
     }
 

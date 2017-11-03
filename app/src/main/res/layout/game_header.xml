@@ -77,13 +77,14 @@
         android:id="@+id/turnText"
         style="@style/InGameText"
         android:layout_marginStart="0dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="0dp"
         android:text="@string/turn"
         app:layout_constraintLeft_toLeftOf="@+id/scoresTextViewID"
         app:layout_constraintTop_toBottomOf="@+id/scoresTextViewID"
         android:layout_marginLeft="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp" />
+        android:layout_marginBottom="8dp"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/turnValueID"
