@@ -3,7 +3,6 @@ package com.hoymm.root.tictactoe2.GameEngine;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,8 +15,9 @@ import com.hoymm.root.tictactoe2.R;
  */
 
 class GameHeaderFragment extends Fragment {
-    private TextView circleTV, crossTV, drawsTV;
+    private TextView circleTV, crossTV, drawsTV, whosTurnTV;
     private int circleScores = 0, crossScores = 0, drawsScores = 0;
+    private boolean nowIsCircleTurn, youAreACircle;
 
     @Nullable
     @Override
@@ -29,19 +29,26 @@ class GameHeaderFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initTextViews();
-        setZeroValuesForComponents();
+        drawRandomMovementOrder();
+        setValuesForComponents();
     }
 
     private void initTextViews() {
         circleTV = getActivity().findViewById(R.id.circleScoreAmountID);
         crossTV = getActivity().findViewById(R.id.crossScoresAmountID);
         drawsTV = getActivity().findViewById(R.id.drawsScoresAmountID);
+        whosTurnTV = getActivity().findViewById(R.id.turnValueID);
     }
 
-    private void setZeroValuesForComponents() {
-        circleTV.setText("0");
-        crossTV.setText("0");
-        drawsTV.setText("0");
+    private void drawRandomMovementOrder() {
+
+    }
+
+    private void setValuesForComponents() {
+        circleTV.setText(String.valueOf(circleScores));
+        crossTV.setText(String.valueOf(crossScores));
+        drawsTV.setText(String.valueOf(drawsScores));
+        whosTurnTV.setText("no idea...");
     }
 
     void increaseCircleScores(){

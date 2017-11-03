@@ -8,6 +8,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
+import com.hoymm.root.tictactoe2.GameEngine.GameBoardFragments.Board3x3Fragment;
+import com.hoymm.root.tictactoe2.GameEngine.GameBoardFragments.GameBoardFragment;
 import com.hoymm.root.tictactoe2.MainActivity;
 import com.hoymm.root.tictactoe2.R;
 
@@ -18,15 +20,19 @@ import com.hoymm.root.tictactoe2.R;
 abstract public class GameEngine extends AppCompatActivity {
     public static final String GAME_BOARD_MODE_KEY = "com.hoymm.root.tictactoe2.GameEngine.com.hoymm.root.tictactoe2.GameEngine";
 
-    private GameHeaderFragment gameHeaderFragment;
-    private GameBoardFragment gameBoardFragment;
-    private GameFooterFragment gameFooterFragment;
+    private GameHeaderFragment headerFragment;
+    private GameBoardFragment boardFragment;
+    private GameFooterFragment footerFragment;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game);
         initAndAddFragments();
+    }
+
+    private boolean isActivityFreshlyStarted(@Nullable Bundle savedInstanceState) {
+        return savedInstanceState == null;
     }
 
     private void initAndAddFragments() {
@@ -36,18 +42,27 @@ abstract public class GameEngine extends AppCompatActivity {
     }
 
     private void initAndAddHeaderFragment() {
-        gameHeaderFragment = new GameHeaderFragment();
-        addNewFragment(R.id.gameHeader, gameHeaderFragment);
-    }
-
-    private void initAndAddFooterFragment() {
-        gameFooterFragment = new GameFooterFragment();
-        addNewFragment(R.id.gameFooter, gameFooterFragment);
+        headerFragment = new GameHeaderFragment();
+        addNewFragment(R.id.gameHeader, headerFragment);
     }
 
     private void initAndAddBoardFragment() {
-        gameBoardFragment = new GameBoardFragment(getBoardSize());
-        addNewFragment(R.id.gameBoardFragment, gameBoardFragment);
+        initBoardFragment();
+        addNewFragment(R.id.gameBoardFragment, boardFragment);
+    }
+
+    private void initBoardFragment() {
+        switch (getBoardSize()){
+            default:
+            case board3x3:
+                boardFragment = new Board3x3Fragment();
+                break;
+        }
+    }
+
+    private void initAndAddFooterFragment() {
+        footerFragment = new GameFooterFragment();
+        addNewFragment(R.id.gameFooter, footerFragment);
     }
 
     private BoardSize getBoardSize() {
