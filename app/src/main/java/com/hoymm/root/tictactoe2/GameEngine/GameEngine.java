@@ -10,8 +10,6 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.hoymm.root.tictactoe2.DisplayMenu.MainMenu.Settings.DifficultyEnum;
 import com.hoymm.root.tictactoe2.DisplayMenu.MainMenu.Settings.SettingsSharedPreferences;
-import com.hoymm.root.tictactoe2.GameEngine.GameBoardFragments.Board3x3Fragment;
-import com.hoymm.root.tictactoe2.GameEngine.GameBoardFragments.GameBoardFragment;
 import com.hoymm.root.tictactoe2.MainActivity;
 import com.hoymm.root.tictactoe2.R;
 
@@ -20,7 +18,7 @@ import com.hoymm.root.tictactoe2.R;
  */
 
 abstract public class GameEngine extends AppCompatActivity {
-    public static final String GAME_BOARD_MODE_KEY = "com.hoymm.root.tictactoe2.GameEngine.GAME_BOARD_MODE_KEY";
+    public static final String GAME_BOARD_SIZE_KEY = "com.hoymm.root.tictactoe2.GameEngine.GAME_BOARD_SIZE_KEY";
     public static final String GAME_HARDNESS_KEY = "com.hoymm.root.tictactoe2.GameEngine.GAME_HARDNESS_KEY";
 
     protected GameHeaderFragment headerFragment;
@@ -51,18 +49,8 @@ abstract public class GameEngine extends AppCompatActivity {
     }
 
     private void initBoardFragment() {
-        switch (getBoardSize()){
-            default:
-            case board3x3:
-                boardFragment = new Board3x3Fragment();
-                break;
-        }
-    }
-
-    private BoardSize getBoardSize() {
-        Intent intent = getIntent();
-        Bundle bundle = intent.getExtras();
-        return (BoardSize) bundle.get(GAME_BOARD_MODE_KEY);
+        boardFragment = new GameBoardFragment();
+        boardFragment.setArguments(getIntent().getExtras());
     }
 
     private void initAndAddFooterFragment() {

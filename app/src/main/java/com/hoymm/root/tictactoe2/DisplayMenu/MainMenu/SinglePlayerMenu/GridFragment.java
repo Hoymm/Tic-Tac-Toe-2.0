@@ -12,7 +12,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.hoymm.root.tictactoe2.DisplayMenu.MainMenu.Settings.DifficultyEnum;
+import com.hoymm.root.tictactoe2.DisplayMenu.MainMenu.Settings.SettingsSharedPreferences;
+import com.hoymm.root.tictactoe2.DisplayMenu.MainMenu.SinglePlayerMenu.SinglePlayerGame.SinglePlayerGame;
 import com.hoymm.root.tictactoe2.R;
+
+import static com.hoymm.root.tictactoe2.GameEngine.GameEngine.GAME_HARDNESS_KEY;
 
 /**
  * Created by Damian Muca - Kaizen (15.09.17)
@@ -58,7 +63,20 @@ abstract class GridFragment extends Fragment {
         };
     }
 
-    abstract void onFragmentClickBehavior();
+    void onFragmentClickBehavior() {
+        Intent newGame = new Intent(getContext(), SinglePlayerGame.class);
+        newGame = sendDifficultyInfoToGame(newGame);
+        newGame = sendBoardSizeDataInfoToGame(newGame);
+        startActivity(newGame);
+        getActivity().finish();
+    }
+
+    Intent sendDifficultyInfoToGame(Intent newGameIntent) {
+        int idOfDifficulyEnabled = SettingsSharedPreferences.getDifficultyId(getActivity());
+        newGameIntent.putExtra(GAME_HARDNESS_KEY, DifficultyEnum.getDifficultyFromID(idOfDifficulyEnabled));
+        return newGameIntent;
+    }
+
+    abstract Intent sendBoardSizeDataInfoToGame(Intent newGameIntent);
     abstract void initXMLObjects();
-    abstract Intent sendDataToIntent(Intent intent);
 }
