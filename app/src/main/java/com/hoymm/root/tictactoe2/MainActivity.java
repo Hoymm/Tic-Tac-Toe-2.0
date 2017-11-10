@@ -11,7 +11,7 @@ import com.hoymm.root.tictactoe2.DisplayMenu.DisplayMenu;
  * Created by Damian Muca - Kaizen (12.09.17)
  */
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity  {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

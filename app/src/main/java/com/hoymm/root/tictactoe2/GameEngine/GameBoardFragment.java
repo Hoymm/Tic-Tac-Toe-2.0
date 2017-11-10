@@ -5,14 +5,13 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.DisplayMetrics;
-import android.util.TypedValue;
+import android.support.v4.content.ContextCompat;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
-import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.airbnb.lottie.LottieAnimationView;
@@ -25,8 +24,10 @@ import static com.hoymm.root.tictactoe2.GameEngine.GameEngine.GAME_BOARD_SIZE_KE
  */
 
 public class GameBoardFragment extends Fragment {
-    private static final int fieldMargin = 1;
+    private static final int fieldMargin = dpToPx(10);
+    private static final int fieldPadding = dpToPx(10);
     private BoardSize boardSize;
+
 
     @Nullable
     @Override
@@ -53,13 +54,34 @@ public class GameBoardFragment extends Fragment {
     private void generateGameBoard() {
         LinearLayout generalLinearLayout = getActivity().findViewById(R.id.game_board_fragment_id);
 
-        int boardLength = Math.min(generalLinearLayout.getWidth(), generalLinearLayout.getHeight());
         int howManyFieldsInRow = getHowManyFieldsInRow();
+        int boardLength = Math.min(generalLinearLayout.getWidth(), generalLinearLayout.getHeight());
+        boardLength -= generalLinearLayout.getPaddingLeft()*2;
 
-        int fieldLength = (boardLength/howManyFieldsInRow);
+        FieldParameters fieldParameters = new FieldParameters();
+        fieldParameters.fieldLength = boardLength/howManyFieldsInRow - fieldMargin;
 
-        for (int row = 0; row < howManyFieldsInRow; ++row)
-            insertBoardRow(generalLinearLayout, howManyFieldsInRow, fieldLength);
+        for (int row = 0; row < howManyFieldsInRow; ++row) {
+            boolean isItBottomRow = row == howManyFieldsInRow-1;
+            fieldParameters.setMarginsToZero();
+            setVerticalMargins(isItBottomRow, fieldParameters);
+            insertBoardRow(generalLinearLayout, howManyFieldsInRow, fieldParameters);
+        }
+    }
+
+    private void setVerticalMargins(boolean isItBottomRow, FieldParameters fieldParameters) {
+        fieldParameters.marginBottom = fieldMargin;
+        if (isItBottomRow)
+            fieldParameters.marginBottom = 0;
+    }
+
+    private class FieldParameters {
+        int fieldLength;
+        int marginLeft, marginTop, marginRight, marginBottom;
+
+        void setMarginsToZero(){
+            marginLeft = marginTop = marginRight = marginBottom = 0;
+        }
     }
 
     private int getHowManyFieldsInRow() {
@@ -79,17 +101,17 @@ public class GameBoardFragment extends Fragment {
         return (int) (dp * Resources.getSystem().getDisplayMetrics().density);
     }
 
-    private void insertBoardRow(LinearLayout generalLinearLayout, int howManyFieldsInRow, int fieldLength) {
-        LinearLayout rowLinearLayout = createRowLinearLayout(fieldLength+fieldMargin*2);
+    private void insertBoardRow(LinearLayout generalLinearLayout, int howManyFieldsInRow, FieldParameters fieldParameters) {
+        LinearLayout rowLinearLayout = createRowLinearLayout(fieldParameters);
         generalLinearLayout.addView(rowLinearLayout);
-        addGameFieldsToFillRow(howManyFieldsInRow, fieldLength, rowLinearLayout);
+        addGameFieldsToFillRow(rowLinearLayout, howManyFieldsInRow, fieldParameters);
     }
 
-    private LinearLayout createRowLinearLayout(int height) {
+    private LinearLayout createRowLinearLayout(FieldParameters fieldParameters) {
         LinearLayout rowLinearLayout = new LinearLayout(getContext());
         LinearLayout.LayoutParams rowParams = new LinearLayout.LayoutParams
-                (ViewGroup.LayoutParams.MATCH_PARENT, height);
-        //Log.i("HeightToSet", height + ".");
+                (fieldParameters.fieldLength*getHowManyFieldsInRow() + (getHowManyFieldsInRow()-1)*fieldMargin
+                        , fieldParameters.fieldLength);
         rowLinearLayout.setLayoutParams(rowParams);
         rowLinearLayout.setGravity(Gravity.CENTER);
         rowLinearLayout.setOrientation(LinearLayout.HORIZONTAL);
@@ -97,12 +119,21 @@ public class GameBoardFragment extends Fragment {
         return rowLinearLayout;
     }
 
-    private void addGameFieldsToFillRow(int howManyFieldsInRow, int fieldLength, LinearLayout rowLinearLayout) {
-        for (int i = 0; i < howManyFieldsInRow; ++i)
-            rowLinearLayout.addView(createNewBoardField(fieldLength));
+    private void addGameFieldsToFillRow(LinearLayout rowLinearLayout, int howManyFieldsInRow, FieldParameters fieldParameters) {
+        for (int fieldIndex = 0; fieldIndex < howManyFieldsInRow; ++fieldIndex) {
+            boolean isItLastRightField = fieldIndex == howManyFieldsInRow-1;
+            setHorizontalMargins(isItLastRightField, fieldParameters);
+            rowLinearLayout.addView(createNewBoardField(fieldParameters));
+        }
     }
 
-    private LottieAnimationView createNewBoardField(int fieldLength) {
+    private void setHorizontalMargins(boolean isItLastField, FieldParameters fieldParameters) {
+        fieldParameters.marginRight = fieldMargin;
+        if (isItLastField)
+            fieldParameters.marginRight = 0;
+    }
+
+    private LottieAnimationView createNewBoardField(FieldParameters fieldParameters) {
 
         /*LottieAnimationView animationView = view.findViewById(R.id.animation_id);
         animationView.setRotation(45);
@@ -111,21 +142,33 @@ public class GameBoardFragment extends Fragment {
         animationView.playAnimation();*/
 
         LottieAnimationView myLottieAnimationView = new LottieAnimationView(getContext());
-        LinearLayout.LayoutParams fieldParams = new LinearLayout.LayoutParams(fieldLength, fieldLength);
-        fieldParams.setMargins(fieldMargin, fieldMargin, fieldMargin, fieldMargin);
+
+        LinearLayout.LayoutParams fieldParams = new LinearLayout.LayoutParams(
+                fieldParameters.fieldLength, fieldParameters.fieldLength);
+        fieldParams.leftMargin = fieldParameters.marginLeft;
+        fieldParams.topMargin = fieldParameters.marginTop;
+        fieldParams.rightMargin = fieldParameters.marginRight;
+        fieldParams.bottomMargin = fieldParameters.marginBottom;
 
         myLottieAnimationView.setLayoutParams(fieldParams);
-        myLottieAnimationView.setBackgroundColor(Color.BLUE);
+        myLottieAnimationView.setPadding(fieldPadding, fieldPadding, fieldPadding, fieldPadding);
+        //myLottieAnimationView.setAdjustViewBounds(true);
+        myLottieAnimationView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        myLottieAnimationView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.appBackground));
 
 
         myLottieAnimationView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((LottieAnimationView)v).setAnimation("circle.json");
+                ((LottieAnimationView)v).setAnimation("cross.json");
                 ((LottieAnimationView)v).playAnimation();
             }
         });
 
         return myLottieAnimationView;
+    }
+
+    public void setCircleTurnNow() {
+
     }
 }

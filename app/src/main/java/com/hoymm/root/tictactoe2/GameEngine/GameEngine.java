@@ -13,13 +13,17 @@ import com.hoymm.root.tictactoe2.DisplayMenu.MainMenu.Settings.SettingsSharedPre
 import com.hoymm.root.tictactoe2.MainActivity;
 import com.hoymm.root.tictactoe2.R;
 
+import java.util.Random;
+
 /**
  * Created by Damian Muca - Kaizen (26.09.17)
  */
 
-abstract public class GameEngine extends AppCompatActivity {
+abstract public class GameEngine extends AppCompatActivity implements GameFragsCommunication {
     public static final String GAME_BOARD_SIZE_KEY = "com.hoymm.root.tictactoe2.GameEngine.GAME_BOARD_SIZE_KEY";
     public static final String GAME_HARDNESS_KEY = "com.hoymm.root.tictactoe2.GameEngine.GAME_HARDNESS_KEY";
+
+    private boolean nowIsCircleTurn, youAreACircle;
 
     protected GameHeaderFragment headerFragment;
     protected GameBoardFragment boardFragment;
@@ -29,7 +33,14 @@ abstract public class GameEngine extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game);
+        drawWhoStartsAndWhatSymbolPlays();
         initAndAddFragments();
+    }
+
+    private void drawWhoStartsAndWhatSymbolPlays() {
+        int randomNumber0or1 = new Random().nextInt() % 2;
+        nowIsCircleTurn =  randomNumber0or1 == 0;
+        youAreACircle =  randomNumber0or1 == 0;
     }
 
     private void initAndAddFragments() {
@@ -81,4 +92,18 @@ abstract public class GameEngine extends AppCompatActivity {
         finish();
     }
 
+    @Override
+    public String getWhosTurnNow() {
+        return nowIsCircleTurn ? getString(R.string.circle) : getString(R.string.cross);
+    }
+
+    @Override
+    public boolean isCircleTurnNow() {
+        return nowIsCircleTurn;
+    }
+
+    @Override
+    public boolean isYourTurnNow() {
+        return youAreACircle && nowIsCircleTurn;
+    }
 }
