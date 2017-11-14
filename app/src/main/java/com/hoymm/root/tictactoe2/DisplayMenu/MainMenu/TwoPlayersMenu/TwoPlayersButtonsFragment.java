@@ -26,7 +26,7 @@ class TwoPlayersButtonsFragment extends ButtonsFragment {
 
     @Override
     public void temporaryDisableSomeButtons() {
-        for (Button button : buttons){
+        for (Button button : getButtons()){
 
             button.setEnabled(false);
             button.setTextColor(ContextCompat.getColor(getContext(), R.color.buttonTextDisabled));

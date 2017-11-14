@@ -33,8 +33,8 @@ class MainMenuButtonsFragment extends ButtonsFragment {
 
     @Override
     public void temporaryDisableSomeButtons(){
-        buttons[3].setEnabled(false);
-        buttons[3].setTextColor(ContextCompat.getColor(getContext(), R.color.buttonTextDisabled));
+        getButtons()[3].setEnabled(false);
+        getButtons()[3].setTextColor(ContextCompat.getColor(getContext(), R.color.buttonTextDisabled));
     }
 
     @Override
