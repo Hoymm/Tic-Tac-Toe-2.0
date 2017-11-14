@@ -12,7 +12,7 @@ public class MainMenuDisplay extends DisplayMenu {
 
     @Override
     protected void initFragmentObjects(AppCompatActivity activity) {
-        headerFrg = new MainMenuTextAndGraphHeaderFragment();
-        buttonsFrg = new MainMenuButtonsFragment();
+        setHeaderFrg(new MainMenuTextAndGraphHeaderFragment());
+        setButtonsFrg(new MainMenuButtonsFragment());
     }
 }

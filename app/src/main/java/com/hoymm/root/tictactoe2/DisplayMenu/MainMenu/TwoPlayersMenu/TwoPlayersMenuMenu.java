@@ -14,8 +14,8 @@ public class TwoPlayersMenuMenu extends DisplayMenu {
 
     @Override
     protected void initFragmentObjects(AppCompatActivity activity) {
-        headerFrg = new TwoPlayersHeaderFragment();
-        buttonsFrg = new TwoPlayersButtonsFragment();
+        setHeaderFrg(new TwoPlayersHeaderFragment());
+        setButtonsFrg(new TwoPlayersButtonsFragment());
     }
 
     @Override
