@@ -51,6 +51,11 @@ public class GameBoardFragment extends Fragment {
 
     }
 
+    public static int dpToPx(int dp)
+    {
+        return (int) (dp * Resources.getSystem().getDisplayMetrics().density);
+    }
+
     private void generateGameBoard() {
         LinearLayout generalLinearLayout = getActivity().findViewById(R.id.game_board_fragment_id);
 
@@ -96,11 +101,6 @@ public class GameBoardFragment extends Fragment {
         }
     }
 
-    private static int dpToPx(int dp)
-    {
-        return (int) (dp * Resources.getSystem().getDisplayMetrics().density);
-    }
-
     private void insertBoardRow(LinearLayout generalLinearLayout, int howManyFieldsInRow, FieldParameters fieldParameters) {
         LinearLayout rowLinearLayout = createRowLinearLayout(fieldParameters);
         generalLinearLayout.addView(rowLinearLayout);
@@ -134,13 +134,6 @@ public class GameBoardFragment extends Fragment {
     }
 
     private LottieAnimationView createNewBoardField(FieldParameters fieldParameters) {
-
-        /*LottieAnimationView animationView = view.findViewById(R.id.animation_id);
-        animationView.setRotation(45);
-        animationView.setAnimation("strikethrough.json");
-        animationView.loop(true);
-        animationView.playAnimation();*/
-
         LottieAnimationView myLottieAnimationView = new LottieAnimationView(getContext());
 
         LinearLayout.LayoutParams fieldParams = new LinearLayout.LayoutParams(

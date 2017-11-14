@@ -27,7 +27,6 @@ class GameHeaderFragment extends Fragment {
         return inflater.inflate(R.layout.game_header, container, false);
     }
 
-
     public void onAttach(Context context){
         super.onAttach(context);
         try{
