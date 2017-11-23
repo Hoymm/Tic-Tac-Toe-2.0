@@ -45,7 +45,7 @@ abstract class GameEngine : AppCompatActivity(), GameFragsCommunication {
 
     private fun initAndAddFragments() {
         initAndAddHeaderFragment()
-        initAndAddBoardFragment()
+        initThenSendDataThenAddBoardFragment()
         initAndAddFooterFragment()
     }
 
@@ -54,14 +54,10 @@ abstract class GameEngine : AppCompatActivity(), GameFragsCommunication {
         addNewFragment(R.id.gameHeader, headerFragment)
     }
 
-    private fun initAndAddBoardFragment() {
-        initBoardFragment()
-        addNewFragment(R.id.gameBoardFragment, boardFragment)
-    }
-
-    private fun initBoardFragment() {
+    private fun initThenSendDataThenAddBoardFragment() {
         boardFragment = GameBoardFragment()
         boardFragment.arguments = intent.extras
+        addNewFragment(R.id.gameBoardFragment, boardFragment)
     }
 
     private fun initAndAddFooterFragment() {
