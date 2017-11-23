@@ -41,7 +41,7 @@ class GameBoardFragment : Fragment() {
         boardSize = arguments.get(GameEngine.GAME_BOARD_SIZE_KEY) as BoardSize
         view!!.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
             override fun onGlobalLayout() {
-                getView()!!.viewTreeObserver.removeGlobalOnLayoutListener(this)
+                getView()!!.viewTreeObserver.removeOnGlobalLayoutListener(this)
                 generateGameBoard()
             }
         })
