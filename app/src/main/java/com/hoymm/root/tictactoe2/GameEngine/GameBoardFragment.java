@@ -17,8 +17,6 @@ import android.widget.LinearLayout;
 import com.airbnb.lottie.LottieAnimationView;
 import com.hoymm.root.tictactoe2.R;
 
-import static com.hoymm.root.tictactoe2.GameEngine.GameEngine.GAME_BOARD_SIZE_KEY;
-
 /**
  * Created by hoymm on 03.11.17.
  */
@@ -40,7 +38,7 @@ public class GameBoardFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
-        boardSize = (BoardSize) getArguments().get(GAME_BOARD_SIZE_KEY);
+        boardSize = (BoardSize) getArguments().get(GameEngine.Companion.getGAME_BOARD_SIZE_KEY());
         view.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             public void onGlobalLayout() {
                 getView().getViewTreeObserver().removeGlobalOnLayoutListener(this);
