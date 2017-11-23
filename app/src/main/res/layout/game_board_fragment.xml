@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/game_board_fragment_id"
-    android:orientation="vertical"
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
     android:gravity="center"
-    android:layout_margin="@dimen/gameBoardPadding"
-    android:padding="@dimen/gameBoardPadding"
+    android:background="@color/appBackground"
+    android:id="@+id/game_board_background_layout"
     >
-
+    <GridView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/game_board_fragment_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="top"
+        android:layout_gravity="center"
+        android:background="@color/gameBoardLines"
+    />
 </LinearLayout>
