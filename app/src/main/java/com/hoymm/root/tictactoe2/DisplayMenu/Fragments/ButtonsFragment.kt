@@ -15,10 +15,10 @@ import com.hoymm.root.tictactoe2.R
 
 abstract class ButtonsFragment : Fragment() {
     protected lateinit var buttons: Array<Button>
-    protected abstract val listenerOfButton1: View.OnClickListener
-    protected abstract val listenerOfButton2: View.OnClickListener
-    protected abstract val listenerOfButton3: View.OnClickListener
-    protected abstract val listenerOfButton4: View.OnClickListener
+    protected abstract val listenerOfButton1: View.OnClickListener?
+    protected abstract val listenerOfButton2: View.OnClickListener?
+    protected abstract val listenerOfButton3: View.OnClickListener?
+    protected abstract val listenerOfButton4: View.OnClickListener?
 
     override fun onCreateView
             (inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View?
