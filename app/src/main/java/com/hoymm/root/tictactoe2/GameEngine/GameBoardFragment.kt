@@ -21,16 +21,22 @@ import com.hoymm.root.tictactoe2.R
  */
 
 class GameBoardFragment : Fragment() {
+    companion object {
+        private val fieldMargin = dpToPx(10)
+        private val fieldPadding = dpToPx(10)
+
+        fun dpToPx(dp: Int): Float = dp * Resources.getSystem().displayMetrics.density
+    }
+
     private var boardSize: BoardSize? = null
 
-    private val howManyFieldsInRow: Int get()
-    = when (boardSize) {
+    private val howManyFieldsInRow: Int get() =
+        when (boardSize) {
             BoardSize.board3x3 -> 3
             BoardSize.board5x5 -> 5
             BoardSize.board7x7 -> 7
             else -> 3
         }
-
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View?
             = inflater!!.inflate(R.layout.game_board_fragment, container, false)
@@ -50,53 +56,56 @@ class GameBoardFragment : Fragment() {
     }
 
     private fun generateGameBoard() {
-        val generalLinearLayout = activity.findViewById<LinearLayout>(R.id.game_board_fragment_id)
-
+        val gameBoardLayout = activity.findViewById<LinearLayout>(R.id.game_board_fragment_id)
         val howManyFieldsInRow = howManyFieldsInRow
-        var boardLength = Math.min(generalLinearLayout.width, generalLinearLayout.height)
-        boardLength -= generalLinearLayout.paddingLeft * 2
 
-        val fieldParameters = FieldParameters()
-        fieldParameters.fieldLength = boardLength / howManyFieldsInRow - fieldMargin
+        var boardLength = Math.min(gameBoardLayout.width, gameBoardLayout.height)
+        boardLength -= gameBoardLayout.paddingLeft + gameBoardLayout.paddingRight
+
+        val gameFieldParameters = GameFieldParameters()
+        gameFieldParameters.fieldLength = boardLength / howManyFieldsInRow - fieldMargin
 
         for (row in 0 until howManyFieldsInRow) {
             val isItBottomRow = row == howManyFieldsInRow - 1
-            fieldParameters.setMarginsToZero()
-            setVerticalMargins(isItBottomRow, fieldParameters)
-            insertBoardRow(generalLinearLayout, howManyFieldsInRow, fieldParameters)
+            gameFieldParameters.setMarginsToZero()
+            setVerticalMargins(isItBottomRow, gameFieldParameters)
+            insertBoardRow(gameBoardLayout, howManyFieldsInRow, gameFieldParameters)
         }
     }
 
-    private fun setVerticalMargins(isItBottomRow: Boolean, fieldParameters: FieldParameters) {
-        fieldParameters.marginBottom = fieldMargin
+    private fun setVerticalMargins(isItBottomRow: Boolean, gameFieldParameters: GameFieldParameters) {
+        gameFieldParameters.marginBottom = fieldMargin
         if (isItBottomRow)
-            fieldParameters.marginBottom = 0
+            gameFieldParameters.marginBottom = 0f
     }
 
-    private inner class FieldParameters {
-        internal var fieldLength: Int = 0
-        internal var marginLeft: Int = 0
-        internal var marginTop: Int = 0
-        internal var marginRight: Int = 0
-        internal var marginBottom: Int = 0
+    private inner class GameFieldParameters {
+        internal var fieldLength: Float = 0f
+        internal var marginLeft: Float = 0f
+        internal var marginTop: Float = 0f
+        internal var marginRight: Float = 0f
+        internal var marginBottom: Float = 0f
 
         internal fun setMarginsToZero() {
-            marginBottom = 0
+            marginBottom = 0f
             marginRight = marginBottom
             marginTop = marginRight
             marginLeft = marginTop
         }
     }
 
-    private fun insertBoardRow(generalLinearLayout: LinearLayout, howManyFieldsInRow: Int, fieldParameters: FieldParameters) {
-        val rowLinearLayout = createRowLinearLayout(fieldParameters)
+    private fun insertBoardRow(generalLinearLayout: LinearLayout, howManyFieldsInRow: Int, gameFieldParameters: GameFieldParameters) {
+        val rowLinearLayout = createRowLinearLayout(gameFieldParameters)
         generalLinearLayout.addView(rowLinearLayout)
-        addGameFieldsToFillRow(rowLinearLayout, howManyFieldsInRow, fieldParameters)
+        addGameFieldsToFillRow(rowLinearLayout, howManyFieldsInRow, gameFieldParameters)
     }
 
-    private fun createRowLinearLayout(fieldParameters: FieldParameters): LinearLayout {
+    private fun createRowLinearLayout(gameFieldParameters: GameFieldParameters): LinearLayout {
         val rowLinearLayout = LinearLayout(context)
-        val rowParams = LinearLayout.LayoutParams(fieldParameters.fieldLength * howManyFieldsInRow + (howManyFieldsInRow - 1) * fieldMargin, fieldParameters.fieldLength)
+        val rowParams =
+                LinearLayout.LayoutParams(
+                        (gameFieldParameters.fieldLength * howManyFieldsInRow + (howManyFieldsInRow - 1) * fieldMargin).toInt()
+                        , gameFieldParameters.fieldLength.toInt())
         rowLinearLayout.layoutParams = rowParams
         rowLinearLayout.gravity = Gravity.CENTER
         rowLinearLayout.orientation = LinearLayout.HORIZONTAL
@@ -104,32 +113,33 @@ class GameBoardFragment : Fragment() {
         return rowLinearLayout
     }
 
-    private fun addGameFieldsToFillRow(rowLinearLayout: LinearLayout, howManyFieldsInRow: Int, fieldParameters: FieldParameters) {
+    private fun addGameFieldsToFillRow(rowLinearLayout: LinearLayout, howManyFieldsInRow: Int, gameFieldParameters: GameFieldParameters) {
         for (fieldIndex in 0 until howManyFieldsInRow) {
             val isItLastRightField = fieldIndex == howManyFieldsInRow - 1
-            setHorizontalMargins(isItLastRightField, fieldParameters)
-            rowLinearLayout.addView(createNewBoardField(fieldParameters))
+            setHorizontalMargins(isItLastRightField, gameFieldParameters)
+            rowLinearLayout.addView(createNewBoardField(gameFieldParameters))
         }
     }
 
-    private fun setHorizontalMargins(isItLastField: Boolean, fieldParameters: FieldParameters) {
-        fieldParameters.marginRight = fieldMargin
+    private fun setHorizontalMargins(isItLastField: Boolean, gameFieldParameters: GameFieldParameters) {
+        gameFieldParameters.marginRight = fieldMargin
         if (isItLastField)
-            fieldParameters.marginRight = 0
+            gameFieldParameters.marginRight = 0f
     }
 
-    private fun createNewBoardField(fieldParameters: FieldParameters): LottieAnimationView {
+    private fun createNewBoardField(gameFieldParameters: GameFieldParameters): LottieAnimationView {
         val myLottieAnimationView = LottieAnimationView(context)
 
         val fieldParams = LinearLayout.LayoutParams(
-                fieldParameters.fieldLength, fieldParameters.fieldLength)
-        fieldParams.leftMargin = fieldParameters.marginLeft
-        fieldParams.topMargin = fieldParameters.marginTop
-        fieldParams.rightMargin = fieldParameters.marginRight
-        fieldParams.bottomMargin = fieldParameters.marginBottom
+                gameFieldParameters.fieldLength.toInt()
+                , gameFieldParameters.fieldLength.toInt())
+        fieldParams.leftMargin = gameFieldParameters.marginLeft.toInt()
+        fieldParams.topMargin = gameFieldParameters.marginTop.toInt()
+        fieldParams.rightMargin = gameFieldParameters.marginRight.toInt()
+        fieldParams.bottomMargin = gameFieldParameters.marginBottom.toInt()
 
         myLottieAnimationView.layoutParams = fieldParams
-        myLottieAnimationView.setPadding(fieldPadding, fieldPadding, fieldPadding, fieldPadding)
+        myLottieAnimationView.setPadding(fieldPadding.toInt(), fieldPadding.toInt(), fieldPadding.toInt(), fieldPadding.toInt())
         //myLottieAnimationView.setAdjustViewBounds(true);
         myLottieAnimationView.scaleType = ImageView.ScaleType.CENTER_CROP
         myLottieAnimationView.setBackgroundColor(ContextCompat.getColor(context, R.color.appBackground))
@@ -145,12 +155,5 @@ class GameBoardFragment : Fragment() {
 
     fun setCircleTurnNow() {
 
-    }
-
-    companion object {
-        private val fieldMargin = dpToPx(10)
-        private val fieldPadding = dpToPx(10)
-
-        fun dpToPx(dp: Int): Int = (dp * Resources.getSystem().displayMetrics.density).toInt()
     }
 }
