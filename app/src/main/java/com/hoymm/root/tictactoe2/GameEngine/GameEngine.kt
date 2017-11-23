@@ -3,8 +3,6 @@ package com.hoymm.root.tictactoe2.GameEngine
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentTransaction
 import android.support.v7.app.AppCompatActivity
 
 import com.hoymm.root.tictactoe2.DisplayMenu.MainMenu.Settings.DifficultyEnum
@@ -93,10 +91,16 @@ abstract class GameEngine : AppCompatActivity(), GameFragsCommunication {
         finish()
     }
 
-    override fun getWhosTurnNow(): String =
-            if (nowIsCircleTurn) getString(R.string.circle) else getString(R.string.cross)
+    override val whosTurnNow: String get() =
+            if (nowIsCircleTurn)
+                getString(R.string.circle)
+            else
+                getString(R.string.cross)
 
-    override fun isCircleTurnNow(): Boolean = nowIsCircleTurn
+    override val isCircleTurnNow: Boolean
+        get() = nowIsCircleTurn
 
-    override fun isYourTurnNow(): Boolean = youAreACircle && nowIsCircleTurn
+    override val isYourTurnNow: Boolean
+        get() = youAreACircle && nowIsCircleTurn
+
 }

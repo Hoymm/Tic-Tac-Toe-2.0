@@ -11,6 +11,6 @@ public class GameBoardFragmentTest {
 
     @Test (expected = ExceptionInInitializerError.class)
     public void dpToPx_whenArgumentNegative() {
-        GameBoardFragment.dpToPx(-2);
+        GameBoardFragment.Companion.dpToPx(-2);
     }
 }
