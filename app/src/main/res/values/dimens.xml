@@ -20,4 +20,5 @@
     <dimen name="inGamePadding">16dp</dimen>
     <dimen name="inGameTextSeparationSpace">6dp</dimen>
     <dimen name="game_board_margins">20dp</dimen>
+    <dimen name="game_board_field_padding">40dp</dimen>
 </resources>

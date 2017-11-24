@@ -2,20 +2,20 @@ package com.hoymm.root.tictactoe2.GameEngine
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.util.Log
 import android.view.*
 import android.widget.GridView
 import android.widget.LinearLayout
 import com.hoymm.root.tictactoe2.R
-import android.widget.Toast
+
 
 /**
  * Created by hoymm on 03.11.17.
  */
 
 class GameBoardFragment : Fragment() {
-
     private var boardSize: BoardSize? = null
+    private var fieldLength : Int = 0
+    private var fieldsSeparatorLength: Int = 0
 
     private val howManyFieldsInRow: Int get() =
        when (boardSize) {
@@ -30,48 +30,54 @@ class GameBoardFragment : Fragment() {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         boardSize = arguments.get(GameEngine.GAME_BOARD_SIZE_KEY) as BoardSize
+
         view!!.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
             override fun onGlobalLayout() {
                 getView()!!.viewTreeObserver.removeOnGlobalLayoutListener(this)
                 generateGameBoard()
             }
         })
-
-
     }
 
     private fun generateGameBoard() {
-        val gameBoardLayout = activity.findViewById<GridView>(R.id.game_board_fragment_id)
+        val gameBoardGridView = activity.findViewById<GridView>(R.id.game_board_fragment_id)
+        calculateFieldAndSeparatorLength()
+        setNewWidthAndHeightForGameBoardView(gameBoardGridView)
+        setAdapter(gameBoardGridView)
+        setNumOfColumnsAndSpacingGridViewShouldHave(gameBoardGridView)
+    }
 
-        scaleGameBoardToSquareSize(gameBoardLayout)
+    private fun calculateFieldAndSeparatorLength() {
+        val parentLayoutShorterSideLength =  Math.min(getParentLinearLayout().height, getParentLinearLayout().width)
+        fieldsSeparatorLength = parentLayoutShorterSideLength/((Math.sqrt(howManyFieldsInRow.toDouble())*50).toInt())
+        fieldLength = getTotalLengthOfFieldsInRow(parentLayoutShorterSideLength)/howManyFieldsInRow
+    }
 
+    private fun setNewWidthAndHeightForGameBoardView(gameBoardGridView: GridView) {
+        val gameBoardSideLength = getTotalLengthOfSeparatorsInRow() + fieldLength * howManyFieldsInRow
+        gameBoardGridView.layoutParams.width = gameBoardSideLength
+        gameBoardGridView.layoutParams.height = gameBoardSideLength
+    }
+
+    private fun setAdapter(gameBoardLayout: GridView) {
+        gameBoardLayout.adapter = GameBoardAdapter(context, howManyFieldsInRow, fieldLength)
+    }
+
+    private fun setNumOfColumnsAndSpacingGridViewShouldHave(gameBoardLayout: GridView) {
         gameBoardLayout.numColumns = howManyFieldsInRow
-
-        val howManyFieldsInRow = howManyFieldsInRow
-        var boardLength = Math.min(gameBoardLayout.width, gameBoardLayout.height)
-        boardLength -= gameBoardLayout.paddingLeft + gameBoardLayout.paddingRight
-
-        gameBoardLayout.adapter = GameBoardAdapter(context, howManyFieldsInRow)
-
-        gameBoardLayout.horizontalSpacing = gameBoardLayout.width/GameBoardAdapter.separateLineDivider
-        gameBoardLayout.verticalSpacing = gameBoardLayout.width/GameBoardAdapter.separateLineDivider
-        Log.i("Spacing", "ver: " + gameBoardLayout.verticalSpacing + ", horizontal: " + gameBoardLayout.horizontalSpacing)
-        Log.i("Spacing", "width: " + gameBoardLayout.width + ", height: " + gameBoardLayout.height)
-
-        gameBoardLayout.setOnItemClickListener(
-                { parent, v, position, id ->
-                Toast.makeText(context, "" + position, Toast.LENGTH_SHORT).show()
-            })
-
+        gameBoardLayout.horizontalSpacing = fieldsSeparatorLength
+        gameBoardLayout.verticalSpacing = fieldsSeparatorLength
     }
 
-    private fun scaleGameBoardToSquareSize(gameBoardLayout: GridView) {
-        var backgroundLayout = activity.findViewById<LinearLayout>(R.id.game_board_background_layout)
-        val boardParams = gameBoardLayout.layoutParams
-        boardParams.height = Math.min(backgroundLayout.height, backgroundLayout.width)/* - gameBoardLayout.width/25*(howManyFieldsInRow-1)*/
-        boardParams.width = Math.min(backgroundLayout.height, backgroundLayout.width)
-        gameBoardLayout.layoutParams = boardParams
-    }
+    private fun getParentLinearLayout() =
+            activity.findViewById<LinearLayout>(R.id.game_board_background_layout)
+
+    private fun getTotalLengthOfFieldsInRow(shorterParentSideLength: Int) =
+            shorterParentSideLength - getTotalLengthOfSeparatorsInRow()
+
+    private fun getTotalLengthOfSeparatorsInRow() =
+            howManyFieldSeparatorsInRow() * fieldsSeparatorLength
+
+    private fun howManyFieldSeparatorsInRow() = (howManyFieldsInRow - 1)
 }

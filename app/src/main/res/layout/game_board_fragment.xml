@@ -9,12 +9,15 @@
     android:layout_margin="@dimen/game_board_margins"
     android:id="@+id/game_board_background_layout"
     >
-    <GridView xmlns:android="http://schemas.android.com/apk/res/android"
+    <GridView
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/game_board_fragment_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="top"
         android:layout_gravity="center"
         android:background="@color/gameBoardLines"
+
+
     />
 </LinearLayout>

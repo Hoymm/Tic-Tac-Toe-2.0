@@ -15,41 +15,46 @@ import com.hoymm.root.tictactoe2.R
  * Created by hoymm on 23.11.17.
  */
 
-class GameBoardAdapter(private var context: Context, private var howManyFieldsInRow: Int) : BaseAdapter(){
-    private var fieldLength: Int = 0
+class GameBoardAdapter(private var context: Context, private var howManyFieldsInRow: Int, private var fieldLength: Int) : BaseAdapter(){
 
-    companion object {
-        val separateLineDivider = 150
-        private val fieldPadding = dpToPx(10)
-        private fun dpToPx(dp: Int): Float = dp * Resources.getSystem().displayMetrics.density
-    }
-
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): LottieAnimationView {
-        val shorterSide = Math.min(parent!!.width, parent.height).toDouble()
-        val separateLine : Double = (shorterSide/separateLineDivider)*(howManyFieldsInRow-1)/howManyFieldsInRow
-        fieldLength = Math.ceil(shorterSide/howManyFieldsInRow - separateLine).toInt()
-        return createNewBoardField()
-    }
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup?) = createNewBoardField()
 
     private fun createNewBoardField(): LottieAnimationView {
-        val myLottieAnimationView = LottieAnimationView(context)
-        val fieldParams = LinearLayout.LayoutParams((fieldLength+0.5f).toInt(), (fieldLength+0.5f).toInt())
+        val lottieAnimationView = LottieAnimationView(context)
 
-        myLottieAnimationView.layoutParams = fieldParams
-        myLottieAnimationView.setPadding(fieldPadding.toInt()
-                , fieldPadding.toInt()
-                , fieldPadding.toInt()
-                , fieldPadding.toInt())
-        myLottieAnimationView.scaleType = ImageView.ScaleType.CENTER_CROP
-        myLottieAnimationView.setBackgroundColor(ContextCompat.getColor(context, R.color.appBackground))
+        setWidthAndHeight(lottieAnimationView)
+        setPadding(lottieAnimationView)
+        setScaleType(lottieAnimationView)
+        setBackgroundColor(lottieAnimationView)
+        setOnClickListener(lottieAnimationView)
 
+        return lottieAnimationView
+    }
 
-        myLottieAnimationView.setOnClickListener { v ->
+    private fun setWidthAndHeight(lottieAnimationView: LottieAnimationView): LottieAnimationView {
+        lottieAnimationView.layoutParams = LinearLayout.LayoutParams(fieldLength, fieldLength)
+        return lottieAnimationView
+    }
+
+    private fun setPadding(lottieAnimationView: LottieAnimationView): LottieAnimationView {
+        val fieldPadding : Int = context.resources.getDimension(R.dimen.game_board_field_padding).toInt() / howManyFieldsInRow
+        lottieAnimationView.setPadding(fieldPadding, fieldPadding, fieldPadding, fieldPadding)
+        return lottieAnimationView
+    }
+
+    private fun setScaleType(lottieAnimationView: LottieAnimationView) {
+        lottieAnimationView.scaleType = ImageView.ScaleType.CENTER_CROP
+    }
+
+    private fun setBackgroundColor(lottieAnimationView: LottieAnimationView) {
+        lottieAnimationView.setBackgroundColor(ContextCompat.getColor(context, R.color.appBackground))
+    }
+
+    private fun setOnClickListener(lottieAnimationView: LottieAnimationView) {
+        lottieAnimationView.setOnClickListener { v ->
             (v as LottieAnimationView).setAnimation("cross.json")
             v.playAnimation()
         }
-
-        return myLottieAnimationView
     }
 
     override fun getItem(position: Int): Any? = null
