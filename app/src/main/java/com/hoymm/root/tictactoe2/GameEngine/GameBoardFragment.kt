@@ -18,7 +18,7 @@ class GameBoardFragment : Fragment() {
     private var boardSize: BoardSize? = null
 
     private val howManyFieldsInRow: Int get() =
-        when (boardSize) {
+       when (boardSize) {
             BoardSize.board3x3 -> 3
             BoardSize.board5x5 -> 5
             BoardSize.board7x7 -> 7

@@ -1,18 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="header_font_size">36sp</dimen>
-    <dimen name="settings_font_size">28sp</dimen>
+
+    <!-- BUTTONS -->
     <dimen name="buttonTextSize">22sp</dimen>
     <dimen name="buttonsVerticalSpacing">14dp</dimen>
     <dimen name="buttonsPadding">0dp</dimen>
+    <dimen name="textButtonPadding">5dp</dimen>
 
-    <dimen name="inGameFontSize">24sp</dimen>
-    <dimen name="inGamePadding">16dp</dimen>
-    <dimen name="inGameTextSeparationSpace">6dp</dimen>
+    <!-- MENU -->
+    <dimen name="header_font_size">36sp</dimen>
+    <dimen name="settings_font_size">28sp</dimen>
     <dimen name="chooseGridBoardImagePaddingLandscape">20dp</dimen>
     <dimen name="chooseGridBoardTextBottomPaddingLandscape">8dp</dimen>
     <dimen name="chooseGridBoardImagePaddingPortrait">18dp</dimen>
-    <dimen name="textButtonPadding">5dp</dimen>
     <dimen name="menu_header_margin">8dp</dimen>
-    <dimen name="gameBoardPadding">10dp</dimen>
+
+    <!-- GAME -->
+    <dimen name="inGameFontSize">24sp</dimen>
+    <dimen name="inGamePadding">16dp</dimen>
+    <dimen name="inGameTextSeparationSpace">6dp</dimen>
+    <dimen name="game_board_margins">20dp</dimen>
 </resources>
