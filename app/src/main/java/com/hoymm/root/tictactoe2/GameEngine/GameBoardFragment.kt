@@ -1,21 +1,19 @@
 package com.hoymm.root.tictactoe2.GameEngine
 
+import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.*
 import android.widget.GridView
 import android.widget.LinearLayout
 import com.hoymm.root.tictactoe2.R
-
-
-/**
- * Created by hoymm on 03.11.17.
- */
+import java.lang.ClassCastException
 
 class GameBoardFragment : Fragment() {
     private var boardSize: BoardSize? = null
     private var fieldLength : Int = 0
     private var fieldsSeparatorLength: Int = 0
+    private lateinit var currentAppDataInfo : CurrentAppDataInfo
 
     private val howManyFieldsInRow: Int get() =
        when (boardSize) {
@@ -24,6 +22,16 @@ class GameBoardFragment : Fragment() {
             BoardSize.board7x7 -> 7
             else -> 3
         }
+
+    override fun onAttach(context: Context?) {
+        super.onAttach(context)
+        try{
+            currentAppDataInfo = context as CurrentAppDataInfo
+        }
+        catch (exception : ClassCastException){
+            throw ClassCastException(activity.toString() + " must implement CurrentAppDataInfo");
+        }
+    }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View?
             = inflater!!.inflate(R.layout.game_board_fragment, container, false)

@@ -16,7 +16,15 @@ import java.util.Random
  * Created by Damian Muca - Kaizen (26.09.17)
  */
 
-abstract class GameEngine : AppCompatActivity(), GameFragsCommunication {
+interface CurrentAppDataInfo{
+    val whosTurnNow: String
+    val isYourTurnNow: Boolean
+    val isCircleTurnNow : Boolean
+    val isThereAWinner : Boolean
+    val isThereADraw : Boolean
+}
+
+abstract class GameEngine : AppCompatActivity(), CurrentAppDataInfo {
 
     companion object {
         val GAME_BOARD_SIZE_KEY = "com.hoymm.root.tictactoe2.GameEngine.GAME_BOARD_SIZE_KEY"
@@ -93,10 +101,15 @@ abstract class GameEngine : AppCompatActivity(), GameFragsCommunication {
             else
                 getString(R.string.cross)
 
-    override val isCircleTurnNow: Boolean
-        get() = nowIsCircleTurn
-
     override val isYourTurnNow: Boolean
         get() = youAreACircle && nowIsCircleTurn
 
+    override val isCircleTurnNow : Boolean
+        get() = nowIsCircleTurn
+
+    override val isThereAWinner: Boolean
+        get() = false // TODO
+
+    override val isThereADraw: Boolean
+        get() = false // TODO
 }

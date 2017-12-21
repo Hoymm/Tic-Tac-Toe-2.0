@@ -15,7 +15,8 @@ import com.hoymm.root.tictactoe2.R
  * Created by hoymm on 23.11.17.
  */
 
-class GameBoardAdapter(private var context: Context, private var howManyFieldsInRow: Int, private var fieldLength: Int) : BaseAdapter(){
+class GameBoardAdapter
+(private var context: Context, private var howManyFieldsInRow: Int, private var fieldLength: Int) : BaseAdapter(){
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?) = createNewBoardField()
 

@@ -23,7 +23,7 @@ internal class GameHeaderFragment : Fragment() {
     private var circleScores = 0
     private var crossScores = 0
     private var drawsScores = 0
-    private var gameFragsCommunication: GameFragsCommunication? = null
+    private var gameFragsCommunication: CurrentAppDataInfo? = null
 
     private val whosTurnTextColor: Int get() =
             if (gameFragsCommunication!!.isCircleTurnNow) ContextCompat.getColor(context, R.color.circleBlue)
@@ -35,7 +35,7 @@ internal class GameHeaderFragment : Fragment() {
     override fun onAttach(context: Context?) {
         super.onAttach(context)
         try {
-            gameFragsCommunication = context as GameFragsCommunication?
+            gameFragsCommunication = context as CurrentAppDataInfo
         } catch (e: ClassCastException) {
             throw ClassCastException(context!!.toString() + " must implement OnFragmentSendText")
         }
