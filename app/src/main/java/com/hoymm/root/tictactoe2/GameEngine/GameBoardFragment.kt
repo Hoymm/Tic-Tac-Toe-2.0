@@ -10,6 +10,7 @@ import com.hoymm.root.tictactoe2.R
 import java.lang.ClassCastException
 
 class GameBoardFragment : Fragment() {
+    private lateinit var gameBoardGridView : GridView
     private var boardSize: BoardSize? = null
     private var fieldLength : Int = 0
     private var fieldsSeparatorLength: Int = 0
@@ -49,7 +50,7 @@ class GameBoardFragment : Fragment() {
     }
 
     private fun generateGameBoard() {
-        val gameBoardGridView = activity.findViewById<GridView>(R.id.game_board_fragment_id)
+        gameBoardGridView = activity.findViewById<GridView>(R.id.game_board_fragment_id)
         calculateFieldAndSeparatorLength()
         setNewWidthAndHeightForGameBoardView(gameBoardGridView)
         setAdapter(gameBoardGridView)
@@ -88,4 +89,57 @@ class GameBoardFragment : Fragment() {
             howManyFieldSeparatorsInRow() * fieldsSeparatorLength
 
     private fun howManyFieldSeparatorsInRow() = (howManyFieldsInRow - 1)
+
+    fun checkIfSomebodyWon(): Shape? {
+        val howManyWins = if (boardSize == BoardSize.board3x3) 3 else 4
+        var whoWon: Shape?
+
+        whoWon = checkIfAnyWonInRows(howManyWins)
+        if (whoWon != null) return whoWon
+
+        whoWon = checkIfAnyWonInColumns(howManyWins)
+        if (whoWon != null) return whoWon
+
+        whoWon = checkIfAnyWonInDiagonal(howManyWins)
+        if (whoWon != null) return whoWon
+
+        return null
+    }
+
+    enum class Table {
+        Column, Row
+    }
+
+    private fun checkIfAnyWonInRows(howManyPointsWin: Int): Shape? = checkIfAnyRowOrColumnWins(howManyPointsWin, Table.Row)
+
+    private fun checkIfAnyWonInColumns(howManyPointsWin : Int): Shape? = checkIfAnyRowOrColumnWins(howManyPointsWin, Table.Column)
+
+    private fun checkIfAnyRowOrColumnWins(howManyPointsWin: Int, checkingDirection : Table): Shape? {
+        for (row in 0 until gameBoardGridView.numColumns) {
+            var lastShape: Shape? = null
+            var howManyPoints = 0
+            for (column in 0 until gameBoardGridView.numColumns) {
+                val curField = when (checkingDirection){
+                    Table.Column -> gameBoardGridView.getChildAt(row + column*gameBoardGridView.numColumns) as GameField
+                    Table.Row -> gameBoardGridView.getChildAt(row*gameBoardGridView.numColumns + column) as GameField
+                }
+                val curShape = curField.whatShape()
+
+                howManyPoints = when {
+                    curShape == null -> 0
+                    lastShape != curShape -> 1
+                    else -> howManyPoints + 1
+                }
+                lastShape = curShape
+
+                if (howManyPoints == howManyPointsWin)
+                    return curShape
+            }
+        }
+        return null
+    }
+
+    private fun checkIfAnyWonInDiagonal(howManyWins : Int): Shape? {
+        return null // TODO
+    }
 }

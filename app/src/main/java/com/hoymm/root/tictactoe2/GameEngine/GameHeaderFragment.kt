@@ -4,7 +4,6 @@ import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.content.ContextCompat
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,7 +26,8 @@ internal class GameHeaderFragment : Fragment() {
     private var gameFragsCommunication: CurrentAppDataInfo? = null
 
     private val whosTurnTextColor: Int get() =
-            if (gameFragsCommunication!!.isCircleTurnNow) ContextCompat.getColor(context, R.color.circleBlue)
+            if (gameFragsCommunication!!.getWhoseTurnNow == Shape.circle)
+                ContextCompat.getColor(context, R.color.circleBlue)
             else ContextCompat.getColor(context, R.color.crossRed)
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? =
@@ -70,7 +70,7 @@ internal class GameHeaderFragment : Fragment() {
     }
 
     fun changeWhosTurnNowTextView() {
-        whosTurnTV!!.text = gameFragsCommunication!!.whosTurnNow
+        whosTurnTV!!.text = gameFragsCommunication!!.getWhoseTurnNow.toString()
         whosTurnTV!!.setTextColor(whosTurnTextColor)
     }
 

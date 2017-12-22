@@ -6,12 +6,13 @@ import com.airbnb.lottie.LottieAnimationView
 /**
  * Created by Damian Muca (Kaizen) on 21.12.17.
  */
+
 class GameField(context: Context) : LottieAnimationView(context) {
-    private var alreadyOccupied: Boolean = false
+    private var alreadyOccupied: Shape? = null
 
-    fun isOccupied() = alreadyOccupied
+    fun whatShape(): Shape? = alreadyOccupied
 
-    fun setOccupied(state: Boolean) {
-        alreadyOccupied = state
+    fun setOccupiedBy(shape: Shape) {
+        alreadyOccupied = shape
     }
 }

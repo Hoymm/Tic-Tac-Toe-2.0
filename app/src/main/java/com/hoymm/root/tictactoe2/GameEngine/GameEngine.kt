@@ -16,27 +16,15 @@ import java.util.Random
  * Created by Damian Muca - Kaizen (26.09.17)
  */
 
-interface CurrentAppDataInfo{
-    val whosTurnNow: String
-    val isYourTurnNow: Boolean
-    val isCircleTurnNow : Boolean
-    val isThereAWinner : Boolean
-    val isThereADraw : Boolean
-}
-
-interface ChangeAppState {
-    fun changePlayerTurn()
-}
-
 abstract class GameEngine : AppCompatActivity(), CurrentAppDataInfo, ChangeAppState {
-
     companion object {
         val GAME_BOARD_SIZE_KEY = "com.hoymm.root.tictactoe2.GameEngine.GAME_BOARD_SIZE_KEY"
         val GAME_HARDNESS_KEY = "com.hoymm.root.tictactoe2.GameEngine.GAME_HARDNESS_KEY"
     }
 
-    private var nowIsCircleTurn: Boolean = false
-    private var youAreACircle: Boolean = false
+    private var whoseTurnNow = Shape.circle
+    private var youAreACircle = false
+    private var isGameFinished = false
 
     private lateinit var headerFragment: GameHeaderFragment
     private lateinit var boardFragment: GameBoardFragment
@@ -51,7 +39,7 @@ abstract class GameEngine : AppCompatActivity(), CurrentAppDataInfo, ChangeAppSt
 
     private fun drawWhoStartsAndWhatSymbolPlays() {
         val randomNumber0or1 = Random().nextInt() % 2
-        nowIsCircleTurn = randomNumber0or1 == 0
+        whoseTurnNow = if (randomNumber0or1 == 0) Shape.circle else Shape.cross
         youAreACircle = randomNumber0or1 == 0
     }
 
@@ -99,26 +87,15 @@ abstract class GameEngine : AppCompatActivity(), CurrentAppDataInfo, ChangeAppSt
         finish()
     }
 
-    override val whosTurnNow: String get() =
-            if (nowIsCircleTurn)
-                getString(R.string.circle)
-            else
-                getString(R.string.cross)
+    override val getWhoseTurnNow: Shape get() = whoseTurnNow
 
     override val isYourTurnNow: Boolean
-        get() = youAreACircle && nowIsCircleTurn
-
-    override val isCircleTurnNow : Boolean
-        get() = nowIsCircleTurn
-
-    override val isThereAWinner: Boolean
-        get() = false // TODO
-
-    override val isThereADraw: Boolean
-        get() = false // TODO
+        get() = youAreACircle && this.whoseTurnNow == Shape.circle
 
     override fun changePlayerTurn() {
-        nowIsCircleTurn = !nowIsCircleTurn
+        this.whoseTurnNow = if (whoseTurnNow == Shape.circle) Shape.cross else Shape.circle
         headerFragment.changeWhosTurnNowTextView()
     }
+
+    override fun checkIfSomeoneWon() : Shape? = boardFragment.checkIfSomebodyWon()
 }

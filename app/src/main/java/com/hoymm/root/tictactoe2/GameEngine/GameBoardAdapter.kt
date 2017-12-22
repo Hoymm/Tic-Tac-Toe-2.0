@@ -16,13 +16,13 @@ import com.hoymm.root.tictactoe2.R
  */
 
 class GameBoardAdapter(private var context: Context, private var howManyFieldsInRow: Int, private var fieldLength: Int) : BaseAdapter(){
-    lateinit var changePlayerTurn : ChangeAppState
+    lateinit var changeAppState: ChangeAppState
     lateinit var currentAppDataInfo : CurrentAppDataInfo
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?) = createNewBoardField()
 
     private fun createNewBoardField(): LottieAnimationView {
         val lottieAnimationView = GameField(context)
-        changePlayerTurn = context as ChangeAppState
+        changeAppState = context as ChangeAppState
         currentAppDataInfo = context as CurrentAppDataInfo
 
         setWidthAndHeight(lottieAnimationView)
@@ -39,10 +39,9 @@ class GameBoardAdapter(private var context: Context, private var howManyFieldsIn
         return lottieAnimationView
     }
 
-    private fun setPadding(lottieAnimationView: LottieAnimationView): LottieAnimationView {
+    private fun setPadding(lottieAnimationView: LottieAnimationView) {
         val fieldPadding : Int = context.resources.getDimension(R.dimen.game_board_field_padding).toInt() / howManyFieldsInRow
         lottieAnimationView.setPadding(fieldPadding, fieldPadding, fieldPadding, fieldPadding)
-        return lottieAnimationView
     }
 
     private fun setScaleType(lottieAnimationView: LottieAnimationView) {
@@ -55,11 +54,19 @@ class GameBoardAdapter(private var context: Context, private var howManyFieldsIn
 
     private fun setOnClickListener(lottieAnimationView: LottieAnimationView) {
         lottieAnimationView.setOnClickListener { v ->
-            if (!(v as GameField).isOccupied()) {
+            if (changeAppState.checkIfSomeoneWon() != null){
+                // game already finished
+            }
+            else if ((v as GameField).whatShape() == null) {
                 setCircleOrCrossAnimation(v)
                 v.playAnimation()
-                v.setOccupied(true)
-                changePlayerTurn.changePlayerTurn()
+                v.setOccupiedBy(currentAppDataInfo.getWhoseTurnNow)
+                changeAppState.changePlayerTurn()
+
+                val whoWon = changeAppState.checkIfSomeoneWon()
+                if (whoWon != null){
+                    Toast.makeText(context, whoWon.toString() + " has won the game.", Toast.LENGTH_SHORT).show()
+                }
             }
             else
                 Toast.makeText(context, context.getString(R.string.field_already_occupied_message), Toast.LENGTH_SHORT).show()
@@ -67,7 +74,7 @@ class GameBoardAdapter(private var context: Context, private var howManyFieldsIn
     }
 
     private fun setCircleOrCrossAnimation(v: GameField) {
-        if (currentAppDataInfo.isCircleTurnNow)
+        if (currentAppDataInfo.getWhoseTurnNow == Shape.circle)
             v.setAnimation("circle.json")
         else
             v.setAnimation("cross.json")
