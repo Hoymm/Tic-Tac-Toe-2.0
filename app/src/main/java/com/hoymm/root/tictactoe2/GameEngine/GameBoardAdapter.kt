@@ -68,9 +68,9 @@ class GameBoardAdapter(private var context: Context, private var howManyFieldsIn
 
     private fun setCircleOrCrossAnimation(v: GameField) {
         if (currentAppDataInfo.isCircleTurnNow)
-            v.setAnimation("cross.json")
-        else
             v.setAnimation("circle.json")
+        else
+            v.setAnimation("cross.json")
     }
 
     override fun getItem(position: Int): Any? = null

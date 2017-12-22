@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.content.ContextCompat
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -69,7 +70,7 @@ internal class GameHeaderFragment : Fragment() {
     }
 
     fun changeWhosTurnNowTextView() {
-        whosTurnTV!!.text = gameFragsCommunication!!.whosTurnNow // TODO here is some error because turn circle and it shows cross and reverse
+        whosTurnTV!!.text = gameFragsCommunication!!.whosTurnNow
         whosTurnTV!!.setTextColor(whosTurnTextColor)
     }
 
