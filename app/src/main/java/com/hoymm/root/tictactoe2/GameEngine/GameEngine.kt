@@ -24,7 +24,11 @@ interface CurrentAppDataInfo{
     val isThereADraw : Boolean
 }
 
-abstract class GameEngine : AppCompatActivity(), CurrentAppDataInfo {
+interface ChangeAppState {
+    fun changePlayerTurn()
+}
+
+abstract class GameEngine : AppCompatActivity(), CurrentAppDataInfo, ChangeAppState {
 
     companion object {
         val GAME_BOARD_SIZE_KEY = "com.hoymm.root.tictactoe2.GameEngine.GAME_BOARD_SIZE_KEY"
@@ -52,23 +56,23 @@ abstract class GameEngine : AppCompatActivity(), CurrentAppDataInfo {
     }
 
     private fun initAndAddFragments() {
-        initAndAddHeaderFragment()
-        initThenSendDataThenAddBoardFragment()
-        initAndAddFooterFragment()
+        createHeaderFrag()
+        createGameFrag()
+        createFooterFrag()
     }
 
-    private fun initAndAddHeaderFragment() {
+    private fun createHeaderFrag() {
         headerFragment = GameHeaderFragment()
         addNewFragment(R.id.gameHeader, headerFragment)
     }
 
-    private fun initThenSendDataThenAddBoardFragment() {
+    private fun createGameFrag() {
         boardFragment = GameBoardFragment()
         boardFragment.arguments = intent.extras
         addNewFragment(R.id.gameBoardFragment, boardFragment)
     }
 
-    private fun initAndAddFooterFragment() {
+    private fun createFooterFrag() {
         footerFragment = GameFooterFragment()
         footerFragment.arguments = dataToBeSendToFooterFragment()
         addNewFragment(R.id.gameFooter, footerFragment)
@@ -112,4 +116,9 @@ abstract class GameEngine : AppCompatActivity(), CurrentAppDataInfo {
 
     override val isThereADraw: Boolean
         get() = false // TODO
+
+    override fun changePlayerTurn() {
+        nowIsCircleTurn = !nowIsCircleTurn
+        headerFragment.changeWhosTurnNowTextView()
+    }
 }

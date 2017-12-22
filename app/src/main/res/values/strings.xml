@@ -22,6 +22,7 @@
     <string name="turn">Turn:</string>
     <string name="single_player">Single Player</string>
     <string name="choose_grid">CHOOSE GRID</string>
+    <string name="field_already_occupied_message">That field is already occupied.</string>
 
     <string-array name="mainActivityButtonNames">
         <item>Single Player</item>

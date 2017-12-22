@@ -65,11 +65,11 @@ internal class GameHeaderFragment : Fragment() {
         crossTV!!.text = crossScores.toString()
         drawsTV!!.text = drawsScores.toString()
 
-        changeWhosTurnNowAlongWithDisplayingTextAndColor()
+        changeWhosTurnNowTextView()
     }
 
-    fun changeWhosTurnNowAlongWithDisplayingTextAndColor() {
-        whosTurnTV!!.text = gameFragsCommunication!!.whosTurnNow
+    fun changeWhosTurnNowTextView() {
+        whosTurnTV!!.text = gameFragsCommunication!!.whosTurnNow // TODO here is some error because turn circle and it shows cross and reverse
         whosTurnTV!!.setTextColor(whosTurnTextColor)
     }
 
