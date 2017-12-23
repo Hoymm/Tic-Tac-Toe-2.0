@@ -54,24 +54,32 @@ class GameBoardAdapter(private var context: Context, private var howManyFieldsIn
 
     private fun setOnClickListener(lottieAnimationView: LottieAnimationView) {
         lottieAnimationView.setOnClickListener { v ->
-            if (changeAppState.checkIfSomeoneWon() != null){
-                // game already finished
-            }
-            else if ((v as GameField).whatShape() == null) {
-                setCircleOrCrossAnimation(v)
-                v.playAnimation()
-                v.setOccupiedBy(currentAppDataInfo.getWhoseTurnNow)
-                changeAppState.changePlayerTurn()
-
-                val whoWon = changeAppState.checkIfSomeoneWon()
-                if (whoWon != null){
-                    Toast.makeText(context, whoWon.toString() + " has won the game.", Toast.LENGTH_SHORT).show()
-                }
-            }
-            else
-                Toast.makeText(context, context.getString(R.string.field_already_occupied_message), Toast.LENGTH_SHORT).show()
+                getOnClickListenerAction(v)
         }
     }
+
+    private fun getOnClickListenerAction(v: View?){
+
+        if (changeAppState.checkIfSomeoneWon() != null) {
+            // game already finished
+        }
+        else if ((v as GameField).whatShape() == null) {
+
+            setCircleOrCrossAnimation(v)
+            v.playAnimation()
+            v.setOccupiedBy(currentAppDataInfo.getWhoseTurnNow)
+            changeAppState.changePlayerTurn()
+
+            val whoWon = changeAppState.checkIfSomeoneWon()
+            if (whoWon != null) {
+                Toast.makeText(context, "$whoWon has won the game.", Toast.LENGTH_SHORT).show()
+            }
+        } else
+            Toast.makeText(context, context.getString(R.string.field_already_occupied_message), Toast.LENGTH_SHORT).show()
+
+
+    }
+
 
     private fun setCircleOrCrossAnimation(v: GameField) {
         if (currentAppDataInfo.getWhoseTurnNow == Shape.circle)

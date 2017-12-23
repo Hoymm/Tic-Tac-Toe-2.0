@@ -24,7 +24,6 @@ abstract class GameEngine : AppCompatActivity(), CurrentAppDataInfo, ChangeAppSt
 
     private var whoseTurnNow = Shape.circle
     private var youAreACircle = false
-    private var isGameFinished = false
 
     private lateinit var headerFragment: GameHeaderFragment
     private lateinit var boardFragment: GameBoardFragment

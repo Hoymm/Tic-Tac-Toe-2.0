@@ -6,7 +6,5 @@ package com.hoymm.root.tictactoe2.GameEngine
 enum class Shape {
     circle, cross;
 
-    override fun toString(): String {
-        return if (this == circle) "Circle" else "Cross"
-    }
+    override fun toString(): String = if (this == circle) "Circle" else "Cross"
 }
