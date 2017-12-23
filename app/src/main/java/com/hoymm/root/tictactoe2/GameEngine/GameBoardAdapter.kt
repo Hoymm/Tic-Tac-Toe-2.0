@@ -16,13 +16,16 @@ import com.hoymm.root.tictactoe2.R
  */
 
 class GameBoardAdapter(private var context: Context, private var howManyFieldsInRow: Int, private var fieldLength: Int) : BaseAdapter(){
-    lateinit var changeAppState: ChangeAppState
+    lateinit var CheckIsGameFinished: CheckIsGameFinished
     lateinit var currentAppDataInfo : CurrentAppDataInfo
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?) = createNewBoardField()
 
+    var whoWon: Shape? = null
+    var isThereADraw: Boolean = false
+
     private fun createNewBoardField(): LottieAnimationView {
         val lottieAnimationView = GameField(context)
-        changeAppState = context as ChangeAppState
+        CheckIsGameFinished = context as CheckIsGameFinished
         currentAppDataInfo = context as CurrentAppDataInfo
 
         setWidthAndHeight(lottieAnimationView)
@@ -60,24 +63,33 @@ class GameBoardAdapter(private var context: Context, private var howManyFieldsIn
 
     private fun getOnClickListenerAction(v: View?){
 
-        if (changeAppState.checkIfSomeoneWon() != null) {
+        if (whoWon != null || isThereADraw) {
             // game already finished
         }
         else if ((v as GameField).whatShape() == null) {
-
-            setCircleOrCrossAnimation(v)
-            v.playAnimation()
-            v.setOccupiedBy(currentAppDataInfo.getWhoseTurnNow)
-            changeAppState.changePlayerTurn()
-
-            val whoWon = changeAppState.checkIfSomeoneWon()
-            if (whoWon != null) {
-                Toast.makeText(context, "$whoWon has won the game.", Toast.LENGTH_SHORT).show()
-            }
+            drawFieldShapeAndChangePlayerTurn(v)
+            checkIfAnyoneWonOrDraw()
         } else
             Toast.makeText(context, context.getString(R.string.field_already_occupied_message), Toast.LENGTH_SHORT).show()
 
 
+    }
+
+    private fun drawFieldShapeAndChangePlayerTurn(v: GameField) {
+        setCircleOrCrossAnimation(v)
+        v.playAnimation()
+        v.setOccupiedBy(currentAppDataInfo.getWhoseTurnNow)
+        currentAppDataInfo.changePlayerTurn()
+    }
+
+    private fun checkIfAnyoneWonOrDraw() {
+        whoWon = CheckIsGameFinished.checkIfSomeoneWon()
+        if (whoWon != null)
+            Toast.makeText(context, "$whoWon has won the game.", Toast.LENGTH_SHORT).show()
+        else if (CheckIsGameFinished.checkIfItIsADraw()) {
+            isThereADraw = true
+            Toast.makeText(context, "It is a draw.", Toast.LENGTH_SHORT).show()
+        }
     }
 
 

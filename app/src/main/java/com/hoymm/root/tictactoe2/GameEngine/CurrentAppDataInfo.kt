@@ -6,4 +6,5 @@ package com.hoymm.root.tictactoe2.GameEngine
 interface CurrentAppDataInfo{
     val getWhoseTurnNow: Shape
     val isYourTurnNow: Boolean
+    fun changePlayerTurn()
 }

@@ -9,7 +9,7 @@ import android.widget.LinearLayout
 import com.hoymm.root.tictactoe2.R
 import java.lang.ClassCastException
 
-class GameBoardFragment : Fragment() {
+class GameBoardFragment : Fragment(), CheckIsGameFinished {
     private lateinit var gameBoard: GridView
     private var boardSize: BoardSize? = null
     private var fieldLength : Int = 0
@@ -90,28 +90,43 @@ class GameBoardFragment : Fragment() {
 
     private fun howManyFieldSeparatorsInRow() = (howManyFieldsInRow - 1)
 
-    fun checkIfSomebodyWon(): Shape? {
-        val howManyPointsWin = if (boardSize == BoardSize.board3x3) 3 else 4
+    override fun checkIfSomeoneWon(): Shape? {
         var whoWon: Shape?
-        val winDrawCheck = WinDrawCheck(gameBoard)
+        val winCheck = CheckWin(gameBoard)
 
-        whoWon = winDrawCheck.checkIfAnyWonInRows(howManyPointsWin)
+        whoWon = winCheck.checkIfWinInRows(getHowManyPointsWins())
         if (whoWon != null) return whoWon
 
-        whoWon = winDrawCheck.checkIfAnyWonInColumns(howManyPointsWin)
+        whoWon = winCheck.checkIfWinInColumns(getHowManyPointsWins())
         if (whoWon != null) return whoWon
 
-        whoWon = winDrawCheck.checkDiagonalFromTopRow(howManyPointsWin)
+        whoWon = winCheck.checkIfWinDiagonalFromTopRow(getHowManyPointsWins())
         if (whoWon != null) return whoWon
 
-        whoWon = winDrawCheck.checkDiagonalLeftColumnToBottom(howManyPointsWin)
+        whoWon = winCheck.checkIfWinDiagonalLeftColumnToBottom(getHowManyPointsWins())
         if (whoWon != null) return whoWon
 
         return null
     }
 
-    enum class Table {
-        Column, Row
+    override fun checkIfItIsADraw(): Boolean {
+        var isItADraw: Boolean?
+        val drawCheck = CheckDraw(gameBoard)
+
+        isItADraw = drawCheck.checkIfDrawInRows(getHowManyPointsWins())
+        if (isItADraw == false) return false
+
+        isItADraw = drawCheck.checkIfDrawInColumns(getHowManyPointsWins())
+        if (isItADraw == false) return false
+
+        isItADraw = drawCheck.checkIfDrawDiagonalFromTopRow(getHowManyPointsWins())
+        if (isItADraw == false) return false
+
+        isItADraw = drawCheck.checkIfDrawDiagonalLeftColumnToBottom(getHowManyPointsWins())
+        if (isItADraw == false) return false
+
+        return true
     }
 
+    private fun getHowManyPointsWins() = if (boardSize == BoardSize.board3x3) 3 else 4
 }

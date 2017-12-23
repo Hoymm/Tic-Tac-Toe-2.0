@@ -3,21 +3,21 @@ package com.hoymm.root.tictactoe2.GameEngine
 import android.util.Log
 import android.widget.GridView
 
+
 /**
  * Created by Damian Muca (Kaizen) on 23.12.17.
  */
-
-class WinDrawCheck (private var gameBoard: GridView){
+class CheckDraw(private var gameBoard: GridView) {
 
     private enum class Table {
         Column, Row
     }
 
-    fun checkIfAnyWonInRows(howManyPointsWin: Int): Shape? = checkIfAnyRowOrColumnWins(howManyPointsWin, Table.Row)
+    fun checkIfDrawInRows(howManyPointsWin: Int): Boolean = checkIfAnyRowOrColumnDraws(howManyPointsWin, Table.Row)
 
-    fun checkIfAnyWonInColumns(howManyPointsWin : Int): Shape? = checkIfAnyRowOrColumnWins(howManyPointsWin, Table.Column)
+    fun checkIfDrawInColumns(howManyPointsWin : Int): Boolean = checkIfAnyRowOrColumnDraws(howManyPointsWin, Table.Column)
 
-    private fun checkIfAnyRowOrColumnWins(howManyPointsWin: Int, checkingDirection : Table): Shape? {
+    private fun checkIfAnyRowOrColumnDraws(howManyPointsWin: Int, checkingDirection : Table): Boolean {
         for (row in 0 until gameBoard.numColumns) {
             var lastShape: Shape? = null
             var howManyPoints = 0
@@ -29,30 +29,29 @@ class WinDrawCheck (private var gameBoard: GridView){
                 val curShape = curField.whatShape()
 
                 howManyPoints = when {
-                    curShape == null -> 0
-                    lastShape != curShape -> 1
+                    lastShape != null && curShape != null && curShape != lastShape -> 1
                     else -> howManyPoints + 1
                 }
                 lastShape = curShape
 
                 if (howManyPoints == howManyPointsWin)
-                    return curShape
+                    return false
             }
         }
-        return null
+        return true
     }
 
-    fun checkDiagonalFromTopRow(howManyPointsWin : Int): Shape? =
-            checkDiagonalTopRowToRight(howManyPointsWin) ?: checkDiagonalTopRowToLeft(howManyPointsWin)
+    fun checkIfDrawDiagonalFromTopRow(howManyPointsWin : Int) =
+        checkDiagonalTopRowToRight(howManyPointsWin) && checkDiagonalTopRowToLeft(howManyPointsWin)
 
-    fun checkDiagonalLeftColumnToBottom(howManyPointsWin: Int) =
+    fun checkIfDrawDiagonalLeftColumnToBottom(howManyPointsWin: Int) =
             checkDiagonal(howManyPointsWin, gameBoard.numColumns, gameBoard.numColumns+1)
 
     private fun checkDiagonalTopRowToRight(howManyPointsWin : Int) = checkDiagonal(howManyPointsWin, 1, gameBoard.numColumns+1)
 
     private fun checkDiagonalTopRowToLeft(howManyPointsWin : Int) = checkDiagonal(howManyPointsWin, 1, gameBoard.numColumns-1)
 
-    private fun checkDiagonal(howManyPointsWin: Int, multipler: Int, stepMove: Int): Shape? {
+    private fun checkDiagonal(howManyPointsWin: Int, multipler: Int, stepMove: Int): Boolean {
         for (row in 0 until gameBoard.numColumns) {
             var lastShape: Shape? = null
             var howManyPoints = 0
@@ -61,17 +60,17 @@ class WinDrawCheck (private var gameBoard: GridView){
                 val curShape = curField.whatShape()
 
                 howManyPoints = when {
-                    curShape == null -> 0
-                    lastShape != curShape -> 1
+                    lastShape != null && curShape != null && curShape != lastShape -> 1
                     else -> howManyPoints + 1
                 }
                 lastShape = curShape
                 Log.i("PointsFor", lastShape.toString() + ": " + howManyPoints);
 
                 if (howManyPoints == howManyPointsWin)
-                    return curShape
+                    return false
             }
         }
-        return null
+        return true
     }
+
 }
