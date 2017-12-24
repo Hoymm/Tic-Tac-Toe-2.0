@@ -8,7 +8,7 @@
     <dimen name="textButtonPadding">5dp</dimen>
 
     <!-- MENU -->
-    <dimen name="header_font_size">36sp</dimen>
+    <dimen name="header_font_size">32sp</dimen>
     <dimen name="settings_font_size">28sp</dimen>
     <dimen name="chooseGridBoardImagePaddingLandscape">20dp</dimen>
     <dimen name="chooseGridBoardTextBottomPaddingLandscape">8dp</dimen>
