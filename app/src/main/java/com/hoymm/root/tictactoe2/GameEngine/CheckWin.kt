@@ -13,9 +13,15 @@ class CheckWin(private var gameBoard: GridView){
         Column, Row
     }
 
-    fun checkIfWinInRows(howManyPointsWin: Int): Shape? = checkIfAnyRowOrColumnWins(howManyPointsWin, Table.Row)
+    fun checkIfWinInRows(howManyPointsWin: Int): Shape?{
+        Log.i("CheckWin", "checkIfWinInRows")
+        return checkIfAnyRowOrColumnWins(howManyPointsWin, Table.Row)
+    }
 
-    fun checkIfWinInColumns(howManyPointsWin : Int): Shape? = checkIfAnyRowOrColumnWins(howManyPointsWin, Table.Column)
+    fun checkIfWinInColumns(howManyPointsWin : Int): Shape?{
+        Log.i("CheckWin", "checkIfWinInColumns")
+        return checkIfAnyRowOrColumnWins(howManyPointsWin, Table.Column)
+    }
 
     private fun checkIfAnyRowOrColumnWins(howManyPointsWin: Int, checkingDirection : Table): Shape? {
         for (row in 0 until gameBoard.numColumns) {
@@ -42,21 +48,35 @@ class CheckWin(private var gameBoard: GridView){
         return null
     }
 
-    fun checkIfWinDiagonalFromTopRow(howManyPointsWin : Int): Shape? =
-            checkDiagonalTopRowToRight(howManyPointsWin) ?: checkDiagonalTopRowToLeft(howManyPointsWin)
+    fun checkIfWinDiagonalFromTopRow(howManyPointsWin : Int): Shape?{
+        Log.i("CheckWin", "checkIfWinDiagonalFromTopRow")
+        return checkDiagonalTopRowToRight(howManyPointsWin) ?: checkDiagonalTopRowToLeft(howManyPointsWin)
+    }
 
-    fun checkIfWinDiagonalLeftColumnToBottom(howManyPointsWin: Int) =
-            checkDiagonal(howManyPointsWin, gameBoard.numColumns, gameBoard.numColumns+1)
+    fun checkIfWinDiagonalLeftColumnToBottom(howManyPointsWin: Int): Shape?{
+        Log.i("CheckWin", "checkIfWinDiagonalLeftColumnToBottom")
+        return checkDiagonal(howManyPointsWin, gameBoard.numColumns, gameBoard.numColumns+1)
+    }
 
-    private fun checkDiagonalTopRowToRight(howManyPointsWin : Int) = checkDiagonal(howManyPointsWin, 1, gameBoard.numColumns+1)
+    private fun checkDiagonalTopRowToRight(howManyPointsWin : Int): Shape? {
+        Log.i("CheckWin", "checkDiagonalTopRowToRight")
+        return checkDiagonal(howManyPointsWin, 1, gameBoard.numColumns+1)
+    }
 
-    private fun checkDiagonalTopRowToLeft(howManyPointsWin : Int) = checkDiagonal(howManyPointsWin, 1, gameBoard.numColumns-1)
+    private fun checkDiagonalTopRowToLeft(howManyPointsWin : Int): Shape?{
+        Log.i("CheckWin", "checkDiagonalTopRowToLeft")
+        return checkDiagonal(howManyPointsWin, 1, gameBoard.numColumns-1)
+    }
 
     private fun checkDiagonal(howManyPointsWin: Int, multipler: Int, stepMove: Int): Shape? {
         for (row in 0 until gameBoard.numColumns) {
             var lastShape: Shape? = null
             var howManyPoints = 0
+            var lastFieldIndex = -1
             for (fieldIndex in row*multipler until gameBoard.numColumns * gameBoard.numColumns step stepMove) {
+                if (!isDiagonalInNextOrPreviousLine(lastFieldIndex, fieldIndex))
+                    break
+
                 val curField = gameBoard.getChildAt(fieldIndex) as GameField
                 val curShape = curField.whatShape()
 
@@ -66,7 +86,7 @@ class CheckWin(private var gameBoard: GridView){
                     else -> howManyPoints + 1
                 }
                 lastShape = curShape
-                Log.i("PointsFor", lastShape.toString() + ": " + howManyPoints);
+                lastFieldIndex = fieldIndex
 
                 if (howManyPoints == howManyPointsWin)
                     return curShape
@@ -74,4 +94,7 @@ class CheckWin(private var gameBoard: GridView){
         }
         return null
     }
+
+    private fun isDiagonalInNextOrPreviousLine(lastFieldIndex: Int, fieldIndex: Int) =
+            Math.abs(lastFieldIndex / gameBoard.numColumns - fieldIndex / gameBoard.numColumns) == 1
 }

@@ -2,6 +2,7 @@ package com.hoymm.root.tictactoe2.GameEngine
 
 import android.content.Context
 import android.support.v4.content.ContextCompat
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
@@ -62,7 +63,6 @@ class GameBoardAdapter(private var context: Context, private var howManyFieldsIn
     }
 
     private fun getOnClickListenerAction(v: View?){
-
         if (whoWon != null || isThereADraw) {
             // game already finished
         }
@@ -84,10 +84,11 @@ class GameBoardAdapter(private var context: Context, private var howManyFieldsIn
 
     private fun checkIfAnyoneWonOrDraw() {
         whoWon = CheckIsGameFinished.checkIfSomeoneWon()
+        isThereADraw = CheckIsGameFinished.checkIfItIsADraw()
+
         if (whoWon != null)
             Toast.makeText(context, "$whoWon has won the game.", Toast.LENGTH_SHORT).show()
-        else if (CheckIsGameFinished.checkIfItIsADraw()) {
-            isThereADraw = true
+        else if (isThereADraw){
             Toast.makeText(context, "It is a draw.", Toast.LENGTH_SHORT).show()
         }
     }

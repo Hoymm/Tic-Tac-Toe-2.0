@@ -3,6 +3,7 @@ package com.hoymm.root.tictactoe2.GameEngine
 import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.util.Log
 import android.view.*
 import android.widget.GridView
 import android.widget.LinearLayout
