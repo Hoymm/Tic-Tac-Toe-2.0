@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="@color/appBackground"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        >
+        <ImageView
+            android:layout_width="@dimen/inGameImgGameFinished"
+            android:layout_height="@dimen/inGameImgGameFinished"
+            android:src="@drawable/ic_cross"
+            android:padding="5dp"
+            android:id="@+id/game_finished_cross_id"
+            />
+        <ImageView
+            android:layout_width="@dimen/inGameImgGameFinished"
+            android:layout_height="@dimen/inGameImgGameFinished"
+            android:src="@drawable/ic_circle"
+            android:padding="5dp"
+            android:id="@+id/game_finished_circle_id"
+            />
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Header"
+        android:textSize="@dimen/inGameFontHeader"
+        android:text="WINS!"
+        android:gravity="center"
+        android:id="@+id/game_finished_text_id"
+        />
+</LinearLayout>

@@ -11,18 +11,20 @@
     <string name="medium">Medium</string>
     <string name="hard">Hard</string>
     <string name="settings">SETTINGS</string>
-    <string name="effects">Effects:</string>
+    <string name="effects_colon">Effects:</string>
     <string name="sound">Sound</string>
     <string name="vibration">Vibration</string>
     <string name="speaker">Speaker</string>
-    <string name="scores">Scores:</string>
-    <string name="draws">Draws:</string>
+    <string name="scores_colon">Scores:</string>
+    <string name="draws_colon">Draws:</string>
     <string name="circle">Circle</string>
     <string name="cross">Cross</string>
     <string name="turn">Turn:</string>
     <string name="single_player">Single Player</string>
     <string name="choose_grid">CHOOSE GRID</string>
     <string name="field_already_occupied_message">That field is already occupied.</string>
+    <string name="wins_colon">Wins:</string>
+    <string name="losses_colon">Losses:</string>
 
     <string-array name="mainActivityButtonNames">
         <item>Single Player</item>

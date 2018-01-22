@@ -7,7 +7,9 @@ import android.support.v4.content.ContextCompat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 
 import com.hoymm.root.tictactoe2.R
 
@@ -16,14 +18,9 @@ import com.hoymm.root.tictactoe2.R
  */
 
 internal class GameHeaderFragment : Fragment() {
-    private var circleTV: TextView? = null
-    private var crossTV: TextView? = null
-    private var drawsTV: TextView? = null
-    private var whosTurnTV: TextView? = null
-    private var circleScores = 0
-    private var crossScores = 0
-    private var drawsScores = 0
-    private var gameFragsCommunication: CurrentAppDataInfo? = null
+    private lateinit var whosTurnTV: TextView
+    private var gameFragsCommunication: CurAppData? = null
+    private lateinit var settingsIcon: ImageView
 
     private val whosTurnTextColor: Int get() =
             if (gameFragsCommunication!!.getWhoseTurnNow == Shape.circle)
@@ -36,7 +33,7 @@ internal class GameHeaderFragment : Fragment() {
     override fun onAttach(context: Context?) {
         super.onAttach(context)
         try {
-            gameFragsCommunication = context as CurrentAppDataInfo
+            gameFragsCommunication = context as CurAppData
         } catch (e: ClassCastException) {
             throw ClassCastException(context!!.toString() + " must implement OnFragmentSendText")
         }
@@ -46,43 +43,28 @@ internal class GameHeaderFragment : Fragment() {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         initTextViews()
         drawRandomMovementOrder()
-        setValuesForComponents()
+        setActionForSettingsButton()
         super.onViewCreated(view, savedInstanceState)
     }
 
     private fun initTextViews() {
-        circleTV = activity.findViewById(R.id.circleScoreAmountID)
-        crossTV = activity.findViewById(R.id.crossScoresAmountID)
-        drawsTV = activity.findViewById(R.id.drawsScoresAmountID)
         whosTurnTV = activity.findViewById(R.id.turnValueID)
+        settingsIcon = activity.findViewById(R.id.settingsIcon)
     }
 
     private fun drawRandomMovementOrder() {
 
     }
 
-    private fun setValuesForComponents() {
-        circleTV!!.text = circleScores.toString()
-        crossTV!!.text = crossScores.toString()
-        drawsTV!!.text = drawsScores.toString()
-
-        changeWhosTurnNowTextView()
+    private fun setActionForSettingsButton(){
+        settingsIcon.setOnClickListener{
+            Toast.makeText(context, "Settings", Toast.LENGTH_SHORT).show()
+        }
     }
 
-    fun changeWhosTurnNowTextView() {
-        whosTurnTV!!.text = gameFragsCommunication!!.getWhoseTurnNow.toString()
-        whosTurnTV!!.setTextColor(whosTurnTextColor)
+    fun changeTurnToOpposiveTextView() {
+        whosTurnTV.text = gameFragsCommunication!!.getWhoseTurnNow.toString()
+        whosTurnTV.setTextColor(whosTurnTextColor)
     }
 
-    fun increaseCircleScores() {
-        circleTV!!.setText(++circleScores)
-    }
-
-    fun increaseCrossScores() {
-        crossTV!!.setText(++crossScores)
-    }
-
-    fun increaseDrawsScores() {
-        drawsTV!!.setText(++drawsScores)
-    }
 }

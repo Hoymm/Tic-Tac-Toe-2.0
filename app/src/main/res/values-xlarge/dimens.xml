@@ -16,6 +16,8 @@
     <dimen name="menu_header_margin">48dp</dimen>
 
     <!-- GAME -->
+    <dimen name="inGameFontHeader">100sp</dimen>
+    <dimen name="inGameImgGameFinished">200dp</dimen>
     <dimen name="inGameFontSize">38sp</dimen>
     <dimen name="inGamePadding">64dp</dimen>
     <dimen name="inGameTextSeparationSpace">6dp</dimen>

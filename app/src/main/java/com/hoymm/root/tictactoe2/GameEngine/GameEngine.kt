@@ -16,7 +16,7 @@ import java.util.Random
  * Created by Damian Muca - Kaizen (26.09.17)
  */
 
-abstract class GameEngine : AppCompatActivity(), CurrentAppDataInfo, CheckIsGameFinished{
+abstract class GameEngine : AppCompatActivity(), CurAppData, CheckIsGameFinished, GameFragsCommunication{
     companion object {
         val GAME_BOARD_SIZE_KEY = "com.hoymm.root.tictactoe2.GameEngine.GAME_BOARD_SIZE_KEY"
         val GAME_HARDNESS_KEY = "com.hoymm.root.tictactoe2.GameEngine.GAME_HARDNESS_KEY"
@@ -93,10 +93,14 @@ abstract class GameEngine : AppCompatActivity(), CurrentAppDataInfo, CheckIsGame
 
     override fun changePlayerTurn() {
         this.whoseTurnNow = if (whoseTurnNow == Shape.circle) Shape.cross else Shape.circle
-        headerFragment.changeWhosTurnNowTextView()
+        headerFragment.changeTurnToOpposiveTextView()
     }
 
     override fun checkIfSomeoneWon(): Shape? = boardFragment.checkIfSomeoneWon()
 
     override fun checkIfItIsADraw(): Boolean = boardFragment.checkIfItIsADraw()
+
+    override fun changeTurnOnOpposive() {
+        headerFragment.changeTurnToOpposiveTextView()
+    }
 }

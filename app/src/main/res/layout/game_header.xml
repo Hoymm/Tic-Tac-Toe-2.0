@@ -1,90 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<android.support.constraint.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="@color/appBackground"
+    android:padding="16dp"
     >
-
-
-    <TextView
-        android:id="@+id/scoresTextViewID"
-        style="@style/InGameText"
-        android:layout_marginStart="@dimen/inGamePadding"
-        android:layout_marginTop="@dimen/inGamePadding"
-        android:text="@string/scores"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/circleScoreAmountID"
-        style="@style/InGameText"
-        android:textColor="@color/circleBlue"
-        android:layout_marginBottom="0dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="0dp"
-        android:text="XX"
-        app:layout_constraintBottom_toBottomOf="@+id/scoresTextViewID"
-        app:layout_constraintLeft_toRightOf="@+id/scoresTextViewID"
-        app:layout_constraintTop_toTopOf="@+id/scoresTextViewID"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/scoresSeparatorID"
-        style="@style/InGameText"
-        android:paddingStart="@dimen/inGameTextSeparationSpace"
-        android:paddingEnd="@dimen/inGameTextSeparationSpace"
-        android:text=":"
-        app:layout_constraintBottom_toBottomOf="@+id/circleScoreAmountID"
-        app:layout_constraintLeft_toRightOf="@+id/circleScoreAmountID"
-        app:layout_constraintTop_toTopOf="@+id/circleScoreAmountID"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/crossScoresAmountID"
-        style="@style/InGameText"
-        android:textColor="@color/crossRed"
-        android:text="XX"
-        app:layout_constraintBottom_toBottomOf="@+id/scoresSeparatorID"
-        app:layout_constraintTop_toTopOf="@+id/scoresSeparatorID"
-        app:layout_constraintVertical_bias="0.0"
-        app:layout_constraintLeft_toRightOf="@+id/scoresSeparatorID" />
-
-    <TextView
-        android:id="@+id/drawsText"
-        style="@style/InGameText"
-        android:text="@string/draws"
-        app:layout_constraintRight_toLeftOf="@+id/drawsScoresAmountID"
-        android:layout_marginEnd="@dimen/inGameTextSeparationSpace"
-        app:layout_constraintBottom_toBottomOf="@+id/drawsScoresAmountID"
-        android:layout_marginBottom="0dp"
-        app:layout_constraintTop_toTopOf="@+id/drawsScoresAmountID"
-        android:layout_marginTop="0dp"
-        app:layout_constraintVertical_bias="0.0" />
-
-
-    <TextView
-        android:id="@+id/drawsScoresAmountID"
-        style="@style/InGameText"
-        android:layout_marginEnd="@dimen/inGamePadding"
-        android:layout_marginTop="0dp"
-        android:text="XX"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/scoresTextViewID" />
-
     <TextView
         android:id="@+id/turnText"
         style="@style/InGameText"
         android:layout_marginStart="0dp"
-        android:layout_marginTop="0dp"
         android:text="@string/turn"
-        app:layout_constraintLeft_toLeftOf="@+id/scoresTextViewID"
-        app:layout_constraintTop_toBottomOf="@+id/scoresTextViewID"
-        android:layout_marginLeft="0dp"
+        android:layout_marginLeft="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintVertical_bias="0.0" />
+        android:layout_marginBottom="0dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="0dp" />
 
     <TextView
         android:id="@+id/turnValueID"
@@ -96,4 +29,18 @@
         android:layout_marginBottom="0dp"
         app:layout_constraintLeft_toRightOf="@+id/turnText"
         android:layout_marginStart="@dimen/inGameTextSeparationSpace" />
+
+    <ImageView
+        android:id="@+id/settingsIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
+        android:clickable="true"
+        android:padding="4dp"
+        android:src="@drawable/ic_menu"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

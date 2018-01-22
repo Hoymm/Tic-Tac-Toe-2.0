@@ -11,7 +11,7 @@
         android:id="@+id/effectsHeaderID"
         android:textColor="@color/settingsSecondHeaderColor"
         style="@style/Header.SettingsFontStyle"
-        android:text="@string/effects"
+        android:text="@string/effects_colon"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
