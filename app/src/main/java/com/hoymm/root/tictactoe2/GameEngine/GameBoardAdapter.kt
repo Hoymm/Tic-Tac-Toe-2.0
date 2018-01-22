@@ -9,11 +9,14 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.Toast
 import com.airbnb.lottie.LottieAnimationView
+import com.hoymm.root.tictactoe2.GameEngine.EnumClasses.Shape
+import com.hoymm.root.tictactoe2.GameEngine.CommunicationInterfaces.CheckIsGameFinished
+import com.hoymm.root.tictactoe2.GameEngine.CommunicationInterfaces.CurAppData
 import com.hoymm.root.tictactoe2.R
 
 /**
- * Created by hoymm on 23.11.17.
- */
+* Created by Damian Muca (Kaizen) on 23.11.17.
+*/
 
 class GameBoardAdapter(private var context: Context, private var howManyFieldsInRow: Int, private var fieldLength: Int) : BaseAdapter(){
     lateinit var CheckIsGameFinished: CheckIsGameFinished

@@ -7,6 +7,13 @@ import android.support.v7.app.AppCompatActivity
 
 import com.hoymm.root.tictactoe2.DisplayMenu.MainMenu.Settings.DifficultyEnum
 import com.hoymm.root.tictactoe2.DisplayMenu.MainMenu.Settings.SettingsSharedPreferences
+import com.hoymm.root.tictactoe2.GameEngine.EnumClasses.Shape
+import com.hoymm.root.tictactoe2.GameEngine.CommunicationInterfaces.CheckIsGameFinished
+import com.hoymm.root.tictactoe2.GameEngine.CommunicationInterfaces.CurAppData
+import com.hoymm.root.tictactoe2.GameEngine.CommunicationInterfaces.GameFragsCommunication
+import com.hoymm.root.tictactoe2.GameEngine.GameActivityFragments.GameBoardFragment
+import com.hoymm.root.tictactoe2.GameEngine.GameActivityFragments.GameFooterFragment
+import com.hoymm.root.tictactoe2.GameEngine.GameActivityFragments.GameHeaderFragment
 import com.hoymm.root.tictactoe2.MainActivity
 import com.hoymm.root.tictactoe2.R
 
@@ -16,7 +23,7 @@ import java.util.Random
  * Created by Damian Muca - Kaizen (26.09.17)
  */
 
-abstract class GameEngine : AppCompatActivity(), CurAppData, CheckIsGameFinished, GameFragsCommunication{
+abstract class GameEngine : AppCompatActivity(), CurAppData, CheckIsGameFinished, GameFragsCommunication {
     companion object {
         val GAME_BOARD_SIZE_KEY = "com.hoymm.root.tictactoe2.GameEngine.GAME_BOARD_SIZE_KEY"
         val GAME_HARDNESS_KEY = "com.hoymm.root.tictactoe2.GameEngine.GAME_HARDNESS_KEY"
@@ -26,7 +33,7 @@ abstract class GameEngine : AppCompatActivity(), CurAppData, CheckIsGameFinished
     private var youAreACircle = false
 
     private lateinit var headerFragment: GameHeaderFragment
-    private lateinit var boardFragment: GameBoardFragment
+    private lateinit var gameFragment: GameBoardFragment
     private lateinit var footerFragment: GameFooterFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,9 +61,9 @@ abstract class GameEngine : AppCompatActivity(), CurAppData, CheckIsGameFinished
     }
 
     private fun createGameFrag() {
-        boardFragment = GameBoardFragment()
-        boardFragment.arguments = intent.extras
-        addNewFragment(R.id.gameBoardFragment, boardFragment)
+        gameFragment = GameBoardFragment()
+        gameFragment.arguments = intent.extras
+        addNewFragment(R.id.gameBoardFragment, gameFragment)
     }
 
     private fun createFooterFrag() {
@@ -96,11 +103,15 @@ abstract class GameEngine : AppCompatActivity(), CurAppData, CheckIsGameFinished
         headerFragment.changeTurnToOpposiveTextView()
     }
 
-    override fun checkIfSomeoneWon(): Shape? = boardFragment.checkIfSomeoneWon()
+    override fun checkIfSomeoneWon(): Shape? = gameFragment.checkIfSomeoneWon()
 
-    override fun checkIfItIsADraw(): Boolean = boardFragment.checkIfItIsADraw()
+    override fun checkIfItIsADraw(): Boolean = gameFragment.checkIfItIsADraw()
 
     override fun changeTurnOnOpposive() {
         headerFragment.changeTurnToOpposiveTextView()
+    }
+
+    override fun showSettingsInGameFragment() {
+        gameFragment.showSettingsFragment()
     }
 }

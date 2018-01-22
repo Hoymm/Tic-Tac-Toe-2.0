@@ -2,6 +2,7 @@ package com.hoymm.root.tictactoe2.GameEngine
 
 import android.content.Context
 import com.airbnb.lottie.LottieAnimationView
+import com.hoymm.root.tictactoe2.GameEngine.EnumClasses.Shape
 
 /**
  * Created by Damian Muca (Kaizen) on 21.12.17.

@@ -2,6 +2,7 @@ package com.hoymm.root.tictactoe2.GameEngine
 
 import android.util.Log
 import android.widget.GridView
+import com.hoymm.root.tictactoe2.GameEngine.EnumClasses.Shape
 
 /**
  * Created by Damian Muca (Kaizen) on 23.12.17.

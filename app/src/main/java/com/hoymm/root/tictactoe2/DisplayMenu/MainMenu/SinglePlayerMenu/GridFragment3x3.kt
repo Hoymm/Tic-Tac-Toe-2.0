@@ -2,7 +2,7 @@ package com.hoymm.root.tictactoe2.DisplayMenu.MainMenu.SinglePlayerMenu
 
 import android.content.Intent
 
-import com.hoymm.root.tictactoe2.GameEngine.BoardSize
+import com.hoymm.root.tictactoe2.GameEngine.EnumClasses.BoardSize
 import com.hoymm.root.tictactoe2.GameEngine.GameEngine
 import com.hoymm.root.tictactoe2.R
 

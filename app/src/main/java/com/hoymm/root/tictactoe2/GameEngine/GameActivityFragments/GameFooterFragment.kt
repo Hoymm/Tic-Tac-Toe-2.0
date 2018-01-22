@@ -1,4 +1,4 @@
-package com.hoymm.root.tictactoe2.GameEngine
+package com.hoymm.root.tictactoe2.GameEngine.GameActivityFragments
 
 import android.content.Context
 import android.content.Intent
@@ -11,6 +11,7 @@ import android.widget.Button
 import android.widget.TextView
 
 import com.hoymm.root.tictactoe2.DisplayMenu.MainMenu.Settings.DifficultyEnum
+import com.hoymm.root.tictactoe2.GameEngine.CommunicationInterfaces.GameFragsCommunication
 import com.hoymm.root.tictactoe2.MainActivity
 import com.hoymm.root.tictactoe2.R
 

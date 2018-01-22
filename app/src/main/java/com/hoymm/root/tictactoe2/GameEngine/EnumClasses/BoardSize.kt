@@ -1,4 +1,4 @@
-package com.hoymm.root.tictactoe2.GameEngine
+package com.hoymm.root.tictactoe2.GameEngine.EnumClasses
 
 /**
  * Created by Damian Muca - Kaizen (26.09.17)

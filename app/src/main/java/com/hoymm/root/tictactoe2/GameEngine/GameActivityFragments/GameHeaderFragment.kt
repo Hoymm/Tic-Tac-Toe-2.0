@@ -1,4 +1,4 @@
-package com.hoymm.root.tictactoe2.GameEngine
+package com.hoymm.root.tictactoe2.GameEngine.GameActivityFragments
 
 import android.content.Context
 import android.os.Bundle
@@ -9,7 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
+import com.hoymm.root.tictactoe2.GameEngine.EnumClasses.Shape
+import com.hoymm.root.tictactoe2.GameEngine.CommunicationInterfaces.CurAppData
+import com.hoymm.root.tictactoe2.GameEngine.CommunicationInterfaces.GameFragsCommunication
 
 import com.hoymm.root.tictactoe2.R
 
@@ -19,11 +21,12 @@ import com.hoymm.root.tictactoe2.R
 
 internal class GameHeaderFragment : Fragment() {
     private lateinit var whosTurnTV: TextView
-    private var gameFragsCommunication: CurAppData? = null
+    private lateinit var curAppData: CurAppData
+    private lateinit var gameFragmentsCommunication : GameFragsCommunication
     private lateinit var settingsIcon: ImageView
 
     private val whosTurnTextColor: Int get() =
-            if (gameFragsCommunication!!.getWhoseTurnNow == Shape.circle)
+            if (curAppData.getWhoseTurnNow == Shape.circle)
                 ContextCompat.getColor(context, R.color.circleBlue)
             else ContextCompat.getColor(context, R.color.crossRed)
 
@@ -33,7 +36,8 @@ internal class GameHeaderFragment : Fragment() {
     override fun onAttach(context: Context?) {
         super.onAttach(context)
         try {
-            gameFragsCommunication = context as CurAppData
+            curAppData = context as CurAppData
+            gameFragmentsCommunication = context as GameFragsCommunication
         } catch (e: ClassCastException) {
             throw ClassCastException(context!!.toString() + " must implement OnFragmentSendText")
         }
@@ -58,12 +62,12 @@ internal class GameHeaderFragment : Fragment() {
 
     private fun setActionForSettingsButton(){
         settingsIcon.setOnClickListener{
-            Toast.makeText(context, "Settings", Toast.LENGTH_SHORT).show()
+            gameFragmentsCommunication.showSettingsInGameFragment()
         }
     }
 
     fun changeTurnToOpposiveTextView() {
-        whosTurnTV.text = gameFragsCommunication!!.getWhoseTurnNow.toString()
+        whosTurnTV.text = curAppData.getWhoseTurnNow.toString()
         whosTurnTV.setTextColor(whosTurnTextColor)
     }
 

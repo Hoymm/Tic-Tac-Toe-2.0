@@ -1,4 +1,4 @@
-package com.hoymm.root.tictactoe2.GameEngine
+package com.hoymm.root.tictactoe2.GameEngine.GameActivityFragments
 
 import android.content.Context
 import android.os.Bundle
@@ -6,6 +6,14 @@ import android.support.v4.app.Fragment
 import android.view.*
 import android.widget.GridView
 import android.widget.LinearLayout
+import com.hoymm.root.tictactoe2.GameEngine.CheckDraw
+import com.hoymm.root.tictactoe2.GameEngine.CheckWin
+import com.hoymm.root.tictactoe2.GameEngine.EnumClasses.BoardSize
+import com.hoymm.root.tictactoe2.GameEngine.EnumClasses.Shape
+import com.hoymm.root.tictactoe2.GameEngine.CommunicationInterfaces.CheckIsGameFinished
+import com.hoymm.root.tictactoe2.GameEngine.CommunicationInterfaces.CurAppData
+import com.hoymm.root.tictactoe2.GameEngine.GameBoardAdapter
+import com.hoymm.root.tictactoe2.GameEngine.GameEngine
 import com.hoymm.root.tictactoe2.R
 import java.lang.ClassCastException
 
@@ -30,7 +38,7 @@ class GameBoardFragment : Fragment(), CheckIsGameFinished {
             curAppData = context as CurAppData
         }
         catch (exception : ClassCastException){
-            throw ClassCastException(activity.toString() + " must implement CurAppData");
+            throw ClassCastException(activity.toString() + " must implement CurAppData")
         }
     }
 
@@ -129,4 +137,8 @@ class GameBoardFragment : Fragment(), CheckIsGameFinished {
     }
 
     private fun getHowManyPointsWins() = if (boardSize == BoardSize.board3x3) 3 else 4
+
+    fun showSettingsFragment() {
+        // TODO SHOW SETTINGS FRAGMENT
+    }
 }
