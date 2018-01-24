@@ -100,7 +100,7 @@ abstract class GameEngine : AppCompatActivity(), CurAppData, CheckIsGameFinished
 
     override fun changePlayerTurn() {
         this.whoseTurnNow = if (whoseTurnNow == Shape.circle) Shape.cross else Shape.circle
-        headerFragment.changeTurnToOpposiveTextView()
+        headerFragment.refreshWhoseTurnNow()
     }
 
     override fun checkIfSomeoneWon(): Shape? = gameFragment.checkIfSomeoneWon()
@@ -108,7 +108,7 @@ abstract class GameEngine : AppCompatActivity(), CurAppData, CheckIsGameFinished
     override fun checkIfItIsADraw(): Boolean = gameFragment.checkIfItIsADraw()
 
     override fun changeTurnOnOpposive() {
-        headerFragment.changeTurnToOpposiveTextView()
+        headerFragment.refreshWhoseTurnNow()
     }
 
     override fun showSettingsInGameFragment() {

@@ -46,6 +46,7 @@ internal class GameHeaderFragment : Fragment() {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         initTextViews()
+        refreshWhoseTurnNow()
         drawRandomMovementOrder()
         setActionForSettingsButton()
         super.onViewCreated(view, savedInstanceState)
@@ -66,7 +67,7 @@ internal class GameHeaderFragment : Fragment() {
         }
     }
 
-    fun changeTurnToOpposiveTextView() {
+    fun refreshWhoseTurnNow() {
         whosTurnTV.text = curAppData.getWhoseTurnNow.toString()
         whosTurnTV.setTextColor(whosTurnTextColor)
     }

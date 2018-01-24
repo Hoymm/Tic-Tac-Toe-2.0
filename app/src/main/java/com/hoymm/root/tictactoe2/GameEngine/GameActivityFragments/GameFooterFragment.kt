@@ -16,17 +16,11 @@ import com.hoymm.root.tictactoe2.MainActivity
 import com.hoymm.root.tictactoe2.R
 
 /**
- * Created by hoymm on 01.11.17.
+ * Created by hoymm on 01.11.17
  */
 
 class GameFooterFragment : Fragment() {
     private lateinit var gameFragsCommunication: GameFragsCommunication
-    private var circleTV: TextView? = null
-    private var crossTV: TextView? = null
-    private var drawsTV: TextView? = null
-    private var circleScores = 0
-    private var crossScores = 0
-    private var drawsScores = 0
 
     private var exitButton: Button? = null
     private var hardnessDisplayTextView: TextView? = null
@@ -40,7 +34,6 @@ class GameFooterFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initXMLObjects()
         setProperHardnessLevelText()
-        setValuesForComponents()
         setExitButtonAction()
     }
 
@@ -65,9 +58,6 @@ class GameFooterFragment : Fragment() {
     private fun initXMLObjects() {
         exitButton = activity.findViewById(R.id.exitGameButtonId)
         hardnessDisplayTextView = activity.findViewById(R.id.hardnessDisplayTextId)
-        circleTV = activity.findViewById(R.id.winsValue)
-        crossTV = activity.findViewById(R.id.lossesValue)
-        drawsTV = activity.findViewById(R.id.drawsValue)
     }
 
     private fun setProperHardnessLevelText() {
@@ -83,25 +73,5 @@ class GameFooterFragment : Fragment() {
 
     companion object {
         internal val HARDNESS_KEY = "com.hoymm.root.tictactoe2.GameEngine.HARDNESS_KEY"
-    }
-
-    private fun setValuesForComponents() {
-        circleTV!!.text = circleScores.toString()
-        crossTV!!.text = crossScores.toString()
-        drawsTV!!.text = drawsScores.toString()
-
-        gameFragsCommunication.changeTurnOnOpposive()
-    }
-
-    fun increaseCircleScores() {
-        circleTV!!.setText(++circleScores)
-    }
-
-    fun increaseCrossScores() {
-        crossTV!!.setText(++crossScores)
-    }
-
-    fun increaseDrawsScores() {
-        drawsTV!!.setText(++drawsScores)
     }
 }
