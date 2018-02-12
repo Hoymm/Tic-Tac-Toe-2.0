@@ -11,7 +11,7 @@ import com.hoymm.root.tictactoe2.GameEngine.EnumClasses.Shape
 import com.hoymm.root.tictactoe2.GameEngine.CommunicationInterfaces.CheckIsGameFinished
 import com.hoymm.root.tictactoe2.GameEngine.CommunicationInterfaces.CurAppData
 import com.hoymm.root.tictactoe2.GameEngine.CommunicationInterfaces.GameFragsCommunication
-import com.hoymm.root.tictactoe2.GameEngine.GameActivityFragments.GameBoardFragment
+import com.hoymm.root.tictactoe2.GameEngine.GameActivityFragments.GameMiddleFragment.GameMiddleFragment
 import com.hoymm.root.tictactoe2.GameEngine.GameActivityFragments.GameFooterFragment
 import com.hoymm.root.tictactoe2.GameEngine.GameActivityFragments.GameHeaderFragment
 import com.hoymm.root.tictactoe2.MainActivity
@@ -33,7 +33,7 @@ abstract class GameEngine : AppCompatActivity(), CurAppData, CheckIsGameFinished
     private var youAreACircle = false
 
     private lateinit var headerFragment: GameHeaderFragment
-    private lateinit var gameFragment: GameBoardFragment
+    private lateinit var gameFragment: GameMiddleFragment
     private lateinit var footerFragment: GameFooterFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,7 +61,7 @@ abstract class GameEngine : AppCompatActivity(), CurAppData, CheckIsGameFinished
     }
 
     private fun createGameFrag() {
-        gameFragment = GameBoardFragment()
+        gameFragment = GameMiddleFragment()
         gameFragment.arguments = intent.extras
         addNewFragment(R.id.gameBoardFragment, gameFragment)
     }
@@ -112,6 +112,6 @@ abstract class GameEngine : AppCompatActivity(), CurAppData, CheckIsGameFinished
     }
 
     override fun showSettingsInGameFragment() {
-        gameFragment.showSettingsFragment()
+        gameFragment.showSettingsFragmentAndHideBoard()
     }
 }

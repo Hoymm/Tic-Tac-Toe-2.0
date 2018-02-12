@@ -8,8 +8,7 @@
     <TextView
         style="@style/InGameText"
         android:id="@+id/hardnessDisplayTextId"
-        android:text="Hardness Level"
-        android:layout_marginRight="16dp"
+        android:text="@string/easy"
         android:layout_marginEnd="16dp"
         android:paddingBottom="8dp"
         android:layout_gravity="end"
@@ -20,7 +19,7 @@
     <Button
         style="@style/Button"
         android:id="@+id/exitGameButtonId"
-        android:text="Wyjście"
+        android:text="@string/quit"
         android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

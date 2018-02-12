@@ -1,53 +1,40 @@
-package com.hoymm.root.tictactoe2.GameEngine.GameActivityFragments
+package com.hoymm.root.tictactoe2.GameEngine.GameActivityFragments.GameMiddleFragment
 
-import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.view.ViewTreeObserver
 import android.widget.GridView
 import android.widget.LinearLayout
 import com.hoymm.root.tictactoe2.GameEngine.CheckDraw
 import com.hoymm.root.tictactoe2.GameEngine.CheckWin
+import com.hoymm.root.tictactoe2.GameEngine.CommunicationInterfaces.CheckIsGameFinished
 import com.hoymm.root.tictactoe2.GameEngine.EnumClasses.BoardSize
 import com.hoymm.root.tictactoe2.GameEngine.EnumClasses.Shape
-import com.hoymm.root.tictactoe2.GameEngine.CommunicationInterfaces.CheckIsGameFinished
-import com.hoymm.root.tictactoe2.GameEngine.CommunicationInterfaces.CurAppData
 import com.hoymm.root.tictactoe2.GameEngine.GameBoardAdapter
 import com.hoymm.root.tictactoe2.GameEngine.GameEngine
 import com.hoymm.root.tictactoe2.R
-import java.lang.ClassCastException
 
-class GameBoardFragment : Fragment(), CheckIsGameFinished {
+/**
+ * Created by Damian Muca (Kaizen) on 24.01.18
+ */
+class GameBoardFrag : Fragment(), CheckIsGameFinished {
     private lateinit var gameBoard: GridView
     private var boardSize: BoardSize? = null
     private var fieldLength : Int = 0
     private var fieldsSeparatorLength: Int = 0
-    private lateinit var curAppData: CurAppData
 
-    private val howManyFieldsInRow: Int get() =
-       when (boardSize) {
-            BoardSize.board3x3 -> 3
-            BoardSize.board5x5 -> 5
-            BoardSize.board7x7 -> 7
-            else -> 3
-        }
 
-    override fun onAttach(context: Context?) {
-        super.onAttach(context)
-        try{
-            curAppData = context as CurAppData
-        }
-        catch (exception : ClassCastException){
-            throw ClassCastException(activity.toString() + " must implement CurAppData")
-        }
-    }
-
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View?
-            = inflater!!.inflate(R.layout.game_board_fragment, container, false)
+    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? =
+        inflater!!.inflate(R.layout.game_middle_frag_board, container, false)
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         boardSize = arguments.get(GameEngine.GAME_BOARD_SIZE_KEY) as BoardSize
+
+
 
         view!!.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
             override fun onGlobalLayout() {
@@ -57,8 +44,19 @@ class GameBoardFragment : Fragment(), CheckIsGameFinished {
         })
     }
 
+
+    private val howManyFieldsInRow: Int get() =
+        when (boardSize) {
+            BoardSize.board3x3 -> 3
+            BoardSize.board5x5 -> 5
+            BoardSize.board7x7 -> 7
+            else -> 3
+        }
+
+
+
     private fun generateGameBoard() {
-        gameBoard = activity.findViewById<GridView>(R.id.game_board_fragment_id)
+        gameBoard = activity.findViewById<GridView>(R.id.game_middle_frag_board_id)
         calculateFieldAndSeparatorLength()
         setNewWidthAndHeightForGameBoardView(gameBoard)
         setAdapter(gameBoard)
@@ -138,7 +136,4 @@ class GameBoardFragment : Fragment(), CheckIsGameFinished {
 
     private fun getHowManyPointsWins() = if (boardSize == BoardSize.board3x3) 3 else 4
 
-    fun showSettingsFragment() {
-        // TODO SHOW SETTINGS FRAGMENT
-    }
 }

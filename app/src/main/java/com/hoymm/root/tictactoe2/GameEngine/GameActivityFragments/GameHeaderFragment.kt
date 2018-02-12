@@ -31,7 +31,7 @@ internal class GameHeaderFragment : Fragment() {
             else ContextCompat.getColor(context, R.color.crossRed)
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-            inflater!!.inflate(R.layout.game_header, container, false)
+            inflater!!.inflate(R.layout.game_header_frag, container, false)
 
     override fun onAttach(context: Context?) {
         super.onAttach(context)

@@ -5,12 +5,13 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- * Created by hoymm on 14.11.17.
+ * Created by Damian Muca (Kaizen) on 14.11.17.
+ *
  */
-public class GameBoardFragmentTest {
+public class GameMiddleFragmentTest {
 
     @Test //(expected = ExceptionInInitializerError.class)
     public void dpToPx_whenArgumentNegative() {
-        //GameBoardFragment.Companion.dpToPx(-2);
+        //GameMiddleFragment.Companion.dpToPx(-2);
     }
 }

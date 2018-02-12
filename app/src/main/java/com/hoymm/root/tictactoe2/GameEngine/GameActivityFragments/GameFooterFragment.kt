@@ -27,7 +27,7 @@ class GameFooterFragment : Fragment() {
     private var gameDifficulty: String? = null
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         loadDataThatHasBeenSentToAFragment()
-        return inflater!!.inflate(R.layout.game_footer, container, false)
+        return inflater!!.inflate(R.layout.game_footer_frag, container, false)
     }
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {

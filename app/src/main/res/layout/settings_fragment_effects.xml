@@ -4,7 +4,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/appBackground"
     >
 
     <TextView
@@ -15,16 +14,40 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:src="@drawable/ic_speaker"
+        android:background="#FFFFFF"
+        app:layout_constraintTop_toTopOf="@+id/effectsSoundID"
+        app:layout_constraintBottom_toBottomOf="@+id/effectsSoundID"
+        app:layout_constraintLeft_toLeftOf="@id/effectsHeaderID"
+        android:contentDescription="@string/sound"
+        android:id="@+id/soundIcon" />
+
     <CheckBox
         style="@style/Header.SettingsFontStyle"
         android:buttonTint="@color/checkboxTint"
         android:id="@+id/effectsSoundID"
+        android:textSize="25sp"
         android:layout_marginTop="@dimen/inGameTextSeparationSpace"
         app:layout_constraintTop_toBottomOf="@+id/effectsHeaderID"
+        app:layout_constraintLeft_toRightOf="@+id/soundIcon"
         android:layout_marginStart="8dp"
-        app:layout_constraintLeft_toLeftOf="@+id/effectsHeaderID"
         android:text="@string/sound"
+        android:layoutDirection="rtl"
         />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:src="@drawable/ic_speaker"
+        android:background="#FF0FFF"
+        app:layout_constraintTop_toTopOf="@+id/effectsVibrationID"
+        app:layout_constraintBottom_toBottomOf="@+id/effectsVibrationID"
+        app:layout_constraintLeft_toLeftOf="@id/effectsHeaderID"
+        android:contentDescription="@string/vibration"
+        android:id="@+id/vibrationIcon" />
 
     <CheckBox
         style="@style/Header.SettingsFontStyle"
@@ -32,9 +55,20 @@
         android:id="@+id/effectsVibrationID"
         android:layout_marginTop="@dimen/inGameTextSeparationSpace"
         app:layout_constraintTop_toBottomOf="@+id/effectsSoundID"
-        android:layout_marginStart="0dp"
         app:layout_constraintLeft_toLeftOf="@+id/effectsSoundID"
-        android:text="@string/vibration" />
+        android:text="@string/vibration"
+        android:layoutDirection="rtl" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:src="@drawable/ic_speaker"
+        android:background="#000FFF"
+        app:layout_constraintTop_toTopOf="@+id/effectsVoiceID"
+        app:layout_constraintBottom_toBottomOf="@+id/effectsVoiceID"
+        app:layout_constraintLeft_toLeftOf="@id/effectsHeaderID"
+        android:contentDescription="@string/speaker"
+        android:id="@+id/speakerIcon" />
 
     <CheckBox
         style="@style/Header.SettingsFontStyle"
@@ -42,9 +76,10 @@
         android:id="@+id/effectsVoiceID"
         android:layout_marginTop="@dimen/inGameTextSeparationSpace"
         app:layout_constraintTop_toBottomOf="@+id/effectsVibrationID"
-        android:layout_marginStart="0dp"
         app:layout_constraintLeft_toLeftOf="@+id/effectsSoundID"
-        android:text="@string/speaker" />
+        android:text="@string/speaker"
+        android:layoutDirection="rtl"
+        />
 
 
 </android.support.constraint.ConstraintLayout>

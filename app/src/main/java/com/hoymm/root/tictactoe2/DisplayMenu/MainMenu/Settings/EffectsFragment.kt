@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
+import android.widget.CompoundButton
 
 import com.hoymm.root.tictactoe2.R
 
@@ -47,16 +48,15 @@ class EffectsFragment : Fragment() {
     }
 
     private fun setListenerForSound() {
-        sound!!.setOnCheckedChangeListener { compoundButton, b -> SettingsSharedPreferences.saveSoundEnableState(context, b) }
+        sound!!.setOnCheckedChangeListener { _, b -> SettingsSharedPreferences.saveSoundEnableState(context, b) }
     }
 
     private fun setListenerForVibration() {
-        vibration!!.setOnCheckedChangeListener { compoundButton, b -> SettingsSharedPreferences.saveVibrationEnableState(context, b) }
+        vibration!!.setOnCheckedChangeListener { _, b -> SettingsSharedPreferences.saveVibrationEnableState(context, b) }
 
     }
 
     private fun saveListenerForSpeaker() {
-        voice!!.setOnCheckedChangeListener { compoundButton, b -> SettingsSharedPreferences.saveSpeakerEnableState(context, b) }
-
+        voice!!.setOnCheckedChangeListener { _, b -> SettingsSharedPreferences.saveSpeakerEnableState(context, b) }
     }
 }
